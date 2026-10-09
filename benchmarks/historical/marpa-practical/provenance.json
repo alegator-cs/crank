@@ -1,0 +1,134 @@
+{
+  "campaign_date": "2026-09-11",
+  "plot_generated_utc": "2026-09-11T12:07:12.452583+00:00",
+  "first_party_source": "Supplied Constraint Parallel Core; no original campaign Git commit asserted.",
+  "source_baseline_archive_sha256": "b6d85aac8e0d01d13588fcf686bb1c995b3afdc1ea090b805a5580155574cf18",
+  "containing_archive": "Crank_Certified_Demands.zip",
+  "containing_archive_sha256": "9b27a5d0a34dbea2c8256f546cfe2f2fb38d624ef12abeea5ae993619807515c",
+  "report_entry": "crank/research/evidence/Crank_Marpa_Revisit_Report.md",
+  "source_script_entry": "crank/marpa_revisit/analyze.py",
+  "source_script_sha256": "492eb74fc436556a0c09ac490353a87322536932d4089ee2160d970d0e291c40",
+  "unchanged_source_line_ranges": [
+    [
+      22,
+      22
+    ],
+    [
+      24,
+      24
+    ],
+    [
+      25,
+      25
+    ],
+    [
+      26,
+      29
+    ],
+    [
+      32,
+      33
+    ],
+    [
+      34,
+      41
+    ],
+    [
+      44,
+      45
+    ],
+    [
+      46,
+      47
+    ],
+    [
+      48,
+      49
+    ],
+    [
+      56,
+      58
+    ],
+    [
+      61,
+      62
+    ],
+    [
+      78,
+      84
+    ],
+    [
+      108,
+      112
+    ],
+    [
+      284,
+      292
+    ],
+    [
+      295,
+      298
+    ],
+    [
+      301,
+      368
+    ]
+  ],
+  "compact_data_sha256": "0a69ffd37f1b41390bdf4797d5b8755ddbfb16e9322c49657e542d09a6d0293a",
+  "original_input_sha256": {
+    "summary": "c94e1c1b3e66af771b5fea5fa8d4701ec95f8d8d494a0e938e713f6fd8ecde94",
+    "results": "7408b6eb114b4547bb1978e79804f877e5cbd9e55091c19d27b4d9f96f740f58",
+    "environment": "3961aa766e6848ba3cb118873be16addb9abaed130ac0a509dc16d9134be47fd",
+    "cases": "6301119218c6f22a244e5007f91a1f408f396978ebe3c99a248c35dc2e47ad28"
+  },
+  "original_artifacts": {
+    "practical_overview.png": {
+      "sha256": "66191643135d73261d81266ffe54eef5602814fc1688ece41e080f6464521b51",
+      "bytes": 336369
+    },
+    "practical_overview.svg": {
+      "sha256": "75431738c51e85e3cef1f8f4f69d548ad51e883be2218ffe324b9e8af4bb07ba",
+      "bytes": 268420
+    }
+  },
+  "libmarpa": {
+    "version": "11.0.13",
+    "commit": "243540393a690efc2f6aca20f9d57c4099dcf646",
+    "leo_enabled": true,
+    "adapter": "Direct AST-to-BNF, individual bytes as tokens; no parse-forest/tree extraction or Crank prefilter."
+  },
+  "scope": {
+    "cases": 28,
+    "families": 7,
+    "plot_modes": [
+      "native",
+      "plan1",
+      "parallel4",
+      "default4",
+      "marpa"
+    ],
+    "phase": "Warm query only",
+    "aggregation": "Median of three fresh-process medians; min/max replicate whiskers, not confidence intervals.",
+    "actual_parallelism": "No practical case used multiple workers. Surviving practical cases used one task/worker.",
+    "historical_api": "Planner/parallel APIs shown belong to the historical implementation, not the current consolidated runtime."
+  },
+  "environment": {
+    "cpu": "AMD EPYC 9V74",
+    "compiler": "GCC 13.3.0",
+    "optimization": "-O2 -g0",
+    "affinity_cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "process_timeout_seconds": 15,
+    "address_limit_bytes": 2147483648,
+    "measurement_execution": "Serial children in a shared virtualized environment."
+  },
+  "reproduction": "The portable script reuses unchanged plotting functions/constants with compact original measurements. It never benchmarks engines; rendered bytes depend on plotting libraries/fonts."
+}

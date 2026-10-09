@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "observer": "full-span byte Boolean; explicit native core vs optional assisted core",
+  "current_results": "No new benchmark was run; historical results have different source checkpoints",
+  "fixtures": [
+    {
+      "id": "mixed_prefix_late_marker_reject_4096",
+      "pattern": "(?<R0>a(?&R0)b|)ccAdd|(?&R0)ccBdd|(?<R1>a(?&R1)b|)ccCdd|(?&R1)ccDdd|(?<R2>a(?&R2)b|)ccEdd|(?&R2)ccFdd|(?<R3>a(?&R3)b|)ccGdd|(?&R3)ccHdd",
+      "pattern_file": "fixtures/mixed_prefix_late_marker_reject_4096.pattern",
+      "input_file": "fixtures/mixed_prefix_late_marker_reject_4096.txt",
+      "bytes": 8197,
+      "subject_sha256": "d81d452d2fa7b03cb5f160351535d3a6683b526b553dd1827aa03bdf7bec40e1",
+      "pattern_sha256": "e7073a5e855074087d424d373eb1e674756d0e683b23412c478bbf457cbf9582",
+      "expected": false,
+      "max_states": 1000000,
+      "max_steps": 4000000,
+      "prune": true,
+      "mutation_offset": 8194,
+      "oracle": "Every arm requires suffix ccXdd with X in A through H; Z is outside that finite marker set.",
+      "language_scope": "Eight alternatives in four pairs; each pair shares one recursive a^k b^k obligation. Split presolve remains enabled.",
+      "generator": "subject = b'a'*4096 + b'b'*4096 + b'ccZdd'",
+      "archive_entry": "crank/assistance_comparison/cases.json",
+      "campaign": "September13 CPU follow-up"
+    },
+    {
+      "id": "event_stream_131072_late_order",
+      "pattern": "(?(DEFINE)(?<E>E\\[(?&F)(?:;(?&F))*\\])(?<F>[a-z][a-z0-9_]*=(?&V))(?<V>(?&E)|(?&L)|[0-9]+|\"[A-Za-z0-9 _;=/-]*\")(?<L>\\[(?:(?&V)(?:,(?&V))*)?\\]))(?&E)(?:\\n(?&E))*\\n",
+      "pattern_file": "fixtures/event_stream_131072_late_order.pattern",
+      "input_file": "fixtures/event_stream_131072_late_order.txt",
+      "bytes": 131040,
+      "subject_sha256": "9c4b450f703c5498dd50f1b99a1d5518b96e249b9378549c1ca8b2a4d6274537",
+      "pattern_sha256": "fc52904357f04b5ea088d9c12147d8e086fb1e035ef7bd74a078c39cb59656e5",
+      "expected": false,
+      "max_states": 2000000,
+      "max_steps": 8000000,
+      "prune": true,
+      "mutation_offset": 131030,
+      "oracle": "event_recursive_descent",
+      "language_scope": "Newline-terminated event stream: E[key=value;...] with one or more fields; key [a-z][a-z0-9_]*; values are nested events, comma-separated lists, unsigned decimal integers, or quoted [A-Za-z0-9 _;=/-]* text. No schema or application-level field relationships are checked.",
+      "generator": "row = b'E[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\\n'; good = row*(131072//len(row)); i = good.rfind(b'=['); subject = good[:i]+b'[='+good[i+2:]",
+      "archive_entry": "crank/consolidation_comparison/cases.json",
+      "campaign": "September16 explicit Progress comparison"
+    }
+  ]
+}

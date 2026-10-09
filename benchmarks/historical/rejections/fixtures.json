@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "semantic_contract": "Anchored Boolean byte membership; eligibility and equivalent flattening explicit percase; unsupported omitted, never a loss",
+  "observer": "full-span Boolean membership, bytes, ASCII inputs",
+  "fixtures": [
+    {
+      "id": "lattice_16379",
+      "family": "length_lattice",
+      "partition": "regular_arithmetic",
+      "variant": "hole",
+      "scale": 16379,
+      "pattern": "(?:a{127})*(?:a{131})*",
+      "input_file": "fixtures/lattice_16379.txt",
+      "bytes": 16379,
+      "expected": false,
+      "sha256": "ede19548406ea13c576bf5895d82a471b182e5c5c212dd42ac888c09efa6b8aa",
+      "generator": "subject = b'a' * 16379",
+      "archive_entry": "crank/certified_comparison/regimes_cases.json",
+      "native_options": {
+        "max_states": 2000000,
+        "max_steps": 8000000,
+        "prune": true
+      },
+      "max_states": 2000000,
+      "max_steps": 8000000,
+      "prune": true,
+      "role": "warm win versus PCRE2 JIT and Hyperscan"
+    },
+    {
+      "id": "bounded_lattice_8191",
+      "family": "bounded_lattice",
+      "partition": "regular_arithmetic",
+      "variant": "hole",
+      "scale": 8191,
+      "pattern": "(?:a{127}){0,63}(?:a{131}){0,63}",
+      "input_file": "fixtures/bounded_lattice_8191.txt",
+      "bytes": 8191,
+      "expected": false,
+      "sha256": "d691798dcd3bab9099e84b4cbc484caef67262d1ef5dca83330d07f5ce4740dd",
+      "generator": "subject = b'a' * 8191",
+      "archive_entry": "crank/certified_comparison/regimes_cases.json",
+      "native_options": {
+        "max_states": 2000000,
+        "max_steps": 8000000,
+        "prune": true
+      },
+      "max_states": 2000000,
+      "max_steps": 8000000,
+      "prune": true,
+      "role": "warm win versus PCRE2 JIT and Hyperscan"
+    },
+    {
+      "id": "bounded_lattice_16379",
+      "family": "bounded_lattice",
+      "partition": "regular_arithmetic",
+      "variant": "hole",
+      "scale": 16379,
+      "pattern": "(?:a{127}){0,63}(?:a{131}){0,63}",
+      "input_file": "fixtures/bounded_lattice_16379.txt",
+      "bytes": 16379,
+      "expected": false,
+      "sha256": "ede19548406ea13c576bf5895d82a471b182e5c5c212dd42ac888c09efa6b8aa",
+      "generator": "subject = b'a' * 16379",
+      "archive_entry": "crank/certified_comparison/regimes_cases.json",
+      "native_options": {
+        "max_states": 2000000,
+        "max_steps": 8000000,
+        "prune": true
+      },
+      "max_states": 2000000,
+      "max_steps": 8000000,
+      "prune": true,
+      "role": "Hyperscan warm counterexample"
+    },
+    {
+      "id": "record_flat_131072_final_digit",
+      "family": "record_scan",
+      "partition": "common_regular",
+      "variant": "final_digit",
+      "scale": 131072,
+      "pattern": "(?:[A-Z]{4}:[0-9]{6}\\n)+",
+      "input_file": "fixtures/record_flat_131072_final_digit.txt",
+      "bytes": 131064,
+      "expected": false,
+      "sha256": "2e4b657a827518011b275b4bb353f6b6559cc91115f22cfcf1b81f77c592c9f1",
+      "generator": "good = b'ABCD:123456\\n' * (131072 // 12); subject = good[:-2] + b'!\\n'",
+      "archive_entry": "crank/certified_comparison/regimes_cases.json",
+      "native_options": {
+        "max_states": 2000000,
+        "max_steps": 8000000,
+        "prune": true
+      },
+      "max_states": 2000000,
+      "max_steps": 8000000,
+      "prune": true,
+      "role": "Hyperscan warm counterexample"
+    }
+  ]
+}

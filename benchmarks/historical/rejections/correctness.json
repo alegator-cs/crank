@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "scope": "Saved-result and input-byte verification only; independent arithmetic/record oracles; no new engine benchmark",
+  "checks": [
+    {
+      "id": "lattice_16379",
+      "fixture_sha256": "ede19548406ea13c576bf5895d82a471b182e5c5c212dd42ac888c09efa6b8aa",
+      "byte_generator_agrees": true,
+      "independent_oracle_expected": false,
+      "oracle_reason": "No admitted nonnegative integer solution to 127*x+131*y=subject_length within repetition bounds.",
+      "archived_correctness": "All nine saved modes report no_match in all three records; first and warm queries resolved.",
+      "current_release_performance": "not measured by this recovery task"
+    },
+    {
+      "id": "bounded_lattice_8191",
+      "fixture_sha256": "d691798dcd3bab9099e84b4cbc484caef67262d1ef5dca83330d07f5ce4740dd",
+      "byte_generator_agrees": true,
+      "independent_oracle_expected": false,
+      "oracle_reason": "No admitted nonnegative integer solution to 127*x+131*y=subject_length within repetition bounds.",
+      "archived_correctness": "All nine saved modes report no_match in all three records; first and warm queries resolved.",
+      "current_release_performance": "not measured by this recovery task"
+    },
+    {
+      "id": "bounded_lattice_16379",
+      "fixture_sha256": "ede19548406ea13c576bf5895d82a471b182e5c5c212dd42ac888c09efa6b8aa",
+      "byte_generator_agrees": true,
+      "independent_oracle_expected": false,
+      "oracle_reason": "Subject length 16379 exceeds maximum bounded length 63*(127+131)=16254.",
+      "archived_correctness": "All nine saved modes report no_match in all three records; first and warm queries resolved.",
+      "current_release_performance": "not measured by this recovery task"
+    },
+    {
+      "id": "record_flat_131072_final_digit",
+      "fixture_sha256": "2e4b657a827518011b275b4bb353f6b6559cc91115f22cfcf1b81f77c592c9f1",
+      "byte_generator_agrees": true,
+      "independent_oracle_expected": false,
+      "oracle_reason": "Final digit byte is ASCII ! (33), violating the required [0-9] while final LF is preserved.",
+      "archived_correctness": "All nine saved modes report no_match in all three records; first and warm queries resolved.",
+      "current_release_performance": "not measured by this recovery task"
+    }
+  ]
+}

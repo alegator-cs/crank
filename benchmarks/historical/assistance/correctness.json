@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "scope": "Read-only archive recovery, byte regeneration, simple independent language reasoning; no fresh engine or performance run",
+  "checks": [
+    {
+      "id": "mixed_prefix_late_marker_reject_4096",
+      "byte_generator_agrees": true,
+      "independent_no_match_reason": "Every alternative ends in ccXdd for X=A..H; the exact subject ends ccZdd. Its recursive prefix is a^4096 b^4096.",
+      "sha256": "d81d452d2fa7b03cb5f160351535d3a6683b526b553dd1827aa03bdf7bec40e1",
+      "performance_jobs_run": 0
+    },
+    {
+      "id": "event_stream_131072_late_order",
+      "byte_generator_agrees": true,
+      "independent_no_match_reason": "The generated valid event stream has 2184 rows. Swapping the final samples=[ into samples[= introduces the forbidden [= adjacent pair; no grammar production admits = immediately after [.",
+      "sha256": "9c4b450f703c5498dd50f1b99a1d5518b96e249b9378549c1ca8b2a4d6274537",
+      "performance_jobs_run": 0
+    }
+  ]
+}

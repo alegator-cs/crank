@@ -1,0 +1,1 @@
+(?<R0>a(?&R0)b|)ccAdd|(?&R0)ccBdd|(?<R1>a(?&R1)b|)ccCdd|(?&R1)ccDdd|(?<R2>a(?&R2)b|)ccEdd|(?&R2)ccFdd|(?<R3>a(?&R3)b|)ccGdd|(?&R3)ccHdd

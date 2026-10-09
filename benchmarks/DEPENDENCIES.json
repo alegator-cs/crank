@@ -1,0 +1,15 @@
+{
+  "libmarpa": {
+    "version": "11.0.13",
+    "source_commit": "243540393a690efc2f6aca20f9d57c4099dcf646",
+    "source_url": "https://github.com/jeffreykegler/libmarpa/tree/243540393a690efc2f6aca20f9d57c4099dcf646",
+    "source_archive_sha256": "95a9a8c1c03dff4ea7a00cb7e067376c7c8e3a0b343c7a16f9322f54ebedc778",
+    "leo": true,
+    "note": "Supply a built prefix and this exact source checkout. The original adapter needs private _marpa_r_* interfaces from the generated standalone header/library. No dependency sources or binaries are bundled."
+  },
+  "pcre2": {"version": "10.42", "pkg_config": "libpcre2-8", "code_unit_width": 8},
+  "hyperscan": {"version": "5.4.2", "pkg_config": "libhs", "mode": "block"},
+  "reference_archive": "Crank_Certified_Demands (6).zip",
+  "reference_adapter": "crank/marpa_comparison/marpa_adapter.cpp",
+  "historical_fixture_source": "crank/certified_comparison/regimes.py"
+}

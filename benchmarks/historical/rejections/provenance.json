@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "source_archive": {
+    "filename": "Crank_Certified_Demands (6).zip",
+    "bytes": 263822485,
+    "sha256": "9b27a5d0a34dbea2c8256f546cfe2f2fb38d624ef12abeea5ae993619807515c",
+    "archive_role": "complete source-and-evidence ZIP; historical results are not current-release timings"
+  },
+  "campaigns": {
+    "regimes_utc": "2026-09-16T21:31:08.1138520Z",
+    "external_utc": "2026-09-16T21:43:22.6636060Z",
+    "campaign_git_head": "ad87996cfa810b101195c34409292a06c7c5286c",
+    "crank_build_receipt_git_head": "8038f67a482e2abf234819b0ded068c038c190b8",
+    "production_binding_commit": "6851a56ddb8b0bd9bae1d47a6b35a2a24c470222",
+    "production_binding_binary_sha256": "3fa1ba8c0b835f62b28ce4af382431d35298a403cfe10371624a6a1bc2bb89a2",
+    "current_binary_sha256": "3fa1ba8c0b835f62b28ce4af382431d35298a403cfe10371624a6a1bc2bb89a2",
+    "current_receipt_sha256": "0ef37120de4730f4c2868b17f7d65bbc328f43b92886465a2ca2fee4ae52e8ad",
+    "distinct_heads_note": "Campaign checkout, build receipt checkout, and production binding are different. PRODUCTION_BINDING identifies engine dependency hashes corresponding to the production engine commit."
+  },
+  "environment": {
+    "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+    "flags": [
+      "-std=c++20",
+      "-pthread",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Iengine",
+      "-I.",
+      "-O2"
+    ],
+    "kernel": "6.18.44",
+    "cpu_model": "model name\t: AMD EPYC 9V74 80-Core Processor",
+    "affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "cpu_max": "800000 100000",
+    "memory_max": "21474836480",
+    "address_space_bytes": 3221225472,
+    "wall_timeout_seconds": 20,
+    "rlimit_cpu": "not applied: prior experiment observed accounting distortion"
+  },
+  "dependencies": {
+    "pcre2_version": "10.42 2022-12-11",
+    "hyperscan_version": "5.4.2 2024-04-19",
+    "libmarpa_version": "11.0.13",
+    "libmarpa_commit": "243540393a690efc2f6aca20f9d57c4099dcf646",
+    "libmarpa_archive_sha256": "95a9a8c1c03dff4ea7a00cb7e067376c7c8e3a0b343c7a16f9322f54ebedc778",
+    "libmarpa_archive_bytes": 933174,
+    "libmarpa_Leo": "enabled for original marpa mode; direct AST-to-BNF byte tokens; no Crank length filter"
+  },
+  "aggregation": {
+    "warm": "median of three process medians, each median of five calibrated batch means targeting 15 ms",
+    "preparation": "parse plus backend preparation; auto owns its parse; redundant harness parse excluded from comparison timing",
+    "cold": "saved cold_total_us, aggregated independently; do not reconstruct from separately aggregated preparation and first query",
+    "statuses": "unsupported, timeout and resource_limit are not negative matches",
+    "semantic_contract": "ASCII byte full-span anchored Boolean queries; selected regular fixtures have declared common language for Crank, Libmarpa, PCRE2 and Hyperscan",
+    "helper_scope": "The original report records zero helper queries/publications/requests across the corpus; these timings do not show a speculative-threading speedup"
+  },
+  "source_record_hashes": [
+    {
+      "directory": "regimes",
+      "raw_sha256": "ac225021d3f99334665dd2c1bdfa4a3036f1740293f6ca306f49b34c35743f0b",
+      "summary_sha256": "884ae3091701de28ab80dc689d681e956df357471f770aae994605ec04379314",
+      "environment_sha256": "3442a3c33c4cb42dd3807872b6771749d8e6d04d6afb5c92b69f13c14f10e87e"
+    },
+    {
+      "directory": "external",
+      "raw_sha256": "2ee248a43c4fde45561fe9b070b5859df6af7d0c657ce658a2e35b062ed501d7",
+      "summary_sha256": "1f51ec29cbae305f83e104e22aa27f610d7c9206d900c629fa706be5b51948d2",
+      "environment_sha256": "336067fed3a2382bf64178ac26a9b04a1db0913962b04686b1862c5906586349"
+    }
+  ],
+  "fixture_archive_entry": "crank/certified_comparison/regimes_cases.json",
+  "fixture_archive_sha256": "2148940795957975ec6101b4126c4b0b1b6329baa35bd857c3a21c50f5239b6f",
+  "oracle_archive_sha256": "0a94f9023503c245a18b1d3aeecd972a5b9c7c055de8c99a7eb1a470c098cb38",
+  "harness_sha256": {
+    "run.py": "a918f44f883901be60e8f66b4e54fd369272cd9e810ea497a98ba38fe7b9f08e",
+    "corpus.py": "17d32a2d5a7b359fd0134f113cb672a1ba9f844f3560da71fa9398a60e624860",
+    "scaling.py": "c30a59a770c30ed4dc1d170204b73b48bc202c3ac54953b6bfe7854896f16afe",
+    "crossover.py": "3648f2c85ef16f5d229cede86e709d34087c61c3b17cb42f93dfa2dc8f84b05f",
+    "failure.py": "39794f21cb67b6b864af0770fd055f630b554b636b4a1fe3c4449cb0ca1c5028",
+    "build.py": "77c92e7d6dee08243dae670a84d874d247dca7330b3b030cb116155323ef60a1",
+    "bench.cpp": "8651e23f710808ff70501c67d18c0fe19d0f9258662915b36876569c8a128ae3",
+    "regimes.py": "d7d1cd2cc4c3471bf38df8a7e74f5ae5c8f585a54dfa90ecd96e963b94bae483"
+  },
+  "production_engine_dependencies": {
+    "engine/regex_ast.cpp": "332966a94a3e72d5c271cf4bf3a8b37bf3b4a5b0a60ecb44e1cc4f348f5604d6",
+    "engine/regex_ast.hpp": "7b97e9e17f2d3f3f3a90acbdeea4260f658971e968c1f662e7ef1465a0189a2d",
+    "engine/occurrence_path.hpp": "7254c400cc2d892db3b6edfbcd8565f862aa5f7b09f39be24cbdd77d0427ff1f",
+    "engine/occurrence_analysis.hpp": "7995ce289d10e22635cf004ccd2c2ac2ce8ef0fc1e5766e309303f1af4ccc4ee",
+    "engine/occurrence_analysis.cpp": "ee542c59f227ce8c97b18dac3d4187d10b1b00f1d7e3b1dd713ca14ee4ad8822",
+    "engine/regular_matcher.cpp": "cc06987dc6387b970e606e93f4b2258106eb321ed46f8764afb4ee18f2ad8ea5",
+    "engine/regular_matcher.hpp": "110d219cbb2bf00d5a96823c0114be5ba10895df8424be123bbef8d0abe258ba",
+    "engine/state_matcher.cpp": "c5834b17312c458a3d65a6da79a478b05541ad822d200ef797dadc2df66ee3f7",
+    "engine/state_matcher.hpp": "db03e209556366bea6e8451ab0471437d10c02d7b163f6dc822337e1855d9c56",
+    "engine/occurrence_matcher.hpp": "24cf1d32893bd564d3b08b1255f22d90f4ca7cd78baf69284480f181741ea112",
+    "engine/external_regular.cpp": "de650c260a37877a3ef9bc5a44796ffe357a281ee0effd45a6d1fa8ce22618c0",
+    "engine/external_regular.hpp": "83b06a994cddae242717688b3ec9b4fc9653efd106685048aab3b7030363abcc",
+    "engine/fragment_matcher.cpp": "b49c39e44d229d07228bcd60a1ffc725f1f15d2fc1bfef0c8bb69b4b23d515c3",
+    "engine/fragment_matcher.hpp": "c089b20e3db6c7416a43c55e8e07757a850c28993873759d889994be754fb24e",
+    "engine/count_matcher.cpp": "9fa0f7247ede1accb4bb3234b0189d5b8b34102d82dc662b8cfa26866b038963",
+    "engine/count_matcher.hpp": "e7227431ee502e194d5b566f6fee555a0f5d7ff99a291efde3ce278705d8d119",
+    "engine/equality_matcher.cpp": "c6c55144e3e09319199a4fee05218eb845bea4d10191dcb190d3cb6218096d95",
+    "engine/equality_matcher.hpp": "dd313d835f26665a246c2f43143bd28a691a3f77c7fdbe181bd42f1385e11b74",
+    "engine/affine_matcher.cpp": "7b90a1b351e0d147d10b69af894464949357a994e16eaec8eb5ffbf8b4fd5d62",
+    "engine/affine_matcher.hpp": "201ab17cec52259c7254c26162bf128c3dd19049883c1466b460a3bb34edd878",
+    "engine/optimizations.cpp": "e84e908c78342e56850fa9d428d5635957e2739804cee509fa2b9fd208a3d28c",
+    "engine/optimizations.hpp": "a317aae397f8dbca2214dbe526024a0a638867368b228e228210a50bffbbcf72",
+    "engine/integer_row.hpp": "854cc047217eca7d47bc92e1084040180c71b3a2c411c06ce01f8ef00a2d8835",
+    "engine/ast_machine_hybrid.cpp": "8d41a5d613fff3bd5514f538390975ce1ca3a9a33795d083894ecd81e3feddd4",
+    "engine/ast_machine.hpp": "ba4185ec9604257f21946c690ab175e053f3297a4e15399ec146057a2fb5a9ca",
+    "engine/atomic_exclusions.hpp": "dd47a6d6b34fb9a5bf10d133f13d19b16540b90a910f8745db8f337bbcf21003",
+    "engine/ast_control.hpp": "bfeaef8371f7b1b6c5a78365a2ebe7a91a5f5475d6a6230a71ea01952d860f40",
+    "engine/ast_equivalence.hpp": "e07dae383567e66e3bf5a041ef41df772c9be552e87019550fc46327fe4b3792",
+    "engine/regular_regions.hpp": "c0e878be274ff6913050e671065618e0a2f3aec2486ea673955c39f91ce5254d",
+    "engine/predictive_regions.hpp": "918739790a1601f121bedb49639f32e4f792dca73d1640f38a0e40c27e2ab5d2",
+    "engine/occurrence_matcher.cpp": "085a3beba2c504f9b0afd64aaf6559d25ddab1b154b3b4b5fce19eef9c283190",
+    "engine/crank.cpp": "e009eb68ece1acbd86aeb0103377aca533b163bf509a71c3803cdaf97a34e09c",
+    "engine/crank.hpp": "49b532a130129800371a6e08dd50a6679f397a7f767d33c5d797b9fd4f4b17fe",
+    "engine/input_constraints.cpp": "b5aaeb0daaa2be43b5a94a6d9f9a772395ba733f36c6d75c36a8903a46acb999",
+    "engine/input_constraints.hpp": "24bb4ac51acab08fc22f8c4b39048a4636816dc95ce24529538e310378455e26",
+    "engine/private_culler.cpp": "389b7289ff6512bbb7ef22007740f52dd9d1eb95c00d1fe8bc82e16195f43859",
+    "engine/private_culler.hpp": "79bc8e0dd77ec0a8ea63f59a4cee27c8d9ff7d4f8f08857a7e25d7f40e2b05df",
+    "engine/assisted_matcher.cpp": "c108145eaf607cfefaacb9d799f26fbc59bb9596a83cbed4290f82b23187db68",
+    "engine/assisted_matcher.hpp": "8e2b5439802deea81fb9d15270c9263005332a4f1e0fc4825da14608fe1a4c9b"
+  },
+  "archive_reference_entries": [
+    {
+      "archive_entry": "crank/certified_comparison/CROSSOVERS.json",
+      "bytes": 2332048,
+      "sha256": "165b52d60c3b04b424a72895fd1f23733825772896bfe8ac530c4a8f7615590b",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/certified_comparison/CROSSOVERS.md",
+      "bytes": 32035,
+      "sha256": "bbbc12b7fe0ef397ca7d147e3c813a9602c7f902334b471558f1f4955ddd3922",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/certified_comparison/bench.cpp",
+      "bytes": 12580,
+      "sha256": "8651e23f710808ff70501c67d18c0fe19d0f9258662915b36876569c8a128ae3",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/certified_comparison/build.py",
+      "bytes": 7394,
+      "sha256": "77c92e7d6dee08243dae670a84d874d247dca7330b3b030cb116155323ef60a1",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/certified_comparison/run.py",
+      "bytes": 13271,
+      "sha256": "a918f44f883901be60e8f66b4e54fd369272cd9e810ea497a98ba38fe7b9f08e",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/certified_comparison/run_external.py",
+      "bytes": 9764,
+      "sha256": "a5239a1c03478e63c77077c2b7c4fda38d66aa7ab84dc4133eab58b4f7547af2",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/certified_comparison/regimes.py",
+      "bytes": 8456,
+      "sha256": "d7d1cd2cc4c3471bf38df8a7e74f5ae5c8f585a54dfa90ecd96e963b94bae483",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/certified_comparison/crossover.py",
+      "bytes": 8276,
+      "sha256": "3648f2c85ef16f5d229cede86e709d34087c61c3b17cb42f93dfa2dc8f84b05f",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/certified_comparison/corpus.py",
+      "bytes": 7692,
+      "sha256": "17d32a2d5a7b359fd0134f113cb672a1ba9f844f3560da71fa9398a60e624860",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/certified_comparison/analyze_crossovers.py",
+      "bytes": 10659,
+      "sha256": "12f69753326f7237f7c9ee16516a49f1071cbd1d694670a2b260bf211cd36c8e",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/marpa_comparison/marpa_adapter.cpp",
+      "bytes": 15644,
+      "sha256": "c688e6817c3f2becff96693bb2fba9f4352efbf12ff8796fe148f020f0401b93",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/marpa_comparison/marpa_adapter.hpp",
+      "bytes": 1299,
+      "sha256": "bf514b268d72b27008a7c0737de5b8397298f340ff4167dbc90c5f77c12f248f",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/marpa_comparison/vendor/libmarpa-provenance.json",
+      "bytes": 269,
+      "sha256": "e35a9deab146742bb6a3813aac4b5fd4d01822f92c09e87fd7153c10fd4f3f2b",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/marpa_comparison/vendor/generated_source_hashes.json",
+      "bytes": 1272,
+      "sha256": "069b2bcd3f2753620119b8a213b8d387acdd80c250ba070b13704cd4e77e8058",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/external_comparison/adapter.cpp",
+      "bytes": 10071,
+      "sha256": "92966de52da978d313b8e5ed14cde05fc7256bef6789b43c6721472ab64901a3",
+      "bundled": false
+    },
+    {
+      "archive_entry": "crank/external_comparison/build.py",
+      "bytes": 5260,
+      "sha256": "5276f3210000061a26d333228aaf40f7dced799fee40021bbb6549a72ffb4ff4",
+      "bundled": false
+    }
+  ],
+  "release_selection": "Selected aggregate rows, exact fixture bytes, independent correctness checks and provenance only; full reports/drivers remain in the source archive."
+}

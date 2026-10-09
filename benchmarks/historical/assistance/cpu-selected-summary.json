@@ -1,0 +1,1398 @@
+{
+  "source_archive_entry": "crank/assistance_comparison/cpu_followup/summary.json",
+  "source_sha256": "4ea401c43d6c3831cd58446550d01553db52f0d3789653339ac084d0ce1206bd",
+  "rows": [
+    {
+      "family": "independent_branches",
+      "domain": "synthetic",
+      "variant": "late_order_reject",
+      "scale": 4096,
+      "bytes": 8195,
+      "ast_nodes": 81,
+      "expected": false,
+      "practical": false,
+      "oracle": "Only the last arm has marker q, but a near-final a violates its required closing b suffix.",
+      "scope": "Eight independent recursive arms Ri -> a Ri b | c marker_i d; exact source order is retained in the grammar. First and last pairs are unchanged.",
+      "id": "independent_branches_late_order_reject_4096",
+      "mode": "assist2",
+      "workers": 2,
+      "replicates": 3,
+      "statuses": [
+        "no_match",
+        "no_match",
+        "no_match"
+      ],
+      "completed_replicates": 3,
+      "timing_kind": "completed_query",
+      "source_orders": [
+        15,
+        30,
+        53
+      ],
+      "first_parse_us_replicates": [
+        18.267,
+        17.266,
+        19.339
+      ],
+      "first_parse_us": 18.267,
+      "first_build_us_replicates": [
+        140.102,
+        255.154,
+        151.288
+      ],
+      "first_build_us": 151.288,
+      "first_query_us_replicates": [
+        19.118,
+        18.759,
+        22.935
+      ],
+      "first_query_us": 19.118,
+      "first_total_us_replicates": [
+        179.44,
+        292.831,
+        195.224
+      ],
+      "first_total_us": 195.224,
+      "median_us_replicates": [
+        11.6633461538,
+        11.6486923077,
+        12.1769047619
+      ],
+      "median_us": 11.6633461538,
+      "cpu_median_us_replicates": [
+        15.1935769231,
+        15.5626153846,
+        15.8583333333
+      ],
+      "cpu_median_us": 15.5626153846,
+      "parse_median_us_replicates": [
+        6.62,
+        7.01425,
+        6.9555
+      ],
+      "parse_median_us": 6.9555,
+      "preparation_median_us_replicates": [
+        137.126,
+        138.739,
+        128.123
+      ],
+      "preparation_median_us": 137.126,
+      "owned_input_prepare_us_replicates": [
+        0,
+        0,
+        0
+      ],
+      "owned_input_prepare_us": 0,
+      "first_query_cpu_us_replicates": [
+        20.05,
+        19.439,
+        23.756
+      ],
+      "first_query_cpu_us": 20.05,
+      "first_idle_tail_us_replicates": [
+        127.342,
+        97.147,
+        115.414
+      ],
+      "first_idle_tail_us": 115.414,
+      "first_idle_tail_cpu_us_replicates": [
+        142.952,
+        110.659,
+        144.941
+      ],
+      "first_idle_tail_cpu_us": 142.952,
+      "warm_idle_tail_us_replicates": [
+        0.13,
+        10.616,
+        0.902
+      ],
+      "warm_idle_tail_us": 0.902,
+      "warm_idle_tail_cpu_us_replicates": [
+        6.739,
+        12.929,
+        7.811
+      ],
+      "warm_idle_tail_cpu_us": 7.811,
+      "warm_total_through_idle_us_replicates": [
+        1682.655,
+        1579.008,
+        1280.178
+      ],
+      "warm_total_through_idle_us": 1579.008,
+      "warm_total_cpu_through_idle_us_replicates": [
+        2281.602,
+        2115.474,
+        1697.03
+      ],
+      "warm_total_cpu_through_idle_us": 2115.474,
+      "warm_cpu_through_idle_per_query_us_replicates": [
+        17.5507846154,
+        16.2728769231,
+        16.1621904762
+      ],
+      "warm_cpu_through_idle_per_query_us": 16.2728769231,
+      "warm_wall_through_idle_per_query_us_replicates": [
+        12.9435,
+        12.1462153846,
+        12.1921714286
+      ],
+      "warm_wall_through_idle_per_query_us": 12.1921714286,
+      "diagnostic_query_us_replicates": [
+        12.599,
+        12.569,
+        11.758
+      ],
+      "diagnostic_query_us": 12.569,
+      "diagnostic_idle_tail_us_replicates": [
+        11.968,
+        7.682,
+        19.519
+      ],
+      "diagnostic_idle_tail_us": 11.968,
+      "diagnostic_idle_tail_cpu_us_replicates": [
+        15.904,
+        10.655,
+        13.9
+      ],
+      "diagnostic_idle_tail_cpu_us": 13.9,
+      "peak_rss_kib_replicates": [
+        13444,
+        13752,
+        14144
+      ],
+      "peak_rss_kib": 13752,
+      "marpa_speedup": null,
+      "native_speedup": 0.4858913533809175,
+      "assist1_speedup": null,
+      "assist2_speedup": 1.0,
+      "assistance_decisions": [
+        "admitted",
+        "admitted",
+        "admitted"
+      ],
+      "diagnostic_helpers_admitted": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "family": "independent_branches",
+      "domain": "synthetic",
+      "variant": "late_order_reject",
+      "scale": 4096,
+      "bytes": 8195,
+      "ast_nodes": 81,
+      "expected": false,
+      "practical": false,
+      "oracle": "Only the last arm has marker q, but a near-final a violates its required closing b suffix.",
+      "scope": "Eight independent recursive arms Ri -> a Ri b | c marker_i d; exact source order is retained in the grammar. First and last pairs are unchanged.",
+      "id": "independent_branches_late_order_reject_4096",
+      "mode": "assist4",
+      "workers": 4,
+      "replicates": 3,
+      "statuses": [
+        "no_match",
+        "no_match",
+        "no_match"
+      ],
+      "completed_replicates": 3,
+      "timing_kind": "completed_query",
+      "source_orders": [
+        13,
+        29,
+        55
+      ],
+      "first_parse_us_replicates": [
+        17.486,
+        15.093,
+        16.555
+      ],
+      "first_parse_us": 16.555,
+      "first_build_us_replicates": [
+        186.421,
+        193.621,
+        234.614
+      ],
+      "first_build_us": 193.621,
+      "first_query_us_replicates": [
+        18.648,
+        23.285,
+        110.376
+      ],
+      "first_query_us": 23.285,
+      "first_total_us_replicates": [
+        224.398,
+        233.692,
+        363.978
+      ],
+      "first_total_us": 233.692,
+      "median_us_replicates": [
+        22.0089230769,
+        18.2956666667,
+        20.158
+      ],
+      "median_us": 20.158,
+      "cpu_median_us_replicates": [
+        37.5074615385,
+        31.0220952381,
+        31.79475
+      ],
+      "cpu_median_us": 31.79475,
+      "parse_median_us_replicates": [
+        7.947,
+        7.14325,
+        6.671375
+      ],
+      "parse_median_us": 7.14325,
+      "preparation_median_us_replicates": [
+        158.619,
+        232.35,
+        181.713
+      ],
+      "preparation_median_us": 181.713,
+      "owned_input_prepare_us_replicates": [
+        0,
+        0,
+        0
+      ],
+      "owned_input_prepare_us": 0,
+      "first_query_cpu_us_replicates": [
+        93.804,
+        60.92,
+        155.628
+      ],
+      "first_query_cpu_us": 93.804,
+      "first_idle_tail_us_replicates": [
+        133.161,
+        130.026,
+        0.591
+      ],
+      "first_idle_tail_us": 130.026,
+      "first_idle_tail_cpu_us_replicates": [
+        350.836,
+        65.316,
+        0.781
+      ],
+      "first_idle_tail_cpu_us": 65.316,
+      "warm_idle_tail_us_replicates": [
+        0.18,
+        92.96,
+        9.555
+      ],
+      "warm_idle_tail_us": 9.555,
+      "warm_idle_tail_cpu_us_replicates": [
+        0.46,
+        114.07,
+        17.286
+      ],
+      "warm_idle_tail_cpu_us": 17.286,
+      "warm_total_through_idle_us_replicates": [
+        2900.778,
+        1968.895,
+        413.693
+      ],
+      "warm_total_through_idle_us": 1968.895,
+      "warm_total_cpu_through_idle_us_replicates": [
+        5033.113,
+        3448.119,
+        727.559
+      ],
+      "warm_total_cpu_through_idle_us": 3448.119,
+      "warm_cpu_through_idle_per_query_us_replicates": [
+        38.7162538462,
+        32.8392285714,
+        36.37795
+      ],
+      "warm_cpu_through_idle_per_query_us": 36.37795,
+      "warm_wall_through_idle_per_query_us_replicates": [
+        22.3136769231,
+        18.7513809524,
+        20.68465
+      ],
+      "warm_wall_through_idle_per_query_us": 20.68465,
+      "diagnostic_query_us_replicates": [
+        18.468,
+        24.186,
+        15.723
+      ],
+      "diagnostic_query_us": 18.468,
+      "diagnostic_idle_tail_us_replicates": [
+        11.246,
+        8.262,
+        8.953
+      ],
+      "diagnostic_idle_tail_us": 8.953,
+      "diagnostic_idle_tail_cpu_us_replicates": [
+        10.986,
+        11.708,
+        16.514
+      ],
+      "diagnostic_idle_tail_cpu_us": 11.708,
+      "peak_rss_kib_replicates": [
+        13568,
+        13604,
+        14184
+      ],
+      "peak_rss_kib": 13604,
+      "marpa_speedup": null,
+      "native_speedup": 0.2811349859916658,
+      "assist1_speedup": null,
+      "assist2_speedup": 0.5785963961603333,
+      "assistance_decisions": [
+        "admitted",
+        "admitted",
+        "admitted"
+      ],
+      "diagnostic_helpers_admitted": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "family": "independent_branches",
+      "domain": "synthetic",
+      "variant": "late_order_reject",
+      "scale": 4096,
+      "bytes": 8195,
+      "ast_nodes": 81,
+      "expected": false,
+      "practical": false,
+      "oracle": "Only the last arm has marker q, but a near-final a violates its required closing b suffix.",
+      "scope": "Eight independent recursive arms Ri -> a Ri b | c marker_i d; exact source order is retained in the grammar. First and last pairs are unchanged.",
+      "id": "independent_branches_late_order_reject_4096",
+      "mode": "assist8",
+      "workers": 8,
+      "replicates": 3,
+      "statuses": [
+        "no_match",
+        "no_match",
+        "no_match"
+      ],
+      "completed_replicates": 3,
+      "timing_kind": "completed_query",
+      "source_orders": [
+        16,
+        31,
+        54
+      ],
+      "first_parse_us_replicates": [
+        18.367,
+        16.965,
+        16.525
+      ],
+      "first_parse_us": 16.965,
+      "first_build_us_replicates": [
+        282.336,
+        302.025,
+        1330.163
+      ],
+      "first_build_us": 302.025,
+      "first_query_us_replicates": [
+        70.476,
+        313.241,
+        1394.31
+      ],
+      "first_query_us": 313.241,
+      "first_total_us_replicates": [
+        373.803,
+        634.396,
+        2744.363
+      ],
+      "first_total_us": 634.396,
+      "median_us_replicates": [
+        37.5851428571,
+        43.746,
+        54.392
+      ],
+      "median_us": 43.746,
+      "cpu_median_us_replicates": [
+        71.2704285714,
+        83.033,
+        81.36
+      ],
+      "cpu_median_us": 81.36,
+      "parse_median_us_replicates": [
+        6.554875,
+        6.876625,
+        6.8465
+      ],
+      "parse_median_us": 6.8465,
+      "preparation_median_us_replicates": [
+        279.361,
+        333.342,
+        339.331
+      ],
+      "preparation_median_us": 333.342,
+      "owned_input_prepare_us_replicates": [
+        0,
+        0,
+        0
+      ],
+      "owned_input_prepare_us": 0,
+      "first_query_cpu_us_replicates": [
+        150.687,
+        606.411,
+        3144.563
+      ],
+      "first_query_cpu_us": 606.411,
+      "first_idle_tail_us_replicates": [
+        84.257,
+        50.866,
+        45.138
+      ],
+      "first_idle_tail_us": 50.866,
+      "first_idle_tail_cpu_us_replicates": [
+        116.413,
+        59.52,
+        147.978
+      ],
+      "first_idle_tail_cpu_us": 116.413,
+      "warm_idle_tail_us_replicates": [
+        0.1,
+        0.09,
+        0.06
+      ],
+      "warm_idle_tail_us": 0.09,
+      "warm_idle_tail_cpu_us_replicates": [
+        0.38,
+        0.381,
+        0.301000000001
+      ],
+      "warm_idle_tail_cpu_us": 0.38,
+      "warm_total_through_idle_us_replicates": [
+        1302.141,
+        224.869,
+        342.696
+      ],
+      "warm_total_through_idle_us": 342.696,
+      "warm_total_cpu_through_idle_us_replicates": [
+        2574.471,
+        421.115,
+        398.201
+      ],
+      "warm_total_cpu_through_idle_us": 421.115,
+      "warm_cpu_through_idle_per_query_us_replicates": [
+        73.5563142857,
+        84.223,
+        79.6402
+      ],
+      "warm_cpu_through_idle_per_query_us": 79.6402,
+      "warm_wall_through_idle_per_query_us_replicates": [
+        37.2040285714,
+        44.9738,
+        68.5392
+      ],
+      "warm_wall_through_idle_per_query_us": 44.9738,
+      "diagnostic_query_us_replicates": [
+        32.229,
+        47.612,
+        38.878
+      ],
+      "diagnostic_query_us": 38.878,
+      "diagnostic_idle_tail_us_replicates": [
+        12.128,
+        0.06,
+        12.188
+      ],
+      "diagnostic_idle_tail_us": 12.128,
+      "diagnostic_idle_tail_cpu_us_replicates": [
+        12.098,
+        0.45,
+        11.037
+      ],
+      "diagnostic_idle_tail_cpu_us": 11.037,
+      "peak_rss_kib_replicates": [
+        13456,
+        13644,
+        14168
+      ],
+      "peak_rss_kib": 13644,
+      "marpa_speedup": null,
+      "native_speedup": 0.1295459938650391,
+      "assist1_speedup": null,
+      "assist2_speedup": 0.26661514547158593,
+      "assistance_decisions": [
+        "admitted",
+        "admitted",
+        "admitted"
+      ],
+      "diagnostic_helpers_admitted": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "family": "independent_branches",
+      "domain": "synthetic",
+      "variant": "late_order_reject",
+      "scale": 4096,
+      "bytes": 8195,
+      "ast_nodes": 81,
+      "expected": false,
+      "practical": false,
+      "oracle": "Only the last arm has marker q, but a near-final a violates its required closing b suffix.",
+      "scope": "Eight independent recursive arms Ri -> a Ri b | c marker_i d; exact source order is retained in the grammar. First and last pairs are unchanged.",
+      "id": "independent_branches_late_order_reject_4096",
+      "mode": "native",
+      "workers": 1,
+      "replicates": 3,
+      "statuses": [
+        "no_match",
+        "no_match",
+        "no_match"
+      ],
+      "completed_replicates": 3,
+      "timing_kind": "completed_query",
+      "source_orders": [
+        14,
+        32,
+        56
+      ],
+      "first_parse_us_replicates": [
+        15.674,
+        16.805,
+        18.108
+      ],
+      "first_parse_us": 16.805,
+      "first_build_us_replicates": [
+        87.111,
+        69.956,
+        70.075
+      ],
+      "first_build_us": 70.075,
+      "first_query_us_replicates": [
+        11.657,
+        11.838,
+        11.968
+      ],
+      "first_query_us": 11.838,
+      "first_total_us_replicates": [
+        116.656,
+        100.581,
+        102.124
+      ],
+      "first_total_us": 102.124,
+      "median_us_replicates": [
+        5.66711904762,
+        5.61607142857,
+        7.29831707317
+      ],
+      "median_us": 5.66711904762,
+      "cpu_median_us_replicates": [
+        5.67411904762,
+        5.62669047619,
+        7.32036585366
+      ],
+      "cpu_median_us": 5.67411904762,
+      "parse_median_us_replicates": [
+        6.66125,
+        6.702625,
+        6.64875
+      ],
+      "parse_median_us": 6.66125,
+      "preparation_median_us_replicates": [
+        62.2573333333,
+        60.805,
+        61.5626666667
+      ],
+      "preparation_median_us": 61.5626666667,
+      "owned_input_prepare_us_replicates": [
+        0,
+        0,
+        0
+      ],
+      "owned_input_prepare_us": 0,
+      "first_query_cpu_us_replicates": [
+        12.638,
+        12.689,
+        12.839
+      ],
+      "first_query_cpu_us": 12.689,
+      "first_idle_tail_us_replicates": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "first_idle_tail_us": 0.03,
+      "first_idle_tail_cpu_us_replicates": [
+        0.21,
+        0.211,
+        0.211
+      ],
+      "first_idle_tail_cpu_us": 0.211,
+      "warm_idle_tail_us_replicates": [
+        0.021,
+        0.03,
+        0.03
+      ],
+      "warm_idle_tail_us": 0.03,
+      "warm_idle_tail_cpu_us_replicates": [
+        0.21,
+        0.21,
+        0.29
+      ],
+      "warm_idle_tail_cpu_us": 0.21,
+      "warm_total_through_idle_us_replicates": [
+        1195.871,
+        1204.294,
+        1449.633
+      ],
+      "warm_total_through_idle_us": 1204.294,
+      "warm_total_cpu_through_idle_us_replicates": [
+        1195.853,
+        1204.286,
+        1449.629
+      ],
+      "warm_total_cpu_through_idle_us": 1204.286,
+      "warm_cpu_through_idle_per_query_us_replicates": [
+        5.69453809524,
+        5.7346952381,
+        7.07136097561
+      ],
+      "warm_cpu_through_idle_per_query_us": 5.7346952381,
+      "warm_wall_through_idle_per_query_us_replicates": [
+        5.69462380952,
+        5.73473333333,
+        7.0713804878
+      ],
+      "warm_wall_through_idle_per_query_us": 5.73473333333,
+      "diagnostic_query_us_replicates": [
+        6.059,
+        5.899,
+        8.143
+      ],
+      "diagnostic_query_us": 6.059,
+      "diagnostic_idle_tail_us_replicates": [
+        0.02,
+        0.03,
+        0.03
+      ],
+      "diagnostic_idle_tail_us": 0.03,
+      "diagnostic_idle_tail_cpu_us_replicates": [
+        0.23,
+        0.21,
+        0.23
+      ],
+      "diagnostic_idle_tail_cpu_us": 0.23,
+      "peak_rss_kib_replicates": [
+        13572,
+        13664,
+        14204
+      ],
+      "peak_rss_kib": 13664,
+      "marpa_speedup": null,
+      "native_speedup": 1.0,
+      "assist1_speedup": null,
+      "assist2_speedup": 2.058073256586733,
+      "assistance_decisions": [
+        "disabled",
+        "disabled",
+        "disabled"
+      ],
+      "diagnostic_helpers_admitted": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "family": "mixed_prefix",
+      "domain": "synthetic",
+      "variant": "late_marker_reject",
+      "scale": 4096,
+      "bytes": 8197,
+      "ast_nodes": 81,
+      "expected": false,
+      "practical": false,
+      "oracle": "Every arm requires suffix ccXdd with X in A through H; Z is outside that finite marker set.",
+      "scope": "Eight alternatives in four pairs; each pair shares one recursive a^k b^k obligation. Split presolve remains enabled.",
+      "id": "mixed_prefix_late_marker_reject_4096",
+      "mode": "assist2",
+      "workers": 2,
+      "replicates": 3,
+      "statuses": [
+        "no_match",
+        "no_match",
+        "no_match"
+      ],
+      "completed_replicates": 3,
+      "timing_kind": "completed_query",
+      "source_orders": [
+        25,
+        33,
+        50
+      ],
+      "first_parse_us_replicates": [
+        15.774,
+        16.515,
+        15.673
+      ],
+      "first_parse_us": 15.774,
+      "first_build_us_replicates": [
+        165.97,
+        171.559,
+        166.221
+      ],
+      "first_build_us": 166.221,
+      "first_query_us_replicates": [
+        267.793,
+        232.22,
+        214.363
+      ],
+      "first_query_us": 232.22,
+      "first_total_us_replicates": [
+        451.57,
+        422.156,
+        398.49
+      ],
+      "first_total_us": 422.156,
+      "median_us_replicates": [
+        117.947,
+        142.6945,
+        129.37
+      ],
+      "median_us": 129.37,
+      "cpu_median_us_replicates": [
+        203.341,
+        229.1495,
+        215.179
+      ],
+      "cpu_median_us": 215.179,
+      "parse_median_us_replicates": [
+        5.867625,
+        5.865125,
+        6.049125
+      ],
+      "parse_median_us": 5.867625,
+      "preparation_median_us_replicates": [
+        182.385,
+        150.397,
+        168.153
+      ],
+      "preparation_median_us": 168.153,
+      "owned_input_prepare_us_replicates": [
+        0,
+        0,
+        0
+      ],
+      "owned_input_prepare_us": 0,
+      "first_query_cpu_us_replicates": [
+        421.56,
+        421.359,
+        365.663
+      ],
+      "first_query_cpu_us": 421.359,
+      "first_idle_tail_us_replicates": [
+        0.091,
+        0.121,
+        0.13
+      ],
+      "first_idle_tail_us": 0.121,
+      "first_idle_tail_cpu_us_replicates": [
+        0.321,
+        0.31,
+        0.311
+      ],
+      "first_idle_tail_cpu_us": 0.311,
+      "warm_idle_tail_us_replicates": [
+        0.04,
+        0.08,
+        0.05
+      ],
+      "warm_idle_tail_us": 0.05,
+      "warm_idle_tail_cpu_us_replicates": [
+        0.24,
+        0.280000000001,
+        0.25
+      ],
+      "warm_idle_tail_cpu_us": 0.25,
+      "warm_total_through_idle_us_replicates": [
+        639.243,
+        1490.635,
+        1307.99
+      ],
+      "warm_total_through_idle_us": 1307.99,
+      "warm_total_cpu_through_idle_us_replicates": [
+        1066.161,
+        2359.841,
+        2179.562
+      ],
+      "warm_total_cpu_through_idle_us": 2179.562,
+      "warm_cpu_through_idle_per_query_us_replicates": [
+        213.2322,
+        235.9841,
+        217.9562
+      ],
+      "warm_cpu_through_idle_per_query_us": 217.9562,
+      "warm_wall_through_idle_per_query_us_replicates": [
+        127.8486,
+        149.0635,
+        130.799
+      ],
+      "warm_wall_through_idle_per_query_us": 130.799,
+      "diagnostic_query_us_replicates": [
+        123.646,
+        123.526,
+        122.865
+      ],
+      "diagnostic_query_us": 123.526,
+      "diagnostic_idle_tail_us_replicates": [
+        0.05,
+        0.03,
+        0.03
+      ],
+      "diagnostic_idle_tail_us": 0.03,
+      "diagnostic_idle_tail_cpu_us_replicates": [
+        0.34,
+        0.271000000001,
+        0.261
+      ],
+      "diagnostic_idle_tail_cpu_us": 0.271000000001,
+      "peak_rss_kib_replicates": [
+        13540,
+        13692,
+        14096
+      ],
+      "peak_rss_kib": 13692,
+      "marpa_speedup": null,
+      "native_speedup": 404.09049238617916,
+      "assist1_speedup": null,
+      "assist2_speedup": 1.0,
+      "assistance_decisions": [
+        "admitted",
+        "admitted",
+        "admitted"
+      ],
+      "diagnostic_helpers_admitted": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "family": "mixed_prefix",
+      "domain": "synthetic",
+      "variant": "late_marker_reject",
+      "scale": 4096,
+      "bytes": 8197,
+      "ast_nodes": 81,
+      "expected": false,
+      "practical": false,
+      "oracle": "Every arm requires suffix ccXdd with X in A through H; Z is outside that finite marker set.",
+      "scope": "Eight alternatives in four pairs; each pair shares one recursive a^k b^k obligation. Split presolve remains enabled.",
+      "id": "mixed_prefix_late_marker_reject_4096",
+      "mode": "assist4",
+      "workers": 4,
+      "replicates": 3,
+      "statuses": [
+        "no_match",
+        "no_match",
+        "no_match"
+      ],
+      "completed_replicates": 3,
+      "timing_kind": "completed_query",
+      "source_orders": [
+        27,
+        35,
+        49
+      ],
+      "first_parse_us_replicates": [
+        14.962,
+        18.247,
+        16.174
+      ],
+      "first_parse_us": 16.174,
+      "first_build_us_replicates": [
+        230.397,
+        238.459,
+        256.757
+      ],
+      "first_build_us": 238.459,
+      "first_query_us_replicates": [
+        152.27,
+        56492.656,
+        141.683
+      ],
+      "first_query_us": 152.27,
+      "first_total_us_replicates": [
+        399.762,
+        56756.164,
+        416.627
+      ],
+      "first_total_us": 416.627,
+      "median_us_replicates": [
+        24.6936666667,
+        45.829,
+        18.6046666667
+      ],
+      "median_us": 24.6936666667,
+      "cpu_median_us_replicates": [
+        40.914,
+        64.746,
+        32.2376666667
+      ],
+      "cpu_median_us": 40.914,
+      "parse_median_us_replicates": [
+        5.59725,
+        5.739875,
+        5.60225
+      ],
+      "parse_median_us": 5.60225,
+      "preparation_median_us_replicates": [
+        207.573,
+        236.836,
+        172.24
+      ],
+      "preparation_median_us": 207.573,
+      "owned_input_prepare_us_replicates": [
+        0,
+        0,
+        0
+      ],
+      "owned_input_prepare_us": 0,
+      "first_query_cpu_us_replicates": [
+        438.427,
+        56667.01,
+        346.252
+      ],
+      "first_query_cpu_us": 438.427,
+      "first_idle_tail_us_replicates": [
+        0.09,
+        0.511,
+        0.121
+      ],
+      "first_idle_tail_us": 0.121,
+      "first_idle_tail_cpu_us_replicates": [
+        0.29,
+        0.701999999997,
+        0.3
+      ],
+      "first_idle_tail_cpu_us": 0.3,
+      "warm_idle_tail_us_replicates": [
+        0.071,
+        0.09,
+        0.05
+      ],
+      "warm_idle_tail_us": 0.071,
+      "warm_idle_tail_cpu_us_replicates": [
+        0.29,
+        0.350999999995,
+        0.24
+      ],
+      "warm_idle_tail_cpu_us": 0.29,
+      "warm_total_through_idle_us_replicates": [
+        449.117,
+        472.763,
+        295.635
+      ],
+      "warm_total_through_idle_us": 449.117,
+      "warm_total_cpu_through_idle_us_replicates": [
+        740.796,
+        729.181,
+        498.855
+      ],
+      "warm_total_cpu_through_idle_us": 729.181,
+      "warm_cpu_through_idle_per_query_us_replicates": [
+        49.3864,
+        145.8362,
+        33.257
+      ],
+      "warm_cpu_through_idle_per_query_us": 49.3864,
+      "warm_wall_through_idle_per_query_us_replicates": [
+        29.9411333333,
+        94.5526,
+        19.709
+      ],
+      "warm_wall_through_idle_per_query_us": 29.9411333333,
+      "diagnostic_query_us_replicates": [
+        18.278,
+        30.245,
+        18.577
+      ],
+      "diagnostic_query_us": 18.577,
+      "diagnostic_idle_tail_us_replicates": [
+        0.03,
+        0.04,
+        0.03
+      ],
+      "diagnostic_idle_tail_us": 0.03,
+      "diagnostic_idle_tail_cpu_us_replicates": [
+        0.259999999999,
+        0.459999999999,
+        0.26
+      ],
+      "diagnostic_idle_tail_cpu_us": 0.26,
+      "peak_rss_kib_replicates": [
+        13700,
+        36004,
+        14084
+      ],
+      "peak_rss_kib": 14084,
+      "marpa_speedup": null,
+      "native_speedup": 2117.0281313668593,
+      "assist1_speedup": null,
+      "assist2_speedup": 5.238995153946034,
+      "assistance_decisions": [
+        "admitted",
+        "admitted",
+        "admitted"
+      ],
+      "diagnostic_helpers_admitted": [
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "family": "mixed_prefix",
+      "domain": "synthetic",
+      "variant": "late_marker_reject",
+      "scale": 4096,
+      "bytes": 8197,
+      "ast_nodes": 81,
+      "expected": false,
+      "practical": false,
+      "oracle": "Every arm requires suffix ccXdd with X in A through H; Z is outside that finite marker set.",
+      "scope": "Eight alternatives in four pairs; each pair shares one recursive a^k b^k obligation. Split presolve remains enabled.",
+      "id": "mixed_prefix_late_marker_reject_4096",
+      "mode": "assist8",
+      "workers": 8,
+      "replicates": 3,
+      "statuses": [
+        "no_match",
+        "no_match",
+        "no_match"
+      ],
+      "completed_replicates": 3,
+      "timing_kind": "completed_query",
+      "source_orders": [
+        28,
+        36,
+        51
+      ],
+      "first_parse_us_replicates": [
+        13.731,
+        15.723,
+        16.565
+      ],
+      "first_parse_us": 15.723,
+      "first_build_us_replicates": [
+        331.008,
+        301.975,
+        310.657
+      ],
+      "first_build_us": 310.657,
+      "first_query_us_replicates": [
+        261.754,
+        273.221,
+        305.93
+      ],
+      "first_query_us": 273.221,
+      "first_total_us_replicates": [
+        608.857,
+        593.734,
+        636.568
+      ],
+      "first_total_us": 608.857,
+      "median_us_replicates": [
+        29.174,
+        45.759,
+        45.509
+      ],
+      "median_us": 45.509,
+      "cpu_median_us_replicates": [
+        48.161,
+        90.484,
+        70.295
+      ],
+      "cpu_median_us": 70.295,
+      "parse_median_us_replicates": [
+        5.911375,
+        5.686,
+        5.606
+      ],
+      "parse_median_us": 5.686,
+      "preparation_median_us_replicates": [
+        300.342,
+        315.986,
+        409.898
+      ],
+      "preparation_median_us": 315.986,
+      "owned_input_prepare_us_replicates": [
+        0,
+        0,
+        0
+      ],
+      "owned_input_prepare_us": 0,
+      "first_query_cpu_us_replicates": [
+        482.315,
+        517.706,
+        513.644
+      ],
+      "first_query_cpu_us": 513.644,
+      "first_idle_tail_us_replicates": [
+        14.531,
+        72.584,
+        39.54
+      ],
+      "first_idle_tail_us": 39.54,
+      "first_idle_tail_cpu_us_replicates": [
+        94.601,
+        185.375,
+        103.703
+      ],
+      "first_idle_tail_cpu_us": 103.703,
+      "warm_idle_tail_us_replicates": [
+        0.06,
+        11.948,
+        42.063
+      ],
+      "warm_idle_tail_us": 11.948,
+      "warm_idle_tail_cpu_us_replicates": [
+        0.26,
+        16.435,
+        125.787
+      ],
+      "warm_idle_tail_cpu_us": 16.435,
+      "warm_total_through_idle_us_replicates": [
+        159.911,
+        260.072,
+        60027.9
+      ],
+      "warm_total_through_idle_us": 260.072,
+      "warm_total_cpu_through_idle_us_replicates": [
+        271.602,
+        494.447,
+        60234.631
+      ],
+      "warm_total_cpu_through_idle_us": 494.447,
+      "warm_cpu_through_idle_per_query_us_replicates": [
+        54.3204,
+        98.8894,
+        12046.9262
+      ],
+      "warm_cpu_through_idle_per_query_us": 98.8894,
+      "warm_wall_through_idle_per_query_us_replicates": [
+        31.9822,
+        52.0144,
+        12005.58
+      ],
+      "warm_wall_through_idle_per_query_us": 52.0144,
+      "diagnostic_query_us_replicates": [
+        27.672,
+        27.271,
+        32.669
+      ],
+      "diagnostic_query_us": 27.672,
+      "diagnostic_idle_tail_us_replicates": [
+        9.654,
+        12.128,
+        21.112
+      ],
+      "diagnostic_idle_tail_us": 12.128,
+      "diagnostic_idle_tail_cpu_us_replicates": [
+        9.514,
+        16.245,
+        26.7
+      ],
+      "diagnostic_idle_tail_cpu_us": 16.245,
+      "peak_rss_kib_replicates": [
+        13584,
+        13744,
+        36156
+      ],
+      "peak_rss_kib": 13744,
+      "marpa_speedup": null,
+      "native_speedup": 1148.7219451097585,
+      "assist1_speedup": null,
+      "assist2_speedup": 2.842734404183788,
+      "assistance_decisions": [
+        "admitted",
+        "admitted",
+        "admitted"
+      ],
+      "diagnostic_helpers_admitted": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "family": "mixed_prefix",
+      "domain": "synthetic",
+      "variant": "late_marker_reject",
+      "scale": 4096,
+      "bytes": 8197,
+      "ast_nodes": 81,
+      "expected": false,
+      "practical": false,
+      "oracle": "Every arm requires suffix ccXdd with X in A through H; Z is outside that finite marker set.",
+      "scope": "Eight alternatives in four pairs; each pair shares one recursive a^k b^k obligation. Split presolve remains enabled.",
+      "id": "mixed_prefix_late_marker_reject_4096",
+      "mode": "native",
+      "workers": 1,
+      "replicates": 3,
+      "statuses": [
+        "no_match",
+        "no_match",
+        "no_match"
+      ],
+      "completed_replicates": 3,
+      "timing_kind": "completed_query",
+      "source_orders": [
+        26,
+        34,
+        52
+      ],
+      "first_parse_us_replicates": [
+        13.941,
+        14.993,
+        15.253
+      ],
+      "first_parse_us": 14.993,
+      "first_build_us_replicates": [
+        96.646,
+        95.384,
+        285.57
+      ],
+      "first_build_us": 96.646,
+      "first_query_us_replicates": [
+        63169.591,
+        60193.931,
+        66450.424
+      ],
+      "first_query_us": 63169.591,
+      "first_total_us_replicates": [
+        63287.059,
+        60311.688,
+        66756.906
+      ],
+      "first_total_us": 63287.059,
+      "median_us_replicates": [
+        50489.774,
+        52277.187,
+        53176.782
+      ],
+      "median_us": 52277.187,
+      "cpu_median_us_replicates": [
+        50492.836,
+        52279.635,
+        53178.036
+      ],
+      "cpu_median_us": 52279.635,
+      "parse_median_us_replicates": [
+        5.71475,
+        5.8,
+        6.105375
+      ],
+      "parse_median_us": 5.8,
+      "preparation_median_us_replicates": [
+        84.472,
+        84.5625,
+        87.1615
+      ],
+      "preparation_median_us": 84.5625,
+      "owned_input_prepare_us_replicates": [
+        0,
+        0,
+        0
+      ],
+      "owned_input_prepare_us": 0,
+      "first_query_cpu_us_replicates": [
+        62972.856,
+        60164.214,
+        66436.454
+      ],
+      "first_query_cpu_us": 62972.856,
+      "first_idle_tail_us_replicates": [
+        0.03,
+        0.03,
+        0.16
+      ],
+      "first_idle_tail_us": 0.03,
+      "first_idle_tail_cpu_us_replicates": [
+        0.229999999996,
+        0.241000000002,
+        0.350000000006
+      ],
+      "first_idle_tail_cpu_us": 0.241000000002,
+      "warm_idle_tail_us_replicates": [
+        0.03,
+        0.04,
+        0.151
+      ],
+      "warm_idle_tail_us": 0.04,
+      "warm_idle_tail_cpu_us_replicates": [
+        0.241000000038,
+        0.25,
+        0.370999999985
+      ],
+      "warm_idle_tail_cpu_us": 0.25,
+      "warm_total_through_idle_us_replicates": [
+        252290.82,
+        262742.588,
+        276460.763
+      ],
+      "warm_total_through_idle_us": 262742.588,
+      "warm_total_cpu_through_idle_us_replicates": [
+        252228.627,
+        262726.692,
+        276454.371
+      ],
+      "warm_total_cpu_through_idle_us": 262726.692,
+      "warm_cpu_through_idle_per_query_us_replicates": [
+        50445.7254,
+        52545.3384,
+        55290.8742
+      ],
+      "warm_cpu_through_idle_per_query_us": 52545.3384,
+      "warm_wall_through_idle_per_query_us_replicates": [
+        50458.164,
+        52548.5176,
+        55292.1526
+      ],
+      "warm_wall_through_idle_per_query_us": 52548.5176,
+      "diagnostic_query_us_replicates": [
+        46611.944,
+        52420.262,
+        60088.843
+      ],
+      "diagnostic_query_us": 52420.262,
+      "diagnostic_idle_tail_us_replicates": [
+        0.04,
+        0.141,
+        0.181
+      ],
+      "diagnostic_idle_tail_us": 0.141,
+      "diagnostic_idle_tail_cpu_us_replicates": [
+        0.97100000002,
+        0.891000000003,
+        0.801000000036
+      ],
+      "diagnostic_idle_tail_cpu_us": 0.891000000003,
+      "peak_rss_kib_replicates": [
+        38468,
+        38496,
+        38464
+      ],
+      "peak_rss_kib": 38468,
+      "marpa_speedup": null,
+      "native_speedup": 1.0,
+      "assist1_speedup": null,
+      "assist2_speedup": 0.00247469321560856,
+      "assistance_decisions": [
+        "disabled",
+        "disabled",
+        "disabled"
+      ],
+      "diagnostic_helpers_admitted": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}
