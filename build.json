@@ -79,7 +79,9 @@
     "test_templates_native": "tests/test_templates_native.cpp",
     "test_arithmetic_chain": "tests/test_arithmetic_chain.cpp",
     "test_arithmetic_chain_faults": "tests/test_arithmetic_chain_faults.cpp",
-    "test_arithmetic_chain_dispatch": "tests/test_arithmetic_chain_dispatch.cpp"
+    "test_arithmetic_chain_dispatch": "tests/test_arithmetic_chain_dispatch.cpp",
+    "test_expression_frontend": "tests/test_expression_frontend.cpp",
+    "test_expression_preparation": "tests/test_expression_preparation.cpp"
   },
   "tests": [
     "smoke_analysis",
@@ -140,7 +142,9 @@
     "test_templates_native",
     "test_arithmetic_chain",
     "test_arithmetic_chain_faults",
-    "test_arithmetic_chain_dispatch"
+    "test_arithmetic_chain_dispatch",
+    "test_expression_frontend",
+    "test_expression_preparation"
   ],
   "target_sources": {
     "smoke_span": [

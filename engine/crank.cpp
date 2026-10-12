@@ -17,7 +17,10 @@ struct UnobservedMatch {};
 struct Program::Impl {
     explicit Impl(std::string pattern, CompileOptions options)
         : ast(parse(pattern)), lengths(ast, options.prepare_integer_row), greedy(make_greedy_plan(ast)),
-          count(make_count_plan(ast)), equality(make_equality_plan(ast)) {
+          count(make_count_plan(ast)),
+          // This AST came from parse(), so its reference flag is authoritative.
+          // Keep direct make_equality_plan(Ast) structural admission unchanged.
+          equality(ast.has_references ? make_equality_plan(ast) : std::nullopt) {
         regular_eligible = ast.regular();
         if (ast.has_calls || ast.has_extended) {
             // Keep the observable call/capture structure for witness/history

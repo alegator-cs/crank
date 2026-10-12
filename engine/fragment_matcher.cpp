@@ -547,11 +547,17 @@ struct RegularFragment::Impl {
 RegularFragment::RegularFragment(std::shared_ptr<const Impl> impl) : impl_(std::move(impl)) {}
 
 RegularFragment::RegularFragment(const Ast& ast, NodeId root, RegularOptions options)
-    : RegularFragment(ast, std::vector<NodeId>{root}, options) {}
+    // A complete regular source already has the component's root and flags.
+    // Impl validates/compiles synchronously and retains no borrowed AST.
+    : impl_(root == ast.root && ast.regular()
+                ? std::make_shared<Impl>(ast, options)
+                : std::make_shared<Impl>(component_ast(ast, {root}), options)) {}
 
 RegularFragment::RegularFragment(const Ast& ast, const std::vector<NodeId>& roots,
                                  RegularOptions options)
-    : impl_(std::make_shared<Impl>(component_ast(ast, roots), options)) {}
+    : impl_(roots.size() == 1 && roots.front() == ast.root && ast.regular()
+                ? std::make_shared<Impl>(ast, options)
+                : std::make_shared<Impl>(component_ast(ast, roots), options)) {}
 
 RegularFragment RegularFragment::byte_set(const std::bitset<256>& characters) {
     return RegularFragment(std::make_shared<Impl>(characters));

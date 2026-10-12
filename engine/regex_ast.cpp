@@ -248,16 +248,22 @@ private:
     }
 
     NodeId alternatives() {
-        std::vector<NodeId> branches{concatenation()};
+        const auto first = concatenation();
+        // A single branch needs no temporary list: combine would return it.
+        if (!at('|')) return first;
+        std::vector<NodeId> branches{first};
         while (take('|')) branches.push_back(concatenation());
         return combine(Kind::Alt, std::move(branches));
     }
 
     NodeId concatenation() {
-        std::vector<NodeId> children;
-        while (position_ < pattern_.size() && !at(')') && !at('|')) {
+        if (position_ == pattern_.size() || at(')') || at('|')) return empty();
+        const auto first = quantified_atom();
+        if (position_ == pattern_.size() || at(')') || at('|')) return first;
+        std::vector<NodeId> children{first};
+        do {
             children.push_back(quantified_atom());
-        }
+        } while (position_ < pattern_.size() && !at(')') && !at('|'));
         return combine(Kind::Concat, std::move(children));
     }
 
@@ -435,7 +441,6 @@ private:
         const auto child = atom();
         Node node;
         node.kind = Kind::Repeat;
-        node.children = {child};
         if (take('*')) {
             node.lower = 0;
         } else if (take('+')) {
@@ -492,6 +497,8 @@ private:
         if (at('*') || at('+') || at('?') || at('{')) {
             fail("stacked, lazy, and possessive quantifiers are unsupported");
         }
+        // Plain atoms return above; allocate a child list only for a repeat.
+        node.children = {child};
         const auto& body = ast_.nodes[child];
         node.stateful = body.stateful || node.bind_count != no_id ||
                         node.use_count != no_id || node.count_path != no_id;
