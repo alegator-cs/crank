@@ -1,0 +1,187 @@
+{
+  "planned_count": 64,
+  "raw_process_status_counts": {
+    "ok": 552,
+    "resource": 8
+  },
+  "completed_mode_entries": {
+    "auto": 62,
+    "progress4": 58,
+    "marpa": 64
+  },
+  "completed_repetitions": {
+    "auto": 186,
+    "progress4": 174,
+    "marpa": 192
+  },
+  "actual_assistance": {
+    "entries_with_any_warm_admission": 52,
+    "warm_counter_deltas": {
+      "queries_admitted": 1092,
+      "tasks_submitted": 3276,
+      "tasks_finished": 3276,
+      "helper_steps": 324583228,
+      "helper_bytes": 293819046,
+      "nodes_excluded": 584,
+      "tasks_cancelled": 840,
+      "root_rejections": 391
+    }
+  },
+  "statistic": "median of three process medians; each process median has 7 samples of 1 fresh inputs",
+  "sample_tail": "nearest-rank p95 and maximum of individual queries; not population percentile",
+  "cold_import_adjustment": "subtract Marpa module import per process before taking median",
+  "comparisons": {
+    "auto": {
+      "engine": "auto",
+      "planned_entries": 64,
+      "completed_pairs": 62,
+      "completed_planned_weight": 0.9583333333333333,
+      "missing_planned_weight": 0.04166666666666674,
+      "full_corpus_complete": false,
+      "warm_wall_wins": 61,
+      "warm_wall_losses": 1,
+      "warm_wall_exact_ties": 0,
+      "warm_wall_win_rate_among_complete_pairs": 0.9838709677419355,
+      "warm_wall_win_planned_weight": 0.9479166666666666,
+      "warm_wall_loss_planned_weight": 0.010416666666666666,
+      "win_rate_denominator": 62,
+      "unmeasured_or_unpaired_entries": 2,
+      "full_corpus_geomean_crank_over_marpa": {
+        "wall": null,
+        "cpu": null
+      },
+      "full_corpus_geomean_marpa_over_crank": {
+        "wall": null,
+        "cpu": null
+      },
+      "full_corpus_arithmetic_mean_crank_over_marpa": {
+        "wall": null,
+        "cpu": null
+      },
+      "explicitly_renormalized_completed_subset_geomean_crank_over_marpa": {
+        "wall": 0.00788541744001684,
+        "cpu": 0.007894136778949148
+      },
+      "explicitly_renormalized_completed_subset_arithmetic_mean_crank_over_marpa": {
+        "wall": 0.10245116040730709,
+        "cpu": 0.10245758936640288
+      },
+      "index_scope": "completed pairs only; missing planned weight excluded explicitly",
+      "all_warm_wall_losses": [
+        {
+          "id": "regex_syntax_medium_middle_rejected",
+          "family": "regex_syntax",
+          "weight": 0.010416666666666666,
+          "warm_ratios_crank_over_marpa": {
+            "wall": 1.0854686446392448,
+            "cpu": 1.0853720263202293
+          },
+          "cold_public_ratios_crank_over_marpa": {
+            "wall": 0.44340444097206444,
+            "cpu": 0.13722524866520314
+          },
+          "repeat_wall_ratios_crank_over_marpa": [
+            1.0854686446392448,
+            1.171376202840996,
+            1.0719462612692239
+          ],
+          "process_median_ranges_disjoint": false,
+          "actual_assistance_admitted": false
+        }
+      ],
+      "worst_completed_warm_wall_crank_over_marpa": 1.0854686446392448,
+      "ratio_nearest_rank_p95_across_complete_entries": 0.7977299796819168,
+      "actually_assisted_completed_pairs": 0,
+      "warm_wall_entries_below_10us": 7,
+      "cold_public_wall_wins": 62,
+      "cold_public_wall_losses": 0,
+      "all_cold_public_wall_losses": []
+    },
+    "progress4": {
+      "engine": "progress4",
+      "planned_entries": 64,
+      "completed_pairs": 58,
+      "completed_planned_weight": 0.875,
+      "missing_planned_weight": 0.125,
+      "full_corpus_complete": false,
+      "warm_wall_wins": 56,
+      "warm_wall_losses": 2,
+      "warm_wall_exact_ties": 0,
+      "warm_wall_win_rate_among_complete_pairs": 0.9655172413793104,
+      "warm_wall_win_planned_weight": 0.8541666666666666,
+      "warm_wall_loss_planned_weight": 0.020833333333333332,
+      "win_rate_denominator": 58,
+      "unmeasured_or_unpaired_entries": 6,
+      "full_corpus_geomean_crank_over_marpa": {
+        "wall": null,
+        "cpu": null
+      },
+      "full_corpus_geomean_marpa_over_crank": {
+        "wall": null,
+        "cpu": null
+      },
+      "full_corpus_arithmetic_mean_crank_over_marpa": {
+        "wall": null,
+        "cpu": null
+      },
+      "explicitly_renormalized_completed_subset_geomean_crank_over_marpa": {
+        "wall": 0.0349785138641055,
+        "cpu": 0.043586441191767786
+      },
+      "explicitly_renormalized_completed_subset_arithmetic_mean_crank_over_marpa": {
+        "wall": 0.1692543429315198,
+        "cpu": 0.1808353371469011
+      },
+      "index_scope": "completed pairs only; missing planned weight excluded explicitly",
+      "all_warm_wall_losses": [
+        {
+          "id": "regex_syntax_large_early_rejected",
+          "family": "regex_syntax",
+          "weight": 0.010416666666666666,
+          "warm_ratios_crank_over_marpa": {
+            "wall": 1.739808153477218,
+            "cpu": 1.815126050420168
+          },
+          "cold_public_ratios_crank_over_marpa": {
+            "wall": 0.4400520041427029,
+            "cpu": 0.1486638468497103
+          },
+          "repeat_wall_ratios_crank_over_marpa": [
+            2.6973365617433416,
+            1.7398081534772183,
+            1.0678362573099416
+          ],
+          "process_median_ranges_disjoint": true,
+          "actual_assistance_admitted": true
+        },
+        {
+          "id": "regex_syntax_medium_middle_rejected",
+          "family": "regex_syntax",
+          "weight": 0.010416666666666666,
+          "warm_ratios_crank_over_marpa": {
+            "wall": 1.0767026298044504,
+            "cpu": 1.0769360553399694
+          },
+          "cold_public_ratios_crank_over_marpa": {
+            "wall": 0.49843587471188433,
+            "cpu": 0.1828170311949481
+          },
+          "repeat_wall_ratios_crank_over_marpa": [
+            1.192346594740391,
+            0.9755613257980754,
+            1.1262153084673856
+          ],
+          "process_median_ranges_disjoint": false,
+          "actual_assistance_admitted": false
+        }
+      ],
+      "worst_completed_warm_wall_crank_over_marpa": 1.739808153477218,
+      "ratio_nearest_rank_p95_across_complete_entries": 0.8924552884045955,
+      "actually_assisted_completed_pairs": 52,
+      "warm_wall_entries_below_10us": 2,
+      "cold_public_wall_wins": 58,
+      "cold_public_wall_losses": 0,
+      "all_cold_public_wall_losses": []
+    }
+  }
+}

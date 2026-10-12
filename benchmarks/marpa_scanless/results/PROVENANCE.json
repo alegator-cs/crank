@@ -1,0 +1,74 @@
+{
+  "schema": "public-historical-measurements-v1",
+  "measured_engine_commit": "f57ac0a1552154fc27b27f5293b2f09704e8ae1e",
+  "source_date": "2026-10-12",
+  "public_fixtures_are_measured_inputs": false,
+  "phases": {
+    "initial32": {
+      "source_relative_directory": "practical-paired/campaign-20261012T185016Z",
+      "original_csv_sha256": "5cdf18d61dc717e0721bf613ccf7bdd17d27d45b9c2f5cba7beb773f96d678ee",
+      "public_csv_sha256": "5cdf18d61dc717e0721bf613ccf7bdd17d27d45b9c2f5cba7beb773f96d678ee",
+      "public_summary_sha256": "56d901f78bb1935a7d0ccc74c1eda48a40a50d5caf89068a96c5f4b075d12351",
+      "redacted_path_cells": 0,
+      "rows": 96
+    },
+    "configured64": {
+      "source_relative_directory": "practical-paired/extension-wide/campaign-20261012T192111Z",
+      "original_csv_sha256": "188e274d014c7d90de88cad70236fd30dfe0df014fabe6905f272a37a30afc73",
+      "public_csv_sha256": "188e274d014c7d90de88cad70236fd30dfe0df014fabe6905f272a37a30afc73",
+      "public_summary_sha256": "b2bc516399d027c188ab51e2b488688eb9c33a70192ec5ae6cc5cae5cc2fe2e0",
+      "redacted_path_cells": 0,
+      "rows": 192
+    },
+    "hardware64": {
+      "source_relative_directory": "practical-paired/extension-native-control/campaign-20261012T194633Z",
+      "original_csv_sha256": "8bb5479daebd86f3b3101c8eb096012e0e6b2030fcadf58ddca302720ca3cacc",
+      "public_csv_sha256": "8bb5479daebd86f3b3101c8eb096012e0e6b2030fcadf58ddca302720ca3cacc",
+      "public_summary_sha256": "73024f7d1d44b30d5b0c883a7cca47cdad6be3060656b222c064497c3c121f05",
+      "redacted_path_cells": 0,
+      "rows": 192
+    },
+    "batch32": {
+      "source_relative_directory": "practical-paired/extension-floor/campaign-20261012T200833Z",
+      "original_csv_sha256": "440be3777dcc5a98d55c4af8b7290f7c19146c65beffee38b469e9571753e023",
+      "public_csv_sha256": "25f993bbe102b5937e24984610d437bd760119c7d9b9fcb6bb317340fc7a3860",
+      "public_summary_sha256": "cc4c8213ecea4b615d0d054a9609cdda725506e592f67fcfbbc5e1f71e45f2cf",
+      "redacted_path_cells": 24,
+      "rows": 96
+    },
+    "local24": {
+      "source_relative_directory": "practical-paired/extension-real-datasets/campaign-20261012T201825Z",
+      "original_csv_sha256": "8467f6f314e9501b6b1aed14da04d30eeac133323e5a4d5e50c9f15bb3054973",
+      "public_csv_sha256": "8467f6f314e9501b6b1aed14da04d30eeac133323e5a4d5e50c9f15bb3054973",
+      "public_summary_sha256": "f16bfdf5eb67c64d66c55eb3c958345c537e4e20ec34e8934ea3a9d3912c9eb0",
+      "redacted_path_cells": 0,
+      "rows": 72
+    },
+    "regex20": {
+      "source_relative_directory": "practical-paired/extension-regex-loss/campaign-20261012T202431Z",
+      "original_csv_sha256": "ff8176dd3505f45f4ee685563fa1b4b0314246db6809ba0d58d5ed0a0b2d1ecc",
+      "public_csv_sha256": "ff8176dd3505f45f4ee685563fa1b4b0314246db6809ba0d58d5ed0a0b2d1ecc",
+      "public_summary_sha256": "6cc92aa4871f048e8f1c75d1d6b6ab0212b388c0db11938aa151ba5171666732",
+      "redacted_path_cells": 0,
+      "rows": 60
+    },
+    "regex_warning_control20": {
+      "source_relative_directory": "practical-paired/extension-regex-quiet/campaign-20261012T203310Z",
+      "original_csv_sha256": "a24a25347b0abb7328f3a1afe058767aac377532fe3f836448e3754b8ec325da",
+      "public_csv_sha256": "a24a25347b0abb7328f3a1afe058767aac377532fe3f836448e3754b8ec325da",
+      "public_summary_sha256": "078934e86ab4fbb6d5b924030d13e5303aebcc478857fbcab38b4b259e00d587",
+      "redacted_path_cells": 0,
+      "rows": 60
+    }
+  },
+  "harness_sources": {
+    "crank_public_runner.cpp": "98f7bdf7ba5b924a686fb9110c408e18c83edac6ea99630dbda7958e13d95c47",
+    "crank_public_runner_batched_drain.cpp": "b9b70c8e54498159232898600f71e491a9457fa09b3437b89655249512817d8c",
+    "crank_public_runner_native_uncapped.cpp": "a6e2e4c8bf23c0b0e8813e5753ddf2d331f8f445841d4d72b302d446de2ba4a8",
+    "marpa_scanless_runner.pl": "331b4330154fe446a89995ba4e56b9d4397cac039cdc9ac1d049024efc826e3a",
+    "marpa_scanless_runner_quiet.pl": "5e9dc78a575a97937d0cb7650388994837e3087932e1537e3d6865d7ac70d6aa"
+  },
+  "ancillary_results": {
+    "WARNING_AUDIT.json": "97a9aa185714e99aa5852e59b715bf7e3c2d457cea155332aa636f6dfd151bdf"
+  }
+}

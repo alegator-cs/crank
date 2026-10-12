@@ -1,0 +1,283 @@
+{
+  "schema": "final-frozen-grammar-sources-v1",
+  "origin": "Final measured initial-v4 and wide64 manifests; grammar sources only, no corpus bytes",
+  "historical_measured_engine_commit": "f57ac0a1552154fc27b27f5293b2f09704e8ae1e",
+  "manifest_sha256": {
+    "FROZEN_MANIFEST-v4.json": "c269dfca86db382c1efaff7f18e605cb0d75a9be8211e3ad94fb1603887cf679",
+    "extension-wide/FROZEN_MANIFEST.json": "dc3c5f463f35359662d6b688b9f53f66fa04c75c27244e4b8424a7d8265a3aa1"
+  },
+  "grammars": {
+    "regex_syntax": {
+      "crank": {
+        "path": "grammars/regex_syntax.crank",
+        "bytes": 83,
+        "sha256": "fca67a1381243ab8f48126f99366ebb51135744d0cfdfc796a674e63117d2e1b",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "grammars/regex_syntax.crank"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/regex_syntax.crank"
+          }
+        ]
+      },
+      "marpa": {
+        "path": "grammars/regex_syntax.marpa",
+        "bytes": 396,
+        "sha256": "1b9df55b78b47bdd2bd0ad0b69bb4587b723ca1b9a8550e48784bedce3bb3010",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "grammars/regex_syntax.marpa"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/regex_syntax.marpa"
+          }
+        ]
+      }
+    },
+    "nested_comma_list": {
+      "crank": {
+        "path": "grammars/nested_comma_list.crank",
+        "bytes": 69,
+        "sha256": "7990528182b8c3ed6af023b9ba8802af075f5c5f414af4fbd300fb3c6a495230",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "grammars/nested_comma_list.crank"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/nested_comma_list.crank"
+          }
+        ]
+      },
+      "marpa": {
+        "path": "grammars/nested_comma_list.marpa",
+        "bytes": 330,
+        "sha256": "6349041c9c61e7f95bf5ebf64bada267a8e1220e9f39d40060e1d0ae1209e95b",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "grammars/nested_comma_list.marpa"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/nested_comma_list.marpa"
+          }
+        ]
+      }
+    },
+    "event_stream": {
+      "crank": {
+        "path": "grammars/event_stream.crank",
+        "bytes": 160,
+        "sha256": "fc52904357f04b5ea088d9c12147d8e086fb1e035ef7bd74a078c39cb59656e5",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "grammars/event_stream.crank"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/event_stream.crank"
+          }
+        ]
+      },
+      "marpa": {
+        "path": "grammars/event_stream.marpa",
+        "bytes": 648,
+        "sha256": "bc336213256481fcc667ecfd0158d5aec26feb6474d7f3c4275965c9bfc705e9",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "grammars/event_stream.marpa"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/event_stream.marpa"
+          }
+        ]
+      }
+    },
+    "restricted_json": {
+      "crank": {
+        "path": "grammars/restricted_json.crank",
+        "bytes": 344,
+        "sha256": "ae821fce8a26c3e10d5bc6fe178ffa55b5ea04362bc557f637f6232f699532f2",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "grammars/restricted_json.crank"
+          }
+        ]
+      },
+      "marpa": {
+        "path": "grammars/restricted_json.marpa",
+        "bytes": 1182,
+        "sha256": "193c96af8819350b0fe3f6ca5346e50dc1130342ee67dd21de3b490403d70f2f",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "setup-revision-1/restricted_json.marpa"
+          }
+        ]
+      }
+    },
+    "csv": {
+      "crank": {
+        "path": "grammars/csv.crank",
+        "bytes": 116,
+        "sha256": "5c90399965dfe6ba5882a5f6b24ed278527191f1acec1128c2295b760b684f13",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "additional/grammars/csv.crank"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/csv.crank"
+          }
+        ]
+      },
+      "marpa": {
+        "path": "grammars/csv.marpa",
+        "bytes": 527,
+        "sha256": "9c3b7c19aba461d818585e0988f814e1dcfb080fae9b0f74a57431139afa618b",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "additional/grammars/csv.marpa"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/csv.marpa"
+          }
+        ]
+      }
+    },
+    "ini": {
+      "crank": {
+        "path": "grammars/ini.crank",
+        "bytes": 139,
+        "sha256": "3ce2764eb06effd5437ea6de1c8e1fd1c69a494ab8b465396f17edd17b2e62fe",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "additional/grammars/ini.crank"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/ini.crank"
+          }
+        ]
+      },
+      "marpa": {
+        "path": "grammars/ini.marpa",
+        "bytes": 741,
+        "sha256": "091801511e2177dcc2659f07713a7aaf54fa663b2bf6a620a91e0e1f74bc6f45",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "additional/grammars/ini.marpa"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/ini.marpa"
+          }
+        ]
+      }
+    },
+    "xml_subset": {
+      "crank": {
+        "path": "grammars/xml_subset.crank",
+        "bytes": 432,
+        "sha256": "e3194cfb4d50c98c4b44c0efc90812641e0916acc045081b86a8fda145076571",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "additional/grammars/xml_subset.crank"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/xml_subset.crank"
+          }
+        ]
+      },
+      "marpa": {
+        "path": "grammars/xml_subset.marpa",
+        "bytes": 1459,
+        "sha256": "6c34f2d26a710718743fc53a33f2fd1f75b55b0238097aaf0da958eeb11ddb78",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "setup-revision-3/xml_subset.marpa"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/xml_subset.marpa"
+          }
+        ]
+      }
+    },
+    "arithmetic_expression": {
+      "crank": {
+        "path": "grammars/arithmetic_expression.crank",
+        "bytes": 208,
+        "sha256": "707e7602180d2e0aa3f99f02fe1c1539002476be48456442521004946aa93cbe",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "additional/grammars/arithmetic_expression.crank"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/arithmetic_expression.crank"
+          }
+        ]
+      },
+      "marpa": {
+        "path": "grammars/arithmetic_expression.marpa",
+        "bytes": 701,
+        "sha256": "7385f8e5354c2a627f068c49792a8061e4a141990c88447763fd25905ab6c39b",
+        "origins": [
+          {
+            "manifest": "FROZEN_MANIFEST-v4.json",
+            "relative_path": "setup-revision-2/arithmetic_expression.marpa"
+          },
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-long/grammars/arithmetic_expression.marpa"
+          }
+        ]
+      }
+    },
+    "json_ascii": {
+      "crank": {
+        "path": "grammars/json_ascii.crank",
+        "bytes": 354,
+        "sha256": "6f0bb9541093b7be52b0d0aa7f097b51c78e52e4daa1e8f09c088628c869ae99",
+        "origins": [
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-real/grammars/json_ascii.crank"
+          }
+        ]
+      },
+      "marpa": {
+        "path": "grammars/json_ascii.marpa",
+        "bytes": 1199,
+        "sha256": "f46b6999341910cf2a126023422aa9dbe3dfe6eba4e8638669a44d8e1d7e5eb0",
+        "origins": [
+          {
+            "manifest": "extension-wide/FROZEN_MANIFEST.json",
+            "relative_path": "../extension-real/grammars/json_ascii.marpa"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+# ASCII assignment/section/comment lines, LF or CRLF termination.
+lexeme default = latm => 1
+:start ::= START
+START ::= Lines
+event ROOT_DONE = completed START
+Lines ::= Line+
+Line ::= Space Content Newline
+Space ::= Horizontal*
+Content ::= Empty | Comment | Section | Assignment
+Empty ::=
+Comment ::= CommentMark Value
+Section ::= '[' SectionName ']' Space | '[' SectionName ']' Space Comment
+SectionName ::= SectionByte+
+Assignment ::= Key '=' Value
+Key ::= KeyStart KeyTail
+KeyTail ::= KeyByte*
+Value ::= ValueByte*
+Newline ::= LF | CR LF
+Horizontal ~ [\x{20}\x{09}]
+CommentMark ~ [;#]
+SectionByte ~ [A-Za-z0-9_.:/ @-]
+KeyStart ~ [A-Za-z_:-]
+KeyByte ~ [A-Za-z0-9_.:/ \x{09}-]
+ValueByte ~ [\x{09}\x{20}-\x{7E}]
+LF ~ [\x{0A}]
+CR ~ [\x{0D}]

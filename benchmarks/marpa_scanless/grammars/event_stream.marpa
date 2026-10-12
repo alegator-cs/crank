@@ -1,0 +1,25 @@
+# Exact LF-terminated event byte language; no discard rules.
+lexeme default = latm => 1
+:start ::= START
+START ::= Stream
+event ROOT_DONE = completed START
+Stream ::= Record+
+Record ::= Event Newline
+Event ::= 'E' '[' Fields ']'
+Fields ::= Field+ separator => Semicolon proper => 1
+Field ::= Key '=' Value
+Key ::= Lower KeyTail
+KeyTail ::= KeyByte*
+Value ::= Event | List | Number | String
+List ::= '[' Values ']'
+Values ::= Value* separator => Comma proper => 1
+Number ::= Digit+
+String ::= '"' Text '"'
+Text ::= TextByte*
+Lower ~ [a-z]
+KeyByte ~ [a-z0-9_]
+Digit ~ [0-9]
+TextByte ~ [A-Za-z0-9 _;=/-]
+Semicolon ~ [;]
+Comma ~ [,]
+Newline ~ [\x{0A}]

@@ -1,0 +1,17 @@
+# LF/CRLF terminated CSV, empty fields, double-quote escaping.
+lexeme default = latm => 1
+:start ::= START
+START ::= File
+event ROOT_DONE = completed START
+File ::= Record+
+Record ::= Fields Newline
+Fields ::= Fields ',' Field | Field
+Field ::= Plain | '"' QuotedPieces '"'
+Plain ::= PlainByte*
+QuotedPieces ::= QuotedPiece*
+QuotedPiece ::= QuotedByte | '"' '"'
+Newline ::= LF | CR LF
+PlainByte ~ [\x{20}-\x{21}\x{23}-\x{2B}\x{2D}-\x{7E}]
+QuotedByte ~ [\x{09}\x{0A}\x{0D}\x{20}-\x{21}\x{23}-\x{7E}]
+LF ~ [\x{0A}]
+CR ~ [\x{0D}]

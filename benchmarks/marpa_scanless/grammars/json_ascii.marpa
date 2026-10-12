@@ -1,0 +1,41 @@
+# ASCII JSON byte language; all lexemes are one byte; no discards.
+lexeme default = latm => 1
+:start ::= START
+START ::= Json
+event ROOT_DONE = completed START
+Json ::= WS Value WS
+Value ::= Object | Array | String | Number | True | False | Null
+Object ::= '{' WS '}' | '{' WS Member ObjectTail '}'
+ObjectTail ::=
+ObjectTail ::= ',' WS Member ObjectTail
+Member ::= String WS ':' WS Value WS
+Array ::= '[' WS ']' | '[' WS Value WS ArrayTail ']'
+ArrayTail ::=
+ArrayTail ::= ',' WS Value WS ArrayTail
+String ::= '"' Characters '"'
+Characters ::= Character*
+Character ::= Plain | Backslash Escaped | Backslash 'u' Hex Hex Hex Hex
+Number ::= Sign Integer Fraction Exponent
+Sign ::=
+Sign ::= '-'
+Integer ::= '0' | Nonzero Digits
+Digits ::= Digit*
+Fraction ::=
+Fraction ::= '.' MoreDigits
+MoreDigits ::= Digit+
+Exponent ::=
+Exponent ::= ExponentMark ExponentSign MoreDigits
+ExponentSign ::=
+ExponentSign ::= '+' | '-'
+True ::= 't' 'r' 'u' 'e'
+False ::= 'f' 'a' 'l' 's' 'e'
+Null ::= 'n' 'u' 'l' 'l'
+WS ::= WSByte*
+Plain ~ [\x{20}-\x{21}\x{23}-\x{5B}\x{5D}-\x{7E}]
+Backslash ~ [\\]
+Escaped ~ ["\\/bfnrt]
+Hex ~ [0-9A-Fa-f]
+Nonzero ~ [1-9]
+Digit ~ [0-9]
+ExponentMark ~ [eE]
+WSByte ~ [\x{20}\x{09}\x{0D}\x{0A}]

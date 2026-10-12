@@ -1,0 +1,21 @@
+# Conventional left-associative precedence, unary signs, no evaluation.
+lexeme default = latm => 1
+:start ::= START
+START ::= ArithmeticDocument
+ArithmeticDocument ::= Space Expression Space
+event ROOT_DONE = completed START
+Expression ::= Expression Space AddOp Space Term | Term
+Term ::= Term Space MulOp Space Factor | Factor
+Factor ::= AddOp Space Factor | Primary
+Primary ::= '(' Space Expression Space ')' | Number | Identifier
+Number ::= Digits | Digits '.' Digits
+Digits ::= Digit+
+Identifier ::= IdentStart IdentTail
+IdentTail ::= IdentByte*
+Space ::= Whitespace*
+AddOp ~ [+-]
+MulOp ~ [*/]
+Digit ~ [0-9]
+IdentStart ~ [A-Za-z_]
+IdentByte ~ [A-Za-z0-9_]
+Whitespace ~ [\x{20}\x{09}\x{0D}\x{0A}]

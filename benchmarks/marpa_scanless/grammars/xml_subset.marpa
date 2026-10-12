@@ -1,0 +1,33 @@
+# Fixed root/node/item/group vocabulary; matched closing tags in grammar.
+lexeme default = latm => 1
+:start ::= START
+START ::= XmlDocument
+XmlDocument ::= Space Element Space
+event ROOT_DONE = completed START
+Element ::= Root | Node | Item | Group
+Root ::= '<' 'r' 'o' 'o' 't' Attributes '>' Body '<' '/' 'r' 'o' 'o' 't' '>'
+       | '<' 'r' 'o' 'o' 't' Attributes '/' '>'
+Node ::= '<' 'n' 'o' 'd' 'e' Attributes '>' Body '<' '/' 'n' 'o' 'd' 'e' '>'
+       | '<' 'n' 'o' 'd' 'e' Attributes '/' '>'
+Item ::= '<' 'i' 't' 'e' 'm' Attributes '>' Body '<' '/' 'i' 't' 'e' 'm' '>'
+       | '<' 'i' 't' 'e' 'm' Attributes '/' '>'
+Group ::= '<' 'g' 'r' 'o' 'u' 'p' Attributes '>' Body '<' '/' 'g' 'r' 'o' 'u' 'p' '>'
+       | '<' 'g' 'r' 'o' 'u' 'p' Attributes '/' '>'
+Attributes ::= AttributeList Space
+AttributeList ::= Attribute*
+Attribute ::= White Name Space '=' Space '"' AttrValue '"'
+Name ::= NameStart NameTail
+NameTail ::= NameByte*
+AttrValue ::= AttrPiece*
+AttrPiece ::= AttrByte | Entity
+Body ::= BodyPiece*
+BodyPiece ::= Element | TextByte | Entity
+Entity ::= '&' 'a' 'm' 'p' ';' | '&' 'l' 't' ';' | '&' 'g' 't' ';'
+         | '&' 'q' 'u' 'o' 't' ';' | '&' 'a' 'p' 'o' 's' ';'
+Space ::= Whitespace*
+White ::= Whitespace+
+NameStart ~ [A-Za-z_]
+NameByte ~ [A-Za-z0-9_.:-]
+Whitespace ~ [\x{20}\x{09}\x{0D}\x{0A}]
+AttrByte ~ [\x{20}-\x{21}\x{23}-\x{25}\x{27}-\x{3B}\x{3D}-\x{7E}]
+TextByte ~ [\x{09}\x{0A}\x{0D}\x{20}-\x{25}\x{27}-\x{3B}\x{3D}\x{3F}-\x{7E}]

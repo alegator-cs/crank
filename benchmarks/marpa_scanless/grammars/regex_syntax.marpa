@@ -1,0 +1,12 @@
+# One-byte lexemes; preserve all binary expression associations.
+lexeme default = latm => 1
+:start ::= START
+START ::= Expression
+event ROOT_DONE = completed START
+Expression ::= Expression '|' Expression assoc => group
+             | Expression Expression assoc => group
+             | Atom
+Atom ::= Primary | Primary Postfix
+Primary ::= '(' Expression ')' | Lower
+Lower ~ [a-z]
+Postfix ~ [*+?]

@@ -1,0 +1,11 @@
+# Nonempty nested lists; identifiers are G1 runs of byte lexemes.
+lexeme default = latm => 1
+:start ::= START
+START ::= List
+event ROOT_DONE = completed START
+List ::= List ',' Item assoc => group | Item
+Item ::= Identifier | '(' List ')'
+Identifier ::= Lower IdentTail
+IdentTail ::= IdentByte*
+Lower ~ [a-z]
+IdentByte ~ [a-z0-9]

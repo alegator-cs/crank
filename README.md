@@ -61,6 +61,32 @@ python3 tools/build.py libcrank
 ```
 ## Recorded benchmarks
 
+### Independent grammar frontends — 12 October 2026
+
+The new [Crank / Marpa::R2 Scanless comparison](benchmarks/marpa_scanless/README.md)
+measures Boolean whole-input recognition with independently authored grammar
+frontends: C++ Crank at publication checkpoint `f57ac0a` versus Perl/C
+Marpa::R2 14.000000 (Libmarpa 11.0.2). The initial 32-entry, eight-family suite
+gave Crank Auto and Progress4 lower warm wall estimates on 31 of 32 entries;
+geometric Marpa/Crank ratios were 98.7x and 26.7x. The malformed 79-byte regex
+was a measured loss for both modes. Preparation, first query, reused queries,
+child process lifetime, CPU and wall time are reported separately.
+
+The 64-entry control completed all entries after foreground accounting caps
+were removed in the benchmark wrapper: Auto won 64 and Progress4 63. Production
+limits are unchanged; the configured run's eight `ResourceLimit` outcomes
+remain visible. Marpa warning output affected three regex entries in the wide
+suite, and a separate targeted diagnostic includes unexplained aborts. These
+phases are not pooled into a global score. The common-count confirmation's
+127x / 29.9x ratios describe batch-average per-input costs, not singleton tails.
+Public results retain losses, nondecisions and coverage; replacement synthetic
+fixtures are supplied for new reruns without claiming historical measurements
+for changed inputs. The expression-preparation improvement is subsequent to
+this campaign; [integration status and remaining research gates](docs/POST_PUBLICATION_AUDIT.md)
+are recorded separately.
+
+### Historical practical comparison
+
 ![Historical warm query latency: Crank and Libmarpa with Leo](benchmarks/historical/marpa-practical/practical_overview.original.png)
 
 This original graph records the **11 September 2026** Constraint Parallel Core:

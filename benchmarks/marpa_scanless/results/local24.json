@@ -1,0 +1,122 @@
+{
+  "planned_count": 24,
+  "raw_process_status_counts": {
+    "ok": 216
+  },
+  "completed_mode_entries": {
+    "auto": 24,
+    "progress4": 24,
+    "marpa": 24
+  },
+  "completed_repetitions": {
+    "auto": 72,
+    "progress4": 72,
+    "marpa": 72
+  },
+  "actual_assistance": {
+    "entries_with_any_warm_admission": 6,
+    "warm_counter_deltas": {
+      "queries_admitted": 126,
+      "tasks_submitted": 378,
+      "tasks_finished": 378,
+      "helper_steps": 2445345,
+      "helper_bytes": 2077362,
+      "nodes_excluded": 231
+    }
+  },
+  "statistic": "median of three process medians; each process median has 7 samples of 1 fresh inputs",
+  "sample_tail": "nearest-rank p95 and maximum of individual queries; not population percentile",
+  "cold_import_adjustment": "subtract Marpa module import per process before taking median",
+  "comparisons": {
+    "auto": {
+      "engine": "auto",
+      "planned_entries": 24,
+      "completed_pairs": 24,
+      "completed_planned_weight": 1.0,
+      "missing_planned_weight": 0,
+      "full_corpus_complete": true,
+      "warm_wall_wins": 24,
+      "warm_wall_losses": 0,
+      "warm_wall_exact_ties": 0,
+      "warm_wall_win_rate_among_complete_pairs": 1.0,
+      "warm_wall_win_planned_weight": 1.0,
+      "warm_wall_loss_planned_weight": 0,
+      "win_rate_denominator": 24,
+      "unmeasured_or_unpaired_entries": 0,
+      "full_corpus_geomean_crank_over_marpa": {
+        "wall": 0.00031047032281982363,
+        "cpu": 0.0003185563062954305
+      },
+      "full_corpus_geomean_marpa_over_crank": {
+        "wall": 3220.919767524233,
+        "cpu": 3139.1624659051504
+      },
+      "full_corpus_arithmetic_mean_crank_over_marpa": {
+        "wall": 0.00088324888470627,
+        "cpu": 0.0008849953741123386
+      },
+      "explicitly_renormalized_completed_subset_geomean_crank_over_marpa": {
+        "wall": 0.00031047032281982363,
+        "cpu": 0.0003185563062954305
+      },
+      "explicitly_renormalized_completed_subset_arithmetic_mean_crank_over_marpa": {
+        "wall": 0.00088324888470627,
+        "cpu": 0.0008849953741123386
+      },
+      "index_scope": "all predeclared entries",
+      "all_warm_wall_losses": [],
+      "worst_completed_warm_wall_crank_over_marpa": 0.004784688995215311,
+      "ratio_nearest_rank_p95_across_complete_entries": 0.004511278195488721,
+      "actually_assisted_completed_pairs": 0,
+      "warm_wall_entries_below_10us": 23,
+      "cold_public_wall_wins": 24,
+      "cold_public_wall_losses": 0,
+      "all_cold_public_wall_losses": []
+    },
+    "progress4": {
+      "engine": "progress4",
+      "planned_entries": 24,
+      "completed_pairs": 24,
+      "completed_planned_weight": 1.0,
+      "missing_planned_weight": 0,
+      "full_corpus_complete": true,
+      "warm_wall_wins": 24,
+      "warm_wall_losses": 0,
+      "warm_wall_exact_ties": 0,
+      "warm_wall_win_rate_among_complete_pairs": 1.0,
+      "warm_wall_win_planned_weight": 1.0,
+      "warm_wall_loss_planned_weight": 0,
+      "win_rate_denominator": 24,
+      "unmeasured_or_unpaired_entries": 0,
+      "full_corpus_geomean_crank_over_marpa": {
+        "wall": 0.02401338155976623,
+        "cpu": 0.02485826105665291
+      },
+      "full_corpus_geomean_marpa_over_crank": {
+        "wall": 41.64344773813418,
+        "cpu": 40.22807539598053
+      },
+      "full_corpus_arithmetic_mean_crank_over_marpa": {
+        "wall": 0.07935311519274217,
+        "cpu": 0.08168817717214019
+      },
+      "explicitly_renormalized_completed_subset_geomean_crank_over_marpa": {
+        "wall": 0.02401338155976623,
+        "cpu": 0.02485826105665291
+      },
+      "explicitly_renormalized_completed_subset_arithmetic_mean_crank_over_marpa": {
+        "wall": 0.07935311519274217,
+        "cpu": 0.08168817717214019
+      },
+      "index_scope": "all predeclared entries",
+      "all_warm_wall_losses": [],
+      "worst_completed_warm_wall_crank_over_marpa": 0.14671115165109788,
+      "ratio_nearest_rank_p95_across_complete_entries": 0.12006197097944378,
+      "actually_assisted_completed_pairs": 6,
+      "warm_wall_entries_below_10us": 12,
+      "cold_public_wall_wins": 24,
+      "cold_public_wall_losses": 0,
+      "all_cold_public_wall_losses": []
+    }
+  }
+}

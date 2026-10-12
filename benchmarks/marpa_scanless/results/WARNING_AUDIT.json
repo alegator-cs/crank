@@ -1,0 +1,135 @@
+{
+  "schema": "marpa-warning-static-audit-v1",
+  "scope": "Seven preserved measured phases; quiet-control counts inspected only after timing release",
+  "method": "Read-only raw JSONL inspection of Marpa rows; exact Scanless G1/L0 Earley-item warning text counting and bounded SIGABRT stderr endings; no engine or compiler execution",
+  "warning_constructor_option": "too_many_earley_items",
+  "actually_selected_followup_value": 1000000000,
+  "default_threshold": "Grammar-size based, never below 100; the observed warning sequences first report count 100",
+  "phases": [
+    {
+      "phase": "campaign-20261012T185016Z",
+      "marpa_rows": 96,
+      "warning_rows": 0,
+      "warning_occurrences": 0,
+      "stderr_characters": 0,
+      "sigabrt_rows": 0
+    },
+    {
+      "phase": "extension-wide/campaign-20261012T192111Z",
+      "marpa_rows": 192,
+      "warning_rows": 9,
+      "warning_occurrences": 5184,
+      "stderr_characters": 1161216,
+      "sigabrt_rows": 0
+    },
+    {
+      "phase": "extension-native-control/campaign-20261012T194633Z",
+      "marpa_rows": 192,
+      "warning_rows": 9,
+      "warning_occurrences": 5184,
+      "stderr_characters": 1161216,
+      "sigabrt_rows": 0
+    },
+    {
+      "phase": "extension-floor/campaign-20261012T200833Z",
+      "marpa_rows": 96,
+      "warning_rows": 0,
+      "warning_occurrences": 0,
+      "stderr_characters": 0,
+      "sigabrt_rows": 0
+    },
+    {
+      "phase": "extension-real-datasets/campaign-20261012T201825Z",
+      "marpa_rows": 72,
+      "warning_rows": 0,
+      "warning_occurrences": 0,
+      "stderr_characters": 0,
+      "sigabrt_rows": 0
+    },
+    {
+      "phase": "extension-regex-loss/campaign-20261012T202431Z",
+      "marpa_rows": 54,
+      "warning_rows": 42,
+      "warning_occurrences": 45183,
+      "stderr_characters": 10123830,
+      "sigabrt_rows": 3
+    },
+    {
+      "phase": "extension-regex-quiet/campaign-20261012T203310Z",
+      "marpa_rows": 44,
+      "warning_rows": 0,
+      "warning_occurrences": 0,
+      "stderr_characters": 0,
+      "sigabrt_rows": 2
+    }
+  ],
+  "sigabrt_receipts": [
+    {
+      "case": "regex_loss_4096_accepted",
+      "repeat": 0,
+      "status": "crash",
+      "exit_code": -6,
+      "stdout_characters": 0,
+      "stderr_characters": 198690,
+      "warning_occurrences": 885,
+      "last_warning_item_count": 1921,
+      "wall_seconds": 14.841882146000003,
+      "cpu_seconds": 11.005699999999997
+    },
+    {
+      "case": "regex_loss_4096_eof_unmatched_close_rejected",
+      "repeat": 0,
+      "status": "crash",
+      "exit_code": -6,
+      "stdout_characters": 0,
+      "stderr_characters": 198690,
+      "warning_occurrences": 885,
+      "last_warning_item_count": 1921,
+      "wall_seconds": 14.669001647000002,
+      "cpu_seconds": 10.640499000000005
+    },
+    {
+      "case": "regex_loss_4096_late_duplicate_postfix_rejected",
+      "repeat": 0,
+      "status": "crash",
+      "exit_code": -6,
+      "stdout_characters": 0,
+      "stderr_characters": 198690,
+      "warning_occurrences": 885,
+      "last_warning_item_count": 1921,
+      "wall_seconds": 14.448389601999992,
+      "cpu_seconds": 10.69447199999999
+    }
+  ],
+  "crash_stage": "Unavailable: no runner stdout receipt was emitted",
+  "cause": "Generic SIGABRT established; memory exhaustion compatible with static libmarpa OOM abort handler, but unproved without memory trace/backtrace or allocation-failure evidence",
+  "quiet_control_sigabrt_receipts": [
+    {
+      "case": "regex_loss_4096_accepted",
+      "repeat": 0,
+      "status": "crash",
+      "exit_code": -6,
+      "stdout_characters": 0,
+      "stderr_characters": 0,
+      "wall_seconds": 14.990058957000002,
+      "cpu_seconds": 10.430948999999998,
+      "stage": "unavailable",
+      "memory_evidence": "none"
+    },
+    {
+      "case": "regex_loss_4096_eof_unmatched_close_rejected",
+      "repeat": 0,
+      "status": "crash",
+      "exit_code": -6,
+      "stdout_characters": 0,
+      "stderr_characters": 0,
+      "wall_seconds": 17.898560032000006,
+      "cpu_seconds": 10.604146000000007,
+      "stage": "unavailable",
+      "memory_evidence": "none"
+    }
+  ],
+  "quiet_control_scope": "44 Marpa processes observed; incomplete frozen-20 coverage remains explicit. No warning text was captured from any of these rows. Pending cases are not failures or complete pairs.",
+  "conclusion": "Warning/event handling is an actual timing confound for affected regex services. The same-corpus positive-threshold control removed captured warning output but retained two SIGABRT outcomes on previously aborting cases, so warnings were not necessary for those aborts. Cause remains unknown; memory exhaustion is not established. Preserve default and quiet outcomes separately, and estimate logging effects only from complete paired measurements rather than abort lifetimes.",
+  "original_audit_sha256": "aa87f8f7bbb419cf2365ce9440a9421855a47f904a164cbfdef16febad71bbae"
+}

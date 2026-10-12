@@ -1,5 +1,15 @@
 # Reproducing the comparison cases
 
+## New independent-frontends evidence
+
+The [12 October 2026 Scanless benchmark](marpa_scanless/README.md) adds compact
+saved results and portable rerun tools for C++ Crank versus Perl/C Marpa::R2.
+Its independently authored grammar frontends, first/cold/warm phases, CPU/wall
+costs, quota controls, losses and incomplete outcomes are distinct from the
+historical byte-token comparison. Public synthetic fixtures replace
+withheld local-source bytes; historical measurements keep their original
+source and corpus identities.
+
 This package separates archived measurements from a new run against the current
 Crank source. It measures **whole-input Boolean membership over bytes**. It does
 not compare capture extraction, capture histories, endpoint enumeration, Unicode
