@@ -1,10 +1,32 @@
-"""Serial AB/BA fresh-preparation CPU measurements; run under nice/taskset."""
-import datetime, hashlib, json, math, os, pathlib, statistics, subprocess, time
+"""Serial AB/BA fresh-preparation CPU measurements; see README.md."""
+import argparse, datetime, hashlib, json, math, os, pathlib, statistics, subprocess, time
 ROOT=pathlib.Path(__file__).resolve().parents[2]
-OUT=ROOT.parent/'evidence'/'paired-preparation'
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--baseline-lib',type=pathlib.Path,required=True,
+                    help='Baseline optimized libcrank.a, built with the same flags as the modified library')
+parser.add_argument('--modified-lib',type=pathlib.Path,default=ROOT/'build/hybrid/libcrank.a')
+parser.add_argument('--baseline-label',default='baseline',help='Source revision and any dirty state')
+parser.add_argument('--modified-label',default='modified',help='Source revision and any dirty state')
+parser.add_argument('--out',type=pathlib.Path,default=ROOT/'build/expression_prep/paired')
+parser.add_argument('--pairs',type=int,default=8)
+parser.add_argument('--target-batch-ms',type=float,default=10)
+parser.add_argument('--max-reps',type=int,default=100000)
+parser.add_argument('--cxx',default=os.environ.get('CXX','g++'),help='Compiler executable')
+args=parser.parse_args()
+if not 1<=args.pairs<=100 or not 4<=args.max_reps<=100000:
+    parser.error('pairs must be 1..100 and max-reps 4..100000')
+if not math.isfinite(args.target_batch_ms) or args.target_batch_ms<=0:
+    parser.error('target-batch-ms must be positive and finite')
+libraries={'baseline':args.baseline_lib.resolve(),'modified':args.modified_lib.resolve()}
+for library in libraries.values():
+    if not library.is_file():parser.error('library does not exist: '+str(library))
+OUT=args.out.resolve()
+if OUT.exists() and any(OUT.iterdir()):
+    parser.error('output directory is not empty; choose a new --out directory')
 OUT.mkdir(parents=True,exist_ok=True)
 SOURCE=pathlib.Path(__file__).with_name('stage_runner.cpp')
-bins={mode:ROOT/'build'/('expression-'+mode)/'stage_runner' for mode in ['baseline','modified']}
+bins={mode:OUT/'binaries'/mode/'stage_runner' for mode in libraries}
+for binary in bins.values():binary.parent.mkdir(parents=True)
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def run(mode,name,extra,allocation_binary=False):
     path=OUT/(name+'.jsonl')
@@ -18,21 +40,23 @@ def run(mode,name,extra,allocation_binary=False):
     if not rows or rows[-1]['kind']!='complete':raise RuntimeError('incomplete run '+name)
     print(name,'wall_seconds_operational',round(time.monotonic()-start,3),flush=True)
     return rows
-manifest={'source_sha256':sha(SOURCE),'compiler':subprocess.check_output(['g++','--version'],text=True).splitlines()[0],
+manifest={'source_sha256':sha(SOURCE),'compiler':subprocess.check_output([args.cxx,'--version'],text=True).splitlines()[0],
     'started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-    'flags':['-std=c++20','-O2','-g0','-pthread','-Iengine','-I.'],'pairs':8,'target_batch_cpu_ms':10,
-    'max_reps':100000,'max_cpu_ms_per_run':60000,'child_wall_cap_seconds':240,
-    'clock':'CLOCK_PROCESS_CPUTIME_ID','affinity':sorted(os.sched_getaffinity(0)),
-    'nice':os.getpriority(os.PRIO_PROCESS,0),'scope':'grammar-source preparation, fresh objects; destruction included; components overlap',
+    'flags':['-std=c++20','-O2','-g0','-pthread','-Iengine','-I.'],'pairs':args.pairs,'target_batch_cpu_ms':args.target_batch_ms,
+    'max_reps':args.max_reps,'max_cpu_ms_per_run':60000,'child_wall_cap_seconds':240,
+    'clock':'CLOCK_PROCESS_CPUTIME_ID','affinity':sorted(os.sched_getaffinity(0)) if hasattr(os,'sched_getaffinity') else None,
+    'nice':os.getpriority(os.PRIO_PROCESS,0) if hasattr(os,'getpriority') else None,'scope':'grammar-source preparation, fresh objects; destruction included; components overlap',
     'no_GPU':True,'no_installs':True,'quiet_wall_latency_claim':False,
-    'timing_uses_standard_allocator':True,'binaries':{}}
+    'timing_uses_standard_allocator':True,
+    'source_labels':{'baseline':args.baseline_label,'modified':args.modified_label},'binaries':{}}
 for mode,binary in bins.items():
     print('compile harness',mode,flush=True)
-    lib=binary.parent/'libcrank.a'
-    subprocess.run(['g++',*manifest['flags'],str(SOURCE),str(lib),'-o',str(binary)],cwd=ROOT,check=True,timeout=180)
+    lib=libraries[mode]
+    subprocess.run([args.cxx,*manifest['flags'],str(SOURCE),str(lib),'-o',str(binary)],cwd=ROOT,check=True,timeout=180)
     alloc_binary=binary.with_name('stage_runner_alloc')
-    subprocess.run(['g++',*manifest['flags'],'-DCRANK_EXPRESSION_ALLOCATIONS',str(SOURCE),str(lib),'-o',str(alloc_binary)],cwd=ROOT,check=True,timeout=180)
+    subprocess.run([args.cxx,*manifest['flags'],'-DCRANK_EXPRESSION_ALLOCATIONS',str(SOURCE),str(lib),'-o',str(alloc_binary)],cwd=ROOT,check=True,timeout=180)
     manifest['binaries'][mode]={'sha256':sha(binary),'allocation_binary_sha256':sha(alloc_binary),'library_sha256':sha(lib)}
+(OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 cal={mode:run(mode,'calibration-'+mode,['--reps','4']) for mode in bins}
 allocation_runs={mode:run(mode,'allocation-'+mode,['--reps','1','--allocations'],True) for mode in bins}
 timing=lambda rows:{(r['fixture'],r['stage']):r for r in rows if r['kind']=='timing'}
@@ -43,10 +67,10 @@ if identity(cal['baseline'])!=identity(cal['modified']):raise RuntimeError('fixt
 plan=OUT/'repetitions.tsv'
 with plan.open('w') as out:
     for key,r in base.items():
-        reps=max(4,min(100000,math.ceil(10_000_000/(r['cpu_ns']/r['reps']))))
+        reps=max(4,min(args.max_reps,math.ceil(args.target_batch_ms*1_000_000/(r['cpu_ns']/r['reps']))))
         out.write(' '.join([*key,str(reps)])+'\n')
 samples=[]
-for pair in range(8):
+for pair in range(args.pairs):
     order=['baseline','modified'] if pair%2==0 else ['modified','baseline']
     paired={}
     for mode in order:

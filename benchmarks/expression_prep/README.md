@@ -5,13 +5,33 @@ of the resulting program. It does not parse a regex-syntax input string with a
 second grammar, scan a matching subject, or compare recognizers with Marpa.
 The JSON grammar fixture is grammar source; no JSON subject is recognized here.
 
-Build against the same optimized engine archive on each side (no GPU, no extra
-workers). Example, from the repository in Linux/WSL:
+Build optimized baseline and modified libraries with identical compiler/flags
+(no GPU, no extra workers). The Python drivers take explicit library/binary paths
+and write to ignored `build/expression_prep/` directories. They need only Python's
+standard library and the existing C++ toolchain; no sibling evidence directory or
+private build helper is required. Example, from the modified repository in Linux/WSL
+(choose an unused baseline worktree directory and an available logical CPU):
 
 ```sh
-g++ -std=c++20 -O2 -DNDEBUG -Iengine benchmarks/expression_prep/stage_runner.cpp \
-  build/expression-baseline/libcrank.a -pthread -o build/expression-baseline/stage_runner
+git worktree add --detach ../crank-expression-base f57ac0a1552154fc27b27f5293b2f09704e8ae1e
+(cd ../crank-expression-base && CXX=g++ EXTRA_CXXFLAGS='-g0' python3 tools/build.py libcrank)
+CXX=g++ EXTRA_CXXFLAGS='-g0' python3 tools/build.py libcrank
+CPU=0
+taskset -c "$CPU" nice -n 15 python3 benchmarks/expression_prep/paired.py \
+  --baseline-lib ../crank-expression-base/build/hybrid/libcrank.a \
+  --modified-lib build/hybrid/libcrank.a \
+  --baseline-label f57ac0a1552154fc27b27f5293b2f09704e8ae1e \
+  --modified-label "$(git rev-parse HEAD)" --out build/expression_prep/paired
+taskset -c "$CPU" nice -n 15 python3 benchmarks/expression_prep/recheck.py
 ```
+
+Record any uncommitted engine changes alongside the revision labels. The build
+tool defaults to `-O2`; `-g0` above matches the historical measurement flags.
+`paired.py` compiles one identical current `stage_runner.cpp` against each input
+library, then records source/library/binary SHA-256 hashes. Compare compatible
+engine interfaces. The default output directories must be empty; use `--out` for
+each new campaign. `recheck.py` also accepts `--baseline-binary` and
+`--modified-binary` when the paired output is elsewhere.
 
 The baseline and modified binaries must use identical harness source, flags,
 fixtures, requested repetitions and rounds. No persistent preparation cache is
@@ -23,21 +43,35 @@ component measurements; each component builds its own result anew. The extra
 map is supplied to `equivalence_quotient`, matching that API's contract.
 
 ```sh
-stage_runner --reps 16 --rounds 3 --max-cpu-ms 30000 > raw.jsonl
-stage_runner --fixture literal_1024 --stage parse_source --reps 512 --rounds 7 > parse.jsonl
-stage_runner --list > inventory.jsonl
+build/expression_prep/paired/binaries/modified/stage_runner --reps 16 --rounds 3 --max-cpu-ms 30000 > raw.jsonl
+build/expression_prep/paired/binaries/modified/stage_runner --fixture literal_1024 --stage parse_source --reps 512 --rounds 7 > parse.jsonl
+build/expression_prep/paired/binaries/modified/stage_runner --list > inventory.jsonl
 ```
 
 `--plan repetitions.tsv` accepts whitespace-separated fixture, stage and
 repetition count rows. The paired driver calibrates baseline batches toward
 10 ms CPU, caps repetitions at 100,000, and freezes the same plan for both
 binaries. It then executes eight serial AB/BA pairs with balanced run order.
-Run `python3 benchmarks/expression_prep/paired.py` under the agreed one-core
+Run the paired command above under a coordinated one-core
 `nice`/`taskset` slot after building both archives. Each child has a 240-second
 operational wall cap and a 60-second measured process CPU budget. Preflight and
 allocation work are explicit and excluded from timed batches. Keep all raw
 calibration and pair files; tiny declined-plan attempts may remain below the
 target batch duration at the repetition cap.
+
+`--pairs`, `--target-batch-ms` and `--max-reps` permit a bounded driver smoke run
+(for example `--pairs 1 --target-batch-ms 0.1 --max-reps 64` with a separate
+`--out`). Such a run validates the pipeline and is too small for performance
+conclusions. The targeted recheck retains all its selected regressions and the
+positive control, reports separately, and never replaces or pools primary rows.
+
+`historical-summary.json` preserves all primary fixture/stage median CPU rows,
+declines, aggregate weights and the separate targeted results from the original
+12 October campaign. Its baseline engine was `f57ac0a` and its expression change
+was `0545f65`; these are historical results on the isolated expression tree.
+They are **not measurements of the later integrated tree**, and the 1.153x
+parser / 1.024x preparation figures do not establish a universal gain or cold
+wall latency. The full source report is [EXPRESSION_PREPARATION.md](../../docs/EXPRESSION_PREPARATION.md).
 
 `--reps` is capped at 100,000 and `--rounds` at 99. The CPU budget is checked
 before each batch; the current bounded batch may finish past it. An exceeded

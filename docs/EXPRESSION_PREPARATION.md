@@ -6,15 +6,13 @@ preparation. The large recursive fixtures spend much more CPU in the native
 constructor. This work does not establish that expression parsing caused the
 earlier cold Crank/Marpa difference.
 
-The measured source is the actual Downloads export at
-`f57ac0a1552154fc27b27f5293b2f09704e8ae1e`, copied into an independent repository.
-The human `docs/VERIFICATION.md` edit is preserved byte-for-byte, SHA-256
+The historical measurements compare publication checkpoint
+`f57ac0a1552154fc27b27f5293b2f09704e8ae1e` with the expression changes in
+`0545f6589a630b7488bb4e64f949da689d0940c7`. They predate this integration.
+The original human `docs/VERIFICATION.md` is preserved byte-for-byte, SHA-256
 `4d25f6673451b297569fc14227b408a4affad14229fae2e202004d015343884c`.
-The separate `e2a2774` experiment is not merged, ported, or included in these
-measurements. Originals, the other benchmark workspace and GPU work were not
-modified. Local memory directories contained no files; Personal Context was
-unavailable. Repository development, API, semantics and verification instructions
-were read. No installs or public pushes were performed by this task.
+The separate `e2a2774` shadow experiment was not part of these measurements;
+its research status is documented in the [integration audit](POST_PUBLICATION_AUDIT.md).
 
 ## How preparation works
 
@@ -153,18 +151,17 @@ Each library passed 2,299 preparation checks, including the forced old component
 copy path, source lifetime, malformed public ASTs, exact compile limits,
 observations and pre-cancellation.
 
-The task's sibling `evidence/` contains canonical/focused logs, baseline source
-bytes, original hashes, build receipts, raw JSONL, repetition plan, every paired
-sample and both summaries. `build_expression.py baseline` reconstructs the
-original three changed files and verifies every engine file against the original
-manifest; `modified` builds current source. Builds are serial and each compiler
-child is capped at 600 seconds. `validate_expression.py` runs the paired focused
-checks. Then run `benchmarks/expression_prep/paired.py` and `recheck.py` under the
-agreed one-core `nice`/`taskset` slot. The measurement README explains overlapping
-components and budgets. The deliverable archive preserves this directory layout.
+The full local evidence retains canonical/focused logs, baseline source bytes,
+original hashes, build receipts, raw JSONL, repetition plans, paired samples and
+summaries. Bulk process logs and machine-specific paths are excluded from this
+public source tree. The [public measurement harness](../benchmarks/expression_prep/README.md)
+provides portable commands for separate baseline/current builds, stage probes,
+and balanced paired measurement with identical flags and fixtures. New runs
+must identify their own source and resource settings; the historical numbers
+above are not measurements of a new checkout or configuration.
 
 Further profiling should split the native constructor's certificate builders
 before attempting eager/lazy changes, and examine whole-source copies in count/
 equality/affine component construction. This patch leaves those broader choices
 for measured follow-up. No unresolved correctness blocker was found for the
-actual f57ac0a source; the separate e2a2774 integration remains outside scope.
+actual f57ac0a source; the separate e2a2774 research has no native production integration.

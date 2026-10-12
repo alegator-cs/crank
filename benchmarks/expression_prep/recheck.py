@@ -1,16 +1,30 @@
-"""Targeted, separately reported follow-up of noisy regressions and a control."""
-import json,pathlib,statistics,subprocess
+"""Targeted, separately reported follow-up of historical regressions and a control."""
+import argparse,hashlib,json,pathlib,statistics,subprocess
 ROOT=pathlib.Path(__file__).resolve().parents[2]
-OUT=ROOT.parent/'evidence'/'targeted-recheck';OUT.mkdir(parents=True,exist_ok=True)
+parser=argparse.ArgumentParser(description=__doc__)
+default_bins=ROOT/'build/expression_prep/paired/binaries'
+parser.add_argument('--baseline-binary',type=pathlib.Path,default=default_bins/'baseline/stage_runner')
+parser.add_argument('--modified-binary',type=pathlib.Path,default=default_bins/'modified/stage_runner')
+parser.add_argument('--out',type=pathlib.Path,default=ROOT/'build/expression_prep/recheck')
+parser.add_argument('--pairs',type=int,default=16)
+args=parser.parse_args()
+if not 1<=args.pairs<=100:parser.error('pairs must be 1..100')
+bins={'baseline':args.baseline_binary.resolve(),'modified':args.modified_binary.resolve()}
+for binary in bins.values():
+    if not binary.is_file():parser.error('binary does not exist: '+str(binary))
+OUT=args.out.resolve()
+if OUT.exists() and any(OUT.iterdir()):
+    parser.error('output directory is not empty; choose a new --out directory')
+OUT.mkdir(parents=True,exist_ok=True)
 targets=[('shared_count','parse_source',100000),('shared_count','program_integer_on',30000),
     ('affine','program_integer_on',4000),('identifier','root_regular_fragment',10000),
     ('identifier','regular_eligibility',100000),('nested_groups_64','program_integer_on',3000)]
 samples=[]
 for target,(fixture,stage,reps) in enumerate(targets):
-    for pair in range(16):
+    for pair in range(args.pairs):
         order=['baseline','modified'] if pair%2==0 else ['modified','baseline'];both={}
         for mode in order:
-            binary=ROOT/'build'/('expression-'+mode)/'stage_runner'
+            binary=bins[mode]
             command=[str(binary),'--fixture',fixture,'--stage',stage,'--reps',str(reps),'--rounds','1','--max-cpu-ms','1000']
             name=f'{target:02d}-{pair:02d}-{mode}'
             with (OUT/(name+'.jsonl')).open('w') as out,(OUT/(name+'.stderr')).open('w') as err:
@@ -37,5 +51,7 @@ for fixture,stage,reps in targets:
         'pairs_faster':sum(r>1 for r in ratios)})
 (OUT/'pairs.json').write_text(json.dumps(samples,indent=2)+'\n')
 (OUT/'summary.json').write_text(json.dumps({'reason':'nominal primary regressions and positive control; separate results; no primary rows replaced',
-    'pairs':16,'timing_uses_standard_allocator':True,'rows':rows},indent=2)+'\n')
+    'pairs':args.pairs,'timing_uses_standard_allocator':True,
+    'binaries':{mode:{'sha256':hashlib.sha256(binary.read_bytes()).hexdigest()} for mode,binary in bins.items()},
+    'rows':rows},indent=2)+'\n')
 print(json.dumps(rows,indent=2),flush=True)
