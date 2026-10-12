@@ -261,6 +261,3 @@ def correctness_cases() -> list[dict]:
     result.append(_row("edge_list_depth64", "nested_comma_list", "(" * 64 + "a" + ")" * 64, True, suite="correctness_edge"))
     result.append(_row("edge_event_depth64", "event_stream", "E[a=" * 64 + "0" + "]" * 64 + "\n", True, suite="correctness_edge"))
     return result
-
-
-
