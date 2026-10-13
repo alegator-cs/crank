@@ -317,20 +317,24 @@ struct RegularProgram::Impl {
             return id;
         };
         intern(closure[root.entry]);
-        for (StateId source = 0; source < subsets.size(); ++source) {
-            // intern() grows subsets, so retain a copy across those reallocations.
-            const Bits subset = subsets[source];
-            for (std::size_t cls = 0; cls < alphabet_size; ++cls) {
-                Bits target(words);
-                for_each_state(subset, [&](StateId current) {
-                    for (const auto& edge : nfa[current].consuming) {
-                        if (!edge.characters.test(representative[cls])) continue;
-                        const auto& epsilon = closure[edge.target];
-                        for (std::size_t i = 0; i < words; ++i) target[i] |= epsilon[i];
-                    }
-                });
-                const auto destination = intern(target);
-                transitions[source][cls] = destination;
+        {
+            // intern() copies new targets; one scratch buffer serves every edge.
+            Bits target(words);
+            for (StateId source = 0; source < subsets.size(); ++source) {
+                // intern() grows subsets, so retain a copy across those reallocations.
+                const Bits subset = subsets[source];
+                for (std::size_t cls = 0; cls < alphabet_size; ++cls) {
+                    std::fill(target.begin(), target.end(), std::uint64_t{0});
+                    for_each_state(subset, [&](StateId current) {
+                        for (const auto& edge : nfa[current].consuming) {
+                            if (!edge.characters.test(representative[cls])) continue;
+                            const auto& epsilon = closure[edge.target];
+                            for (std::size_t i = 0; i < words; ++i) target[i] |= epsilon[i];
+                        }
+                    });
+                    const auto destination = intern(target);
+                    transitions[source][cls] = destination;
+                }
             }
         }
         minimize();
