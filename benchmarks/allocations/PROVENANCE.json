@@ -194,13 +194,13 @@
       "sha256": "9143269032ec3982ed4025652e7dc4714150c4b58ea71c21f5b525717185ef61",
       "bytes": 10006
     },
-    "fault-controls.json": {
-      "sha256": "fe2dfe2abffe14e0bf35971bb2e813b18bf2ba4ca6b08c537969aefa91c99dcc",
-      "bytes": 5125
-    },
     "fault_controls.cpp": {
       "sha256": "6f82d7384e9c515ba05658113c3b22b2e9c78c41e70d55569c9bac7c42dd19cf",
       "bytes": 16846
+    },
+    "fault-controls.json": {
+      "sha256": "fe2dfe2abffe14e0bf35971bb2e813b18bf2ba4ca6b08c537969aefa91c99dcc",
+      "bytes": 5125
     },
     "independent-paired.csv": {
       "sha256": "6e71fbef3efaaf6b568d7a47ea6a7c2201fadf13551fa573eee5feef2969a574",
@@ -211,8 +211,8 @@
       "bytes": 7705
     },
     "README.md": {
-      "sha256": "bfb1a301d916b288976e00de433505303083b6bba1df39775b3d30ee15e4a095",
-      "bytes": 9953
+      "sha256": "e420cdf5f0cee625b61cf692eaf8bd76507ae52a583d91c492920e4f28f1be3b",
+      "bytes": 10844
     },
     "reproduce.py": {
       "sha256": "50dff177e5235b8a5e8055592043c5e36273bf11caafc1b5f1d878b22b4d3d60",
@@ -225,9 +225,19 @@
     "supplemental.json": {
       "sha256": "74ce4aa0ddf6f6c1ee3f4b8e4c78078c773b61a6c5a6432e10a4643ceb81cb7f",
       "bytes": 32136
+    },
+    "VALIDATION.json": {
+      "sha256": "787008576700ec9298823cd9073e076e3c1d1f2cc48912ce4fdee685cea2a29e",
+      "bytes": 5628
     }
   },
-  "integrated_validation": "Pending; historical standalone/full-inline-candidate checks do not certify selected combination",
+  "integrated_validation": {
+    "status": "passed",
+    "record": "VALIDATION.json",
+    "tested_commit": "1162c18c5b68a7da48e45d500093775a9b8c00ff",
+    "tested_tree": "842f8864b2c8d48d651a0aec024d59da095bede2",
+    "performance_measurements": "Independent historical variants only; combined performance unmeasured"
+  },
   "public_hash_coverage": "All delivered files except PROVENANCE.json itself; no circular self-hash is claimed",
-  "reproduction_validation": "Static edits only; no build, execution, test, or syntax check performed during evidence preparation"
+  "reproduction_validation": "Static review and Python syntax passed; allocation performance controller was not executed."
 }

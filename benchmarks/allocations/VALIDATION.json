@@ -1,0 +1,159 @@
+{
+  "schema": "selected-allocation-correctness-v1",
+  "status": "passed",
+  "date_utc": "2026-10-13",
+  "tested_commit": "1162c18c5b68a7da48e45d500093775a9b8c00ff",
+  "tested_tree": "842f8864b2c8d48d651a0aec024d59da095bede2",
+  "production_source_sha256": {
+    "engine/ast_equivalence.hpp": "9e05db006bb744103790e2bd479877174709a08387a042c5b5953e7101bf37ed",
+    "engine/regular_matcher.cpp": "a1a024c509c6fbbc8b664d9bd690ec0383897a7734a2b821d65367e7785f4a75",
+    "engine/ast_machine_hybrid.cpp": "eb31f47785a639e02610ed90a7058facef09d6ce347fbe58491f8a3fef5293ad"
+  },
+  "companion_source_sha256": {
+    "runner.cpp": "d2ac8dd0962a4f6213258ee763d6676c1c60188e9a9a3e50fd07f73ced0905a9",
+    "fault_controls.cpp": "6f82d7384e9c515ba05658113c3b22b2e9c78c41e70d55569c9bac7c42dd19cf",
+    "reproduce.py": "50dff177e5235b8a5e8055592043c5e36273bf11caafc1b5f1d878b22b4d3d60"
+  },
+  "environment": {
+    "compiler": "c++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "canonical_flags": [
+      "-std=c++20",
+      "-pthread",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Iengine",
+      "-I.",
+      "-O2"
+    ],
+    "logical_cpus": 1,
+    "nice": 10,
+    "per_process_address_space_bytes": 2147483648,
+    "minimum_free_bytes": 3221225472,
+    "fault_run_timeout_seconds": 60,
+    "canonical_and_fault_overall_timeout_seconds": 1200
+  },
+  "canonical": {
+    "command": "python3 tools/test.py",
+    "exit_code": 0,
+    "native_targets": 61,
+    "engine_cli": {
+      "status": "PASS",
+      "regular_checks": {
+        "auto": 4225,
+        "occurrences": 4225,
+        "dfa": 4162,
+        "unpruned": 4225
+      },
+      "backreference_cases_each_prune_mode": 630,
+      "capture_outcome_cases": 527,
+      "forward_and_count_cases_each_prune_mode": 148,
+      "invalid_syntax_cases": 15,
+      "resource_limit_cases": 2,
+      "backend_and_offset_rejections": 3,
+      "deep_nesting_cases": 2,
+      "quick": false
+    },
+    "occurrence_cli_checks": 34,
+    "capability_cli_checks": 60,
+    "assisted_cli_checks": 18,
+    "reference_differential": {
+      "oracle": "Python re, byte patterns, ASCII classes; all accepted endpoints checked",
+      "differential_cases": 16296,
+      "distinct_patterns": 314,
+      "manual_large_count_cases": 5,
+      "rejection_cases": 30,
+      "seed": 20260907,
+      "quick": false,
+      "status": "PASS"
+    }
+  },
+  "allocation_failure_correctness": {
+    "status": "passed",
+    "assertions": 3214,
+    "sampled_ordinals_per_sweep_cap": 96,
+    "sweeps": [
+      {
+        "control": "equivalence_preparation",
+        "sampled_ordinals": 32,
+        "injected": 32,
+        "propagated_bad_alloc": 32,
+        "safe_optional_fallbacks": 0,
+        "unreached": 0,
+        "cleanup_checks": 65,
+        "live_payload_restored": true
+      },
+      {
+        "control": "regular_construction",
+        "sampled_ordinals": 96,
+        "injected": 96,
+        "propagated_bad_alloc": 95,
+        "safe_optional_fallbacks": 1,
+        "unreached": 0,
+        "cleanup_checks": 194,
+        "live_payload_restored": true
+      },
+      {
+        "control": "native_membership",
+        "sampled_ordinals": 76,
+        "injected": 76,
+        "propagated_bad_alloc": 76,
+        "safe_optional_fallbacks": 0,
+        "unreached": 0,
+        "cleanup_checks": 153,
+        "live_payload_restored": true
+      },
+      {
+        "control": "native_endpoints_spill",
+        "sampled_ordinals": 96,
+        "injected": 96,
+        "propagated_bad_alloc": 96,
+        "safe_optional_fallbacks": 0,
+        "unreached": 0,
+        "cleanup_checks": 193,
+        "live_payload_restored": true
+      },
+      {
+        "control": "native_witness",
+        "sampled_ordinals": 96,
+        "injected": 96,
+        "propagated_bad_alloc": 96,
+        "safe_optional_fallbacks": 0,
+        "unreached": 0,
+        "cleanup_checks": 193,
+        "live_payload_restored": true
+      }
+    ],
+    "owner_lifetime_live_payload_restored": true,
+    "library_sha256": "0017b07e21cd93adcbe6a7a0a43a8d44135aeb9385437e95b61aeb024ad08164",
+    "executable_sha256": "e62de8bec361c743a8a94846da9645e3998adfaeb3513e84091eb83a3a56ea54",
+    "endpoint_control_note": "The legacy native_endpoints_spill phase exercises multi-result growth with baseline storage; inline storage is excluded."
+  },
+  "controller_syntax": {
+    "status": "passed",
+    "controller_executed": false,
+    "method": "Python py_compile.compile(doraise=True), without importing or executing the controller",
+    "timeout_seconds": 30
+  },
+  "completion": {
+    "correctness_commands_finished_utc": "2026-10-13T03:09:24.770776-05:00",
+    "drain_checked_utc": "2026-10-13T03:11:32.378759-05:00",
+    "remaining_correctness_processes": 0,
+    "tracked_source_unchanged": true,
+    "working_tree_clean": true
+  },
+  "private_log_sha256": {
+    "canonical": "cb5ec2baad75a8ab6c92f3bd0cec0eb24aa38ac8ff77b21949aa175f5f8e105d",
+    "fault_library": "44f5044eff86fe733f22e89c554cafdaa2afa0b2834c8188acebb95f42f19d1f",
+    "fault_compile": "efdfcd9c6c8fcdc1607a113c4d0401b58b1614421d2b228843dd11ad066a3ce0",
+    "fault_correctness": "bc79bb4d8a6b31ac0cfa5f75866e65305463a8f3e0c3ba244fe6eabf441a9313"
+  },
+  "scope": {
+    "correctness_only": true,
+    "allocation_performance_reproduction_run": false,
+    "combined_performance_measured": false,
+    "sanitizer_run": false,
+    "pcre2_enabled": false,
+    "timing_claims": "None; interactive desktop activity was concurrent."
+  }
+}

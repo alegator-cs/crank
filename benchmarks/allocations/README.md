@@ -1,9 +1,10 @@
 # Selected allocation reductions: independent historical evidence
 
 This package documents two selected changes: **active-representative equivalence
-labels** and **reused DFA target scratch**. The exact selected combination has
-**not been jointly measured**. Final integrated validation is pending;
-this historical evidence does not certify the combination.
+labels** and **reused DFA target scratch**. The exact selected source combination
+passed the final [correctness checks](VALIDATION.json). Performance measurements
+below cover independent historical variants; combined performance remains
+**unmeasured**.
 
 The historical baseline is `ee55b19be42cbc91f3537666008b3808d18db17c`, tree
 `ce6ddf679f8ce61190911d9411592d771362954a`, measured on 2026-10-13.
@@ -97,10 +98,21 @@ Baseline timing pairs stay within their campaign. A clean first-four-case rerun
 replaces matching confirmation keys after an overlapping diagnostic. Saved
 [component declines](component-declines.json) remain separate from successful
 pairs; unsupported/limited preparation is not Boolean rejection or a latency win.
-The historical mismatch files are empty. No engine jobs were run while preparing
-this public evidence.
+The historical mismatch files are empty. These tables were packaged through
+static review; the later correctness run is recorded separately below.
 
 ## Failure controls and reproduction
+
+The selected pair passed the complete GCC 11.4 `-O2` canonical suite: **61 native
+targets**, full engine/CLI contracts, **16,296 reference differential cases**, and
+**3,214 fresh allocation-failure/lifetime assertions**. The tested commit is
+`1162c18c5b68a7da48e45d500093775a9b8c00ff`; production source hashes are unchanged
+after testing. The run used one logical CPU, a 2 GiB per-process address-space
+limit, a 20-minute overall bound and a 3 GiB free-space floor. Correctness
+processes drained by 08:11:32 UTC on 2026-10-13. Controller Python syntax passed;
+the allocation performance reproduction was deferred. Interactive desktop work
+was concurrent, so these checks support correctness without new timing claims.
+The [receipt](VALIDATION.json) records counts, source/binary/log hashes and scope.
 
 The historical [fault summaries](fault-controls.json) record independent H2C
 **3,214** and H3 **3,302** assertions passing. Five sweeps sample at most 96
