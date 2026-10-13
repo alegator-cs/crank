@@ -1,0 +1,515 @@
+[
+  {
+    "variant": "baseline",
+    "case": "literal_1024_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::length_error'\n  what():  regular DFA state limit exceeded\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "balanced_8_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "balanced_8_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "balanced_256_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "balanced_256_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "equivalent_arms_256_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "equivalent_arms_256_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "equivalent_arms_4096_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "equivalent_arms_4096_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "ambiguous_24_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "nullable_64_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "backreference_256_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "backreference_256_accept",
+    "phase": "prepare_native",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "backreference_256_accept",
+    "phase": "first_native",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "backreference_256_accept",
+    "phase": "warm_native",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "backreference_256_accept",
+    "phase": "first_core",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "backreference_256_accept",
+    "phase": "warm_core",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "shared_count_256_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "shared_count_256_reject",
+    "phase": "prepare_native",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "shared_count_256_reject",
+    "phase": "first_native",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "shared_count_256_reject",
+    "phase": "warm_native",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "shared_count_256_reject",
+    "phase": "first_core",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "shared_count_256_reject",
+    "phase": "warm_core",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "arithmetic_64_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "arithmetic_64_late_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "json_rows_64_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "json_rows_64_late_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "event_rows_64_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "event_rows_64_late_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "literal_1024_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::length_error'\n  what():  regular DFA state limit exceeded\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "balanced_8_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "balanced_8_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "balanced_256_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "balanced_256_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "equivalent_arms_256_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "equivalent_arms_256_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "equivalent_arms_4096_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "equivalent_arms_4096_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "ambiguous_24_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "nullable_64_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "backreference_256_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "backreference_256_accept",
+    "phase": "prepare_native",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "backreference_256_accept",
+    "phase": "warm_core",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "shared_count_256_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "shared_count_256_reject",
+    "phase": "prepare_native",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "shared_count_256_reject",
+    "phase": "warm_core",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "arithmetic_64_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "arithmetic_64_late_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "json_rows_64_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "json_rows_64_late_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "event_rows_64_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "event_rows_64_late_reject",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  regular matcher requires a pure acyclic executed call graph\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "literal_1024_accept",
+    "phase": "regular",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::length_error'\n  what():  regular DFA state limit exceeded\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "backreference_256_accept",
+    "phase": "prepare_native",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "backreference_256_accept",
+    "phase": "warm_core",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "shared_count_256_reject",
+    "phase": "prepare_native",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  },
+  {
+    "variant": "baseline",
+    "case": "shared_count_256_reject",
+    "phase": "warm_core",
+    "round": -1,
+    "reps": 1,
+    "error": "terminate called after throwing an instance of 'std::invalid_argument'\n  what():  shared AST execution requires a valid context-free AST without references or count observations\n",
+    "returncode": -6
+  }
+]

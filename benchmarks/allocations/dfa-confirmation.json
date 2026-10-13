@@ -1,0 +1,389 @@
+{
+  "method": "ratio = baseline_ns / H3_ns; paired by trial; seven complete rounds; startup-overlap first four excluded unless clean rerun overrides them; no multiplicity correction; batch intervals are not workload-general confidence",
+  "cases": [
+    {
+      "case": "dfa_distinct_byte_chain_128",
+      "phase": "prepare",
+      "complete_rounds": 7,
+      "provisional_startup_overlap": false,
+      "baseline_median_ns": 20542798.0,
+      "h3_median_ns": 20275998.0,
+      "ratio_of_medians": 1.013158415186271,
+      "paired_median_speedup": 1.0170709484637563,
+      "paired_geomean_speedup": 1.0379366466198985,
+      "paired_speedups": [
+        1.0170709484637563,
+        0.9333918348707078,
+        0.985135867889462,
+        1.1247390972056721,
+        1.1343207609649208,
+        1.2465033287140785,
+        0.8725763296923457
+      ],
+      "paired_min_max": [
+        0.8725763296923457,
+        1.2465033287140785
+      ],
+      "paired_log_t95": [
+        0.925396107225569,
+        1.164163620297098
+      ],
+      "rounds_faster": 4,
+      "rounds_slower": 3,
+      "two_sided_exact_sign_p": 1.0,
+      "verdict_mismatch_rounds": [],
+      "reps": [
+        1
+      ],
+      "batch_wall_ms": {
+        "baseline": {
+          "min": 19.251299,
+          "median": 20.542798,
+          "max": 25.274099
+        },
+        "h3": {
+          "min": 17.270599,
+          "median": 20.275998,
+          "max": 26.699898
+        }
+      },
+      "pattern_sha256": "c6a56016048ca4edd2673635fa40991e5536dc4c7cccfcf94368a7d54af75252",
+      "pattern_bytes": 768,
+      "group": "dfa_construction",
+      "probe_metrics": {
+        "main_calls": {
+          "baseline": 52276,
+          "h3": 35507,
+          "delta": -16769
+        },
+        "main_bytes": {
+          "baseline": 19760209,
+          "h3": 19089449,
+          "delta": -670760
+        },
+        "helper_calls": {
+          "baseline": 0,
+          "h3": 0,
+          "delta": 0
+        },
+        "helper_bytes": {
+          "baseline": 0,
+          "h3": 0,
+          "delta": 0
+        },
+        "start_live": {
+          "baseline": 42210,
+          "h3": 42210,
+          "delta": 0
+        },
+        "peak_live": {
+          "baseline": 461339,
+          "h3": 461339,
+          "delta": 0
+        },
+        "peak_extra": {
+          "baseline": 419129,
+          "h3": 419129,
+          "delta": 0
+        },
+        "end_live": {
+          "baseline": 42210,
+          "h3": 42210,
+          "delta": 0
+        }
+      },
+      "probe_verdicts": [
+        129,
+        129
+      ]
+    },
+    {
+      "case": "dfa_distinct_byte_chain_128",
+      "phase": "regular",
+      "complete_rounds": 7,
+      "provisional_startup_overlap": false,
+      "baseline_median_ns": 15148449.5,
+      "h3_median_ns": 15143499.0,
+      "ratio_of_medians": 1.0003269059548259,
+      "paired_median_speedup": 1.0126632176419046,
+      "paired_geomean_speedup": 1.0154850053622477,
+      "paired_speedups": [
+        1.0924294421602507,
+        1.0126632176419046,
+        0.9602011854742961,
+        1.0003269059548259,
+        1.017810874309092,
+        1.1347821428371747,
+        0.9073449059937748
+      ],
+      "paired_min_max": [
+        0.9073449059937748,
+        1.1347821428371747
+      ],
+      "paired_log_t95": [
+        0.9474584580317261,
+        1.088395789149242
+      ],
+      "rounds_faster": 5,
+      "rounds_slower": 2,
+      "two_sided_exact_sign_p": 0.453125,
+      "verdict_mismatch_rounds": [],
+      "reps": [
+        2
+      ],
+      "batch_wall_ms": {
+        "baseline": {
+          "min": 28.025199,
+          "median": 30.296899,
+          "max": 37.142097
+        },
+        "h3": {
+          "min": 26.225399,
+          "median": 30.286998,
+          "max": 37.794997
+        }
+      },
+      "pattern_sha256": "c6a56016048ca4edd2673635fa40991e5536dc4c7cccfcf94368a7d54af75252",
+      "pattern_bytes": 768,
+      "group": "dfa_construction",
+      "probe_metrics": {
+        "main_calls": {
+          "baseline": 52217,
+          "h3": 35448,
+          "delta": -16769
+        },
+        "main_bytes": {
+          "baseline": 19567625,
+          "h3": 18896865,
+          "delta": -670760
+        },
+        "helper_calls": {
+          "baseline": 0,
+          "h3": 0,
+          "delta": 0
+        },
+        "helper_bytes": {
+          "baseline": 0,
+          "h3": 0,
+          "delta": 0
+        },
+        "start_live": {
+          "baseline": 42210,
+          "h3": 42210,
+          "delta": 0
+        },
+        "peak_live": {
+          "baseline": 410402,
+          "h3": 410402,
+          "delta": 0
+        },
+        "peak_extra": {
+          "baseline": 368192,
+          "h3": 368192,
+          "delta": 0
+        },
+        "end_live": {
+          "baseline": 42210,
+          "h3": 42210,
+          "delta": 0
+        }
+      },
+      "probe_verdicts": [
+        130,
+        130
+      ]
+    },
+    {
+      "case": "dfa_distinct_byte_chain_256",
+      "phase": "prepare",
+      "complete_rounds": 7,
+      "provisional_startup_overlap": false,
+      "baseline_median_ns": 107201891.0,
+      "h3_median_ns": 108608899.0,
+      "ratio_of_medians": 0.9870451867852928,
+      "paired_median_speedup": 0.9922930936485458,
+      "paired_geomean_speedup": 0.9216203190510828,
+      "paired_speedups": [
+        1.0117494884097848,
+        0.9922930936485458,
+        0.9682011861602063,
+        1.036271083667209,
+        1.0485524220774356,
+        0.6809154584245659,
+        0.7852880596573365
+      ],
+      "paired_min_max": [
+        0.6809154584245659,
+        1.0485524220774356
+      ],
+      "paired_log_t95": [
+        0.7908524900411342,
+        1.0740106697313947
+      ],
+      "rounds_faster": 3,
+      "rounds_slower": 4,
+      "two_sided_exact_sign_p": 1.0,
+      "verdict_mismatch_rounds": [],
+      "reps": [
+        1
+      ],
+      "batch_wall_ms": {
+        "baseline": {
+          "min": 101.835491,
+          "median": 107.201891,
+          "max": 111.05959
+        },
+        "h3": {
+          "min": 98.271092,
+          "median": 108.608899,
+          "max": 157.437887
+        }
+      },
+      "pattern_sha256": "ea5851cc4454bafcee44e13ba14a09d775fcda78729aefa12f7d7202e4926d4c",
+      "pattern_bytes": 1536,
+      "group": "dfa_construction",
+      "probe_metrics": {
+        "main_calls": {
+          "baseline": 202687,
+          "h3": 136640,
+          "delta": -66047
+        },
+        "main_bytes": {
+          "baseline": 146959842,
+          "h3": 142204458,
+          "delta": -4755384
+        },
+        "helper_calls": {
+          "baseline": 0,
+          "h3": 0,
+          "delta": 0
+        },
+        "helper_bytes": {
+          "baseline": 0,
+          "h3": 0,
+          "delta": 0
+        },
+        "start_live": {
+          "baseline": 84370,
+          "h3": 84370,
+          "delta": 0
+        },
+        "peak_live": {
+          "baseline": 1467483,
+          "h3": 1467483,
+          "delta": 0
+        },
+        "peak_extra": {
+          "baseline": 1383113,
+          "h3": 1383113,
+          "delta": 0
+        },
+        "end_live": {
+          "baseline": 84370,
+          "h3": 84370,
+          "delta": 0
+        }
+      },
+      "probe_verdicts": [
+        257,
+        257
+      ]
+    },
+    {
+      "case": "dfa_distinct_byte_chain_256",
+      "phase": "regular",
+      "complete_rounds": 7,
+      "provisional_startup_overlap": false,
+      "baseline_median_ns": 103685293.0,
+      "h3_median_ns": 101547999.0,
+      "ratio_of_medians": 1.0210471306283446,
+      "paired_median_speedup": 1.0116902411406663,
+      "paired_geomean_speedup": 1.0428814942130158,
+      "paired_speedups": [
+        1.0116902411406663,
+        1.2518659609647262,
+        1.1652661885817521,
+        0.9757464574694721,
+        0.9550821860530133,
+        0.9639736869655108,
+        1.0119784937019403
+      ],
+      "paired_min_max": [
+        0.9550821860530133,
+        1.2518659609647262
+      ],
+      "paired_log_t95": [
+        0.9465743946744332,
+        1.1489871446882363
+      ],
+      "rounds_faster": 4,
+      "rounds_slower": 3,
+      "two_sided_exact_sign_p": 1.0,
+      "verdict_mismatch_rounds": [],
+      "reps": [
+        1
+      ],
+      "batch_wall_ms": {
+        "baseline": {
+          "min": 94.745298,
+          "median": 103.685293,
+          "max": 157.979598
+        },
+        "h3": {
+          "min": 94.633398,
+          "median": 101.547999,
+          "max": 126.195298
+        }
+      },
+      "pattern_sha256": "ea5851cc4454bafcee44e13ba14a09d775fcda78729aefa12f7d7202e4926d4c",
+      "pattern_bytes": 1536,
+      "group": "dfa_construction",
+      "probe_metrics": {
+        "main_calls": {
+          "baseline": 202622,
+          "h3": 136575,
+          "delta": -66047
+        },
+        "main_bytes": {
+          "baseline": 146575417,
+          "h3": 141820033,
+          "delta": -4755384
+        },
+        "helper_calls": {
+          "baseline": 0,
+          "h3": 0,
+          "delta": 0
+        },
+        "helper_bytes": {
+          "baseline": 0,
+          "h3": 0,
+          "delta": 0
+        },
+        "start_live": {
+          "baseline": 84370,
+          "h3": 84370,
+          "delta": 0
+        },
+        "peak_live": {
+          "baseline": 1366626,
+          "h3": 1366626,
+          "delta": 0
+        },
+        "peak_extra": {
+          "baseline": 1282256,
+          "h3": 1282256,
+          "delta": 0
+        },
+        "end_live": {
+          "baseline": 84370,
+          "h3": 84370,
+          "delta": 0
+        }
+      },
+      "probe_verdicts": [
+        258,
+        258
+      ]
+    }
+  ]
+}

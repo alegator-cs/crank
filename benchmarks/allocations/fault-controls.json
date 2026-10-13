@@ -1,0 +1,186 @@
+{
+  "h2c": [
+    {
+      "control": "allocation_failure_controls",
+      "max_points_per_sweep": 96
+    },
+    {
+      "control": "equivalence_preparation",
+      "baseline_calls": 32,
+      "baseline_bytes": 2104,
+      "baseline_peak_extra": 1984,
+      "sweep_points": 32,
+      "injected": 32,
+      "propagated_bad_alloc": 32,
+      "safe_answers_after_injection": 0,
+      "unreached": 0,
+      "largest_attempt_peak_extra": 1896,
+      "cleanup_checks": 65,
+      "scope_start_live": 0,
+      "scope_end_live": 0
+    },
+    {
+      "control": "regular_construction",
+      "baseline_calls": 179,
+      "baseline_bytes": 11323,
+      "baseline_peak_extra": 7040,
+      "sweep_points": 96,
+      "injected": 96,
+      "propagated_bad_alloc": 95,
+      "safe_answers_after_injection": 1,
+      "unreached": 0,
+      "largest_attempt_peak_extra": 6912,
+      "cleanup_checks": 194,
+      "scope_start_live": 0,
+      "scope_end_live": 0
+    },
+    {
+      "control": "native_membership",
+      "baseline_calls": 76,
+      "baseline_bytes": 10096,
+      "baseline_peak_extra": 5992,
+      "sweep_points": 76,
+      "injected": 76,
+      "propagated_bad_alloc": 76,
+      "safe_answers_after_injection": 0,
+      "unreached": 0,
+      "largest_attempt_peak_extra": 5992,
+      "cleanup_checks": 153,
+      "scope_start_live": 19000,
+      "scope_end_live": 19000
+    },
+    {
+      "control": "native_endpoints_spill",
+      "baseline_calls": 100,
+      "baseline_bytes": 17768,
+      "baseline_peak_extra": 10408,
+      "sweep_points": 96,
+      "injected": 96,
+      "propagated_bad_alloc": 96,
+      "safe_answers_after_injection": 0,
+      "unreached": 0,
+      "largest_attempt_peak_extra": 10408,
+      "cleanup_checks": 193,
+      "scope_start_live": 19000,
+      "scope_end_live": 19000
+    },
+    {
+      "control": "native_witness",
+      "baseline_calls": 120,
+      "baseline_bytes": 19328,
+      "baseline_peak_extra": 11232,
+      "sweep_points": 96,
+      "injected": 96,
+      "propagated_bad_alloc": 96,
+      "safe_answers_after_injection": 0,
+      "unreached": 0,
+      "largest_attempt_peak_extra": 11232,
+      "cleanup_checks": 193,
+      "scope_start_live": 19000,
+      "scope_end_live": 19000
+    },
+    {
+      "control": "native_owner_lifetime",
+      "constructed_owner_extra": 17616,
+      "warm_cache_extra": 0,
+      "owner_start_live": 0,
+      "owner_end_live": 0
+    },
+    {
+      "status": "passed",
+      "checks": 3214
+    }
+  ],
+  "h3": [
+    {
+      "control": "allocation_failure_controls",
+      "max_points_per_sweep": 96
+    },
+    {
+      "control": "equivalence_preparation",
+      "baseline_calls": 54,
+      "baseline_bytes": 2320,
+      "baseline_peak_extra": 2032,
+      "sweep_points": 54,
+      "injected": 54,
+      "propagated_bad_alloc": 54,
+      "safe_answers_after_injection": 0,
+      "unreached": 0,
+      "largest_attempt_peak_extra": 1944,
+      "cleanup_checks": 109,
+      "scope_start_live": 0,
+      "scope_end_live": 0
+    },
+    {
+      "control": "regular_construction",
+      "baseline_calls": 152,
+      "baseline_bytes": 11107,
+      "baseline_peak_extra": 7040,
+      "sweep_points": 96,
+      "injected": 96,
+      "propagated_bad_alloc": 95,
+      "safe_answers_after_injection": 1,
+      "unreached": 0,
+      "largest_attempt_peak_extra": 6912,
+      "cleanup_checks": 194,
+      "scope_start_live": 0,
+      "scope_end_live": 0
+    },
+    {
+      "control": "native_membership",
+      "baseline_calls": 76,
+      "baseline_bytes": 10096,
+      "baseline_peak_extra": 5992,
+      "sweep_points": 76,
+      "injected": 76,
+      "propagated_bad_alloc": 76,
+      "safe_answers_after_injection": 0,
+      "unreached": 0,
+      "largest_attempt_peak_extra": 5992,
+      "cleanup_checks": 153,
+      "scope_start_live": 19000,
+      "scope_end_live": 19000
+    },
+    {
+      "control": "native_endpoints_spill",
+      "baseline_calls": 100,
+      "baseline_bytes": 17768,
+      "baseline_peak_extra": 10408,
+      "sweep_points": 96,
+      "injected": 96,
+      "propagated_bad_alloc": 96,
+      "safe_answers_after_injection": 0,
+      "unreached": 0,
+      "largest_attempt_peak_extra": 10408,
+      "cleanup_checks": 193,
+      "scope_start_live": 19000,
+      "scope_end_live": 19000
+    },
+    {
+      "control": "native_witness",
+      "baseline_calls": 120,
+      "baseline_bytes": 19328,
+      "baseline_peak_extra": 11232,
+      "sweep_points": 96,
+      "injected": 96,
+      "propagated_bad_alloc": 96,
+      "safe_answers_after_injection": 0,
+      "unreached": 0,
+      "largest_attempt_peak_extra": 11232,
+      "cleanup_checks": 193,
+      "scope_start_live": 19000,
+      "scope_end_live": 19000
+    },
+    {
+      "control": "native_owner_lifetime",
+      "constructed_owner_extra": 17616,
+      "warm_cache_extra": 0,
+      "owner_start_live": 0,
+      "owner_end_live": 0
+    },
+    {
+      "status": "passed",
+      "checks": 3302
+    }
+  ]
+}

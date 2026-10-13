@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "encoding": "latin-1",
+  "observer": "Boolean whole-input byte membership",
+  "expectation_status": "Source-derived construction; no recognizers, builds or measurements run while authoring.",
+  "guidance": [
+    "Binary subjects must be decoded from JSON then encoded as latin-1, not UTF-8. Escaped JSON control/high bytes represent exact 0x00..0xff input bytes.",
+    "Deep captures at depth 256 are at the source parser's accepted maximum; no surrounding group is added.",
+    "H2 memory risks are best observed through direct pure_equivalence and source preparation. Auto can bypass native matching on trivial accepted inputs.",
+    "Direct RegularProgram preparation observes H3 determinization; Auto/service latencies may use other exact regular routes.",
+    "Anticipated node/state counts are source-derived planning estimates; replace them with measured AST and construction statistics in the report.",
+    "All eight cases have independently obvious exact accepted subjects. Keep process timeouts and the shared measurement deadline."
+  ],
+  "cases": [
+    {
+      "id": "nested_capture_aliases_128",
+      "group": "memory_aliases",
+      "pattern": "((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((a))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))",
+      "subject": "a",
+      "expected": true,
+      "pattern_bytes": 257,
+      "subject_bytes": 1,
+      "source": "engine/regex_ast.cpp:Parser nesting_limit=256; engine/ast_control.hpp:Capture transparent targets; tests/test_expression_preparation.cpp transparent component ownership",
+      "coverage": [
+        "parse",
+        "prepare",
+        "equivalence",
+        "inactive-label-memory",
+        "alias-heavy"
+      ],
+      "construction": "Exactly 128 nested capturing groups around one byte; maximum simultaneous group depth 128.",
+      "expected_language": "Exactly the single byte a.",
+      "anticipated_source_nodes": 129,
+      "anticipated_active_equivalence_nodes": 1,
+      "measurement_note": "Node counts are source-derived expectations, not recognizer output. Measure pure_equivalence directly because Auto may use a trivial exact route."
+    },
+    {
+      "id": "nested_capture_aliases_256",
+      "group": "memory_aliases",
+      "pattern": "((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((a))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))",
+      "subject": "a",
+      "expected": true,
+      "pattern_bytes": 513,
+      "subject_bytes": 1,
+      "source": "engine/regex_ast.cpp:Parser nesting_limit=256; engine/ast_control.hpp:Capture transparent targets; tests/test_expression_preparation.cpp transparent component ownership",
+      "coverage": [
+        "parse",
+        "prepare",
+        "equivalence",
+        "inactive-label-memory",
+        "alias-heavy"
+      ],
+      "construction": "Exactly 256 nested capturing groups around one byte; maximum simultaneous group depth 256.",
+      "expected_language": "Exactly the single byte a.",
+      "anticipated_source_nodes": 257,
+      "anticipated_active_equivalence_nodes": 1,
+      "measurement_note": "Node counts are source-derived expectations, not recognizer output. Measure pure_equivalence directly because Auto may use a trivial exact route."
+    },
+    {
+      "id": "inactive_define_alias_rules_128",
+      "group": "memory_aliases",
+      "pattern": "(?(DEFINE)(?<A0>a)(?<A1>(?&A0))(?<A2>(?&A1))(?<A3>(?&A2))(?<A4>(?&A3))(?<A5>(?&A4))(?<A6>(?&A5))(?<A7>(?&A6))(?<A8>(?&A7))(?<A9>(?&A8))(?<A10>(?&A9))(?<A11>(?&A10))(?<A12>(?&A11))(?<A13>(?&A12))(?<A14>(?&A13))(?<A15>(?&A14))(?<A16>(?&A15))(?<A17>(?&A16))(?<A18>(?&A17))(?<A19>(?&A18))(?<A20>(?&A19))(?<A21>(?&A20))(?<A22>(?&A21))(?<A23>(?&A22))(?<A24>(?&A23))(?<A25>(?&A24))(?<A26>(?&A25))(?<A27>(?&A26))(?<A28>(?&A27))(?<A29>(?&A28))(?<A30>(?&A29))(?<A31>(?&A30))(?<A32>(?&A31))(?<A33>(?&A32))(?<A34>(?&A33))(?<A35>(?&A34))(?<A36>(?&A35))(?<A37>(?&A36))(?<A38>(?&A37))(?<A39>(?&A38))(?<A40>(?&A39))(?<A41>(?&A40))(?<A42>(?&A41))(?<A43>(?&A42))(?<A44>(?&A43))(?<A45>(?&A44))(?<A46>(?&A45))(?<A47>(?&A46))(?<A48>(?&A47))(?<A49>(?&A48))(?<A50>(?&A49))(?<A51>(?&A50))(?<A52>(?&A51))(?<A53>(?&A52))(?<A54>(?&A53))(?<A55>(?&A54))(?<A56>(?&A55))(?<A57>(?&A56))(?<A58>(?&A57))(?<A59>(?&A58))(?<A60>(?&A59))(?<A61>(?&A60))(?<A62>(?&A61))(?<A63>(?&A62))(?<A64>(?&A63))(?<A65>(?&A64))(?<A66>(?&A65))(?<A67>(?&A66))(?<A68>(?&A67))(?<A69>(?&A68))(?<A70>(?&A69))(?<A71>(?&A70))(?<A72>(?&A71))(?<A73>(?&A72))(?<A74>(?&A73))(?<A75>(?&A74))(?<A76>(?&A75))(?<A77>(?&A76))(?<A78>(?&A77))(?<A79>(?&A78))(?<A80>(?&A79))(?<A81>(?&A80))(?<A82>(?&A81))(?<A83>(?&A82))(?<A84>(?&A83))(?<A85>(?&A84))(?<A86>(?&A85))(?<A87>(?&A86))(?<A88>(?&A87))(?<A89>(?&A88))(?<A90>(?&A89))(?<A91>(?&A90))(?<A92>(?&A91))(?<A93>(?&A92))(?<A94>(?&A93))(?<A95>(?&A94))(?<A96>(?&A95))(?<A97>(?&A96))(?<A98>(?&A97))(?<A99>(?&A98))(?<A100>(?&A99))(?<A101>(?&A100))(?<A102>(?&A101))(?<A103>(?&A102))(?<A104>(?&A103))(?<A105>(?&A104))(?<A106>(?&A105))(?<A107>(?&A106))(?<A108>(?&A107))(?<A109>(?&A108))(?<A110>(?&A109))(?<A111>(?&A110))(?<A112>(?&A111))(?<A113>(?&A112))(?<A114>(?&A113))(?<A115>(?&A114))(?<A116>(?&A115))(?<A117>(?&A116))(?<A118>(?&A117))(?<A119>(?&A118))(?<A120>(?&A119))(?<A121>(?&A120))(?<A122>(?&A121))(?<A123>(?&A122))(?<A124>(?&A123))(?<A125>(?&A124))(?<A126>(?&A125))(?<A127>(?&A126)))a",
+      "subject": "a",
+      "expected": true,
+      "pattern_bytes": 1961,
+      "subject_bytes": 1,
+      "source": "engine/regular_matcher.cpp:NfaBuilder Kind::Define executes epsilon; tests/test_regular_calls.cpp uncalled definitions; engine/ast_control.hpp call/capture alias collapse",
+      "coverage": [
+        "parse",
+        "prepare",
+        "equivalence",
+        "inactive-label-memory",
+        "alias-heavy"
+      ],
+      "construction": "128 inactive declared captures form a linear acyclic alias chain rooted at a. The executed root follows the DEFINE block with literal a.",
+      "expected_language": "Exactly the single byte a.",
+      "maximum_group_nesting": 3,
+      "anticipated_source_nodes_upper_bound": 264,
+      "measurement_note": "Almost all declared aliases collapse to one terminal under pure_control_targets. Full source-sized fixed label storage still exists; direct pure_equivalence measurement is the intended stress."
+    },
+    {
+      "id": "inactive_define_alias_rules_384",
+      "group": "memory_aliases",
+      "pattern": "(?(DEFINE)(?<A0>a)(?<A1>(?&A0))(?<A2>(?&A1))(?<A3>(?&A2))(?<A4>(?&A3))(?<A5>(?&A4))(?<A6>(?&A5))(?<A7>(?&A6))(?<A8>(?&A7))(?<A9>(?&A8))(?<A10>(?&A9))(?<A11>(?&A10))(?<A12>(?&A11))(?<A13>(?&A12))(?<A14>(?&A13))(?<A15>(?&A14))(?<A16>(?&A15))(?<A17>(?&A16))(?<A18>(?&A17))(?<A19>(?&A18))(?<A20>(?&A19))(?<A21>(?&A20))(?<A22>(?&A21))(?<A23>(?&A22))(?<A24>(?&A23))(?<A25>(?&A24))(?<A26>(?&A25))(?<A27>(?&A26))(?<A28>(?&A27))(?<A29>(?&A28))(?<A30>(?&A29))(?<A31>(?&A30))(?<A32>(?&A31))(?<A33>(?&A32))(?<A34>(?&A33))(?<A35>(?&A34))(?<A36>(?&A35))(?<A37>(?&A36))(?<A38>(?&A37))(?<A39>(?&A38))(?<A40>(?&A39))(?<A41>(?&A40))(?<A42>(?&A41))(?<A43>(?&A42))(?<A44>(?&A43))(?<A45>(?&A44))(?<A46>(?&A45))(?<A47>(?&A46))(?<A48>(?&A47))(?<A49>(?&A48))(?<A50>(?&A49))(?<A51>(?&A50))(?<A52>(?&A51))(?<A53>(?&A52))(?<A54>(?&A53))(?<A55>(?&A54))(?<A56>(?&A55))(?<A57>(?&A56))(?<A58>(?&A57))(?<A59>(?&A58))(?<A60>(?&A59))(?<A61>(?&A60))(?<A62>(?&A61))(?<A63>(?&A62))(?<A64>(?&A63))(?<A65>(?&A64))(?<A66>(?&A65))(?<A67>(?&A66))(?<A68>(?&A67))(?<A69>(?&A68))(?<A70>(?&A69))(?<A71>(?&A70))(?<A72>(?&A71))(?<A73>(?&A72))(?<A74>(?&A73))(?<A75>(?&A74))(?<A76>(?&A75))(?<A77>(?&A76))(?<A78>(?&A77))(?<A79>(?&A78))(?<A80>(?&A79))(?<A81>(?&A80))(?<A82>(?&A81))(?<A83>(?&A82))(?<A84>(?&A83))(?<A85>(?&A84))(?<A86>(?&A85))(?<A87>(?&A86))(?<A88>(?&A87))(?<A89>(?&A88))(?<A90>(?&A89))(?<A91>(?&A90))(?<A92>(?&A91))(?<A93>(?&A92))(?<A94>(?&A93))(?<A95>(?&A94))(?<A96>(?&A95))(?<A97>(?&A96))(?<A98>(?&A97))(?<A99>(?&A98))(?<A100>(?&A99))(?<A101>(?&A100))(?<A102>(?&A101))(?<A103>(?&A102))(?<A104>(?&A103))(?<A105>(?&A104))(?<A106>(?&A105))(?<A107>(?&A106))(?<A108>(?&A107))(?<A109>(?&A108))(?<A110>(?&A109))(?<A111>(?&A110))(?<A112>(?&A111))(?<A113>(?&A112))(?<A114>(?&A113))(?<A115>(?&A114))(?<A116>(?&A115))(?<A117>(?&A116))(?<A118>(?&A117))(?<A119>(?&A118))(?<A120>(?&A119))(?<A121>(?&A120))(?<A122>(?&A121))(?<A123>(?&A122))(?<A124>(?&A123))(?<A125>(?&A124))(?<A126>(?&A125))(?<A127>(?&A126))(?<A128>(?&A127))(?<A129>(?&A128))(?<A130>(?&A129))(?<A131>(?&A130))(?<A132>(?&A131))(?<A133>(?&A132))(?<A134>(?&A133))(?<A135>(?&A134))(?<A136>(?&A135))(?<A137>(?&A136))(?<A138>(?&A137))(?<A139>(?&A138))(?<A140>(?&A139))(?<A141>(?&A140))(?<A142>(?&A141))(?<A143>(?&A142))(?<A144>(?&A143))(?<A145>(?&A144))(?<A146>(?&A145))(?<A147>(?&A146))(?<A148>(?&A147))(?<A149>(?&A148))(?<A150>(?&A149))(?<A151>(?&A150))(?<A152>(?&A151))(?<A153>(?&A152))(?<A154>(?&A153))(?<A155>(?&A154))(?<A156>(?&A155))(?<A157>(?&A156))(?<A158>(?&A157))(?<A159>(?&A158))(?<A160>(?&A159))(?<A161>(?&A160))(?<A162>(?&A161))(?<A163>(?&A162))(?<A164>(?&A163))(?<A165>(?&A164))(?<A166>(?&A165))(?<A167>(?&A166))(?<A168>(?&A167))(?<A169>(?&A168))(?<A170>(?&A169))(?<A171>(?&A170))(?<A172>(?&A171))(?<A173>(?&A172))(?<A174>(?&A173))(?<A175>(?&A174))(?<A176>(?&A175))(?<A177>(?&A176))(?<A178>(?&A177))(?<A179>(?&A178))(?<A180>(?&A179))(?<A181>(?&A180))(?<A182>(?&A181))(?<A183>(?&A182))(?<A184>(?&A183))(?<A185>(?&A184))(?<A186>(?&A185))(?<A187>(?&A186))(?<A188>(?&A187))(?<A189>(?&A188))(?<A190>(?&A189))(?<A191>(?&A190))(?<A192>(?&A191))(?<A193>(?&A192))(?<A194>(?&A193))(?<A195>(?&A194))(?<A196>(?&A195))(?<A197>(?&A196))(?<A198>(?&A197))(?<A199>(?&A198))(?<A200>(?&A199))(?<A201>(?&A200))(?<A202>(?&A201))(?<A203>(?&A202))(?<A204>(?&A203))(?<A205>(?&A204))(?<A206>(?&A205))(?<A207>(?&A206))(?<A208>(?&A207))(?<A209>(?&A208))(?<A210>(?&A209))(?<A211>(?&A210))(?<A212>(?&A211))(?<A213>(?&A212))(?<A214>(?&A213))(?<A215>(?&A214))(?<A216>(?&A215))(?<A217>(?&A216))(?<A218>(?&A217))(?<A219>(?&A218))(?<A220>(?&A219))(?<A221>(?&A220))(?<A222>(?&A221))(?<A223>(?&A222))(?<A224>(?&A223))(?<A225>(?&A224))(?<A226>(?&A225))(?<A227>(?&A226))(?<A228>(?&A227))(?<A229>(?&A228))(?<A230>(?&A229))(?<A231>(?&A230))(?<A232>(?&A231))(?<A233>(?&A232))(?<A234>(?&A233))(?<A235>(?&A234))(?<A236>(?&A235))(?<A237>(?&A236))(?<A238>(?&A237))(?<A239>(?&A238))(?<A240>(?&A239))(?<A241>(?&A240))(?<A242>(?&A241))(?<A243>(?&A242))(?<A244>(?&A243))(?<A245>(?&A244))(?<A246>(?&A245))(?<A247>(?&A246))(?<A248>(?&A247))(?<A249>(?&A248))(?<A250>(?&A249))(?<A251>(?&A250))(?<A252>(?&A251))(?<A253>(?&A252))(?<A254>(?&A253))(?<A255>(?&A254))(?<A256>(?&A255))(?<A257>(?&A256))(?<A258>(?&A257))(?<A259>(?&A258))(?<A260>(?&A259))(?<A261>(?&A260))(?<A262>(?&A261))(?<A263>(?&A262))(?<A264>(?&A263))(?<A265>(?&A264))(?<A266>(?&A265))(?<A267>(?&A266))(?<A268>(?&A267))(?<A269>(?&A268))(?<A270>(?&A269))(?<A271>(?&A270))(?<A272>(?&A271))(?<A273>(?&A272))(?<A274>(?&A273))(?<A275>(?&A274))(?<A276>(?&A275))(?<A277>(?&A276))(?<A278>(?&A277))(?<A279>(?&A278))(?<A280>(?&A279))(?<A281>(?&A280))(?<A282>(?&A281))(?<A283>(?&A282))(?<A284>(?&A283))(?<A285>(?&A284))(?<A286>(?&A285))(?<A287>(?&A286))(?<A288>(?&A287))(?<A289>(?&A288))(?<A290>(?&A289))(?<A291>(?&A290))(?<A292>(?&A291))(?<A293>(?&A292))(?<A294>(?&A293))(?<A295>(?&A294))(?<A296>(?&A295))(?<A297>(?&A296))(?<A298>(?&A297))(?<A299>(?&A298))(?<A300>(?&A299))(?<A301>(?&A300))(?<A302>(?&A301))(?<A303>(?&A302))(?<A304>(?&A303))(?<A305>(?&A304))(?<A306>(?&A305))(?<A307>(?&A306))(?<A308>(?&A307))(?<A309>(?&A308))(?<A310>(?&A309))(?<A311>(?&A310))(?<A312>(?&A311))(?<A313>(?&A312))(?<A314>(?&A313))(?<A315>(?&A314))(?<A316>(?&A315))(?<A317>(?&A316))(?<A318>(?&A317))(?<A319>(?&A318))(?<A320>(?&A319))(?<A321>(?&A320))(?<A322>(?&A321))(?<A323>(?&A322))(?<A324>(?&A323))(?<A325>(?&A324))(?<A326>(?&A325))(?<A327>(?&A326))(?<A328>(?&A327))(?<A329>(?&A328))(?<A330>(?&A329))(?<A331>(?&A330))(?<A332>(?&A331))(?<A333>(?&A332))(?<A334>(?&A333))(?<A335>(?&A334))(?<A336>(?&A335))(?<A337>(?&A336))(?<A338>(?&A337))(?<A339>(?&A338))(?<A340>(?&A339))(?<A341>(?&A340))(?<A342>(?&A341))(?<A343>(?&A342))(?<A344>(?&A343))(?<A345>(?&A344))(?<A346>(?&A345))(?<A347>(?&A346))(?<A348>(?&A347))(?<A349>(?&A348))(?<A350>(?&A349))(?<A351>(?&A350))(?<A352>(?&A351))(?<A353>(?&A352))(?<A354>(?&A353))(?<A355>(?&A354))(?<A356>(?&A355))(?<A357>(?&A356))(?<A358>(?&A357))(?<A359>(?&A358))(?<A360>(?&A359))(?<A361>(?&A360))(?<A362>(?&A361))(?<A363>(?&A362))(?<A364>(?&A363))(?<A365>(?&A364))(?<A366>(?&A365))(?<A367>(?&A366))(?<A368>(?&A367))(?<A369>(?&A368))(?<A370>(?&A369))(?<A371>(?&A370))(?<A372>(?&A371))(?<A373>(?&A372))(?<A374>(?&A373))(?<A375>(?&A374))(?<A376>(?&A375))(?<A377>(?&A376))(?<A378>(?&A377))(?<A379>(?&A378))(?<A380>(?&A379))(?<A381>(?&A380))(?<A382>(?&A381))(?<A383>(?&A382)))a",
+      "subject": "a",
+      "expected": true,
+      "pattern_bytes": 6313,
+      "subject_bytes": 1,
+      "source": "engine/regular_matcher.cpp:NfaBuilder Kind::Define executes epsilon; tests/test_regular_calls.cpp uncalled definitions; engine/ast_control.hpp call/capture alias collapse",
+      "coverage": [
+        "parse",
+        "prepare",
+        "equivalence",
+        "inactive-label-memory",
+        "alias-heavy"
+      ],
+      "construction": "384 inactive declared captures form a linear acyclic alias chain rooted at a. The executed root follows the DEFINE block with literal a.",
+      "expected_language": "Exactly the single byte a.",
+      "maximum_group_nesting": 3,
+      "anticipated_source_nodes_upper_bound": 776,
+      "measurement_note": "Almost all declared aliases collapse to one terminal under pure_control_targets. Full source-sized fixed label storage still exists; direct pure_equivalence measurement is the intended stress."
+    },
+    {
+      "id": "inactive_unique_byte_terminals_256",
+      "group": "memory_terminals",
+      "pattern": "(?(DEFINE)(?<T0>[\\x00])(?<T1>[\\x01])(?<T2>[\\x02])(?<T3>[\\x03])(?<T4>[\\x04])(?<T5>[\\x05])(?<T6>[\\x06])(?<T7>[\\x07])(?<T8>[\\x08])(?<T9>[\\x09])(?<T10>[\\x0a])(?<T11>[\\x0b])(?<T12>[\\x0c])(?<T13>[\\x0d])(?<T14>[\\x0e])(?<T15>[\\x0f])(?<T16>[\\x10])(?<T17>[\\x11])(?<T18>[\\x12])(?<T19>[\\x13])(?<T20>[\\x14])(?<T21>[\\x15])(?<T22>[\\x16])(?<T23>[\\x17])(?<T24>[\\x18])(?<T25>[\\x19])(?<T26>[\\x1a])(?<T27>[\\x1b])(?<T28>[\\x1c])(?<T29>[\\x1d])(?<T30>[\\x1e])(?<T31>[\\x1f])(?<T32>[\\x20])(?<T33>[\\x21])(?<T34>[\\x22])(?<T35>[\\x23])(?<T36>[\\x24])(?<T37>[\\x25])(?<T38>[\\x26])(?<T39>[\\x27])(?<T40>[\\x28])(?<T41>[\\x29])(?<T42>[\\x2a])(?<T43>[\\x2b])(?<T44>[\\x2c])(?<T45>[\\x2d])(?<T46>[\\x2e])(?<T47>[\\x2f])(?<T48>[\\x30])(?<T49>[\\x31])(?<T50>[\\x32])(?<T51>[\\x33])(?<T52>[\\x34])(?<T53>[\\x35])(?<T54>[\\x36])(?<T55>[\\x37])(?<T56>[\\x38])(?<T57>[\\x39])(?<T58>[\\x3a])(?<T59>[\\x3b])(?<T60>[\\x3c])(?<T61>[\\x3d])(?<T62>[\\x3e])(?<T63>[\\x3f])(?<T64>[\\x40])(?<T65>[\\x41])(?<T66>[\\x42])(?<T67>[\\x43])(?<T68>[\\x44])(?<T69>[\\x45])(?<T70>[\\x46])(?<T71>[\\x47])(?<T72>[\\x48])(?<T73>[\\x49])(?<T74>[\\x4a])(?<T75>[\\x4b])(?<T76>[\\x4c])(?<T77>[\\x4d])(?<T78>[\\x4e])(?<T79>[\\x4f])(?<T80>[\\x50])(?<T81>[\\x51])(?<T82>[\\x52])(?<T83>[\\x53])(?<T84>[\\x54])(?<T85>[\\x55])(?<T86>[\\x56])(?<T87>[\\x57])(?<T88>[\\x58])(?<T89>[\\x59])(?<T90>[\\x5a])(?<T91>[\\x5b])(?<T92>[\\x5c])(?<T93>[\\x5d])(?<T94>[\\x5e])(?<T95>[\\x5f])(?<T96>[\\x60])(?<T97>[\\x61])(?<T98>[\\x62])(?<T99>[\\x63])(?<T100>[\\x64])(?<T101>[\\x65])(?<T102>[\\x66])(?<T103>[\\x67])(?<T104>[\\x68])(?<T105>[\\x69])(?<T106>[\\x6a])(?<T107>[\\x6b])(?<T108>[\\x6c])(?<T109>[\\x6d])(?<T110>[\\x6e])(?<T111>[\\x6f])(?<T112>[\\x70])(?<T113>[\\x71])(?<T114>[\\x72])(?<T115>[\\x73])(?<T116>[\\x74])(?<T117>[\\x75])(?<T118>[\\x76])(?<T119>[\\x77])(?<T120>[\\x78])(?<T121>[\\x79])(?<T122>[\\x7a])(?<T123>[\\x7b])(?<T124>[\\x7c])(?<T125>[\\x7d])(?<T126>[\\x7e])(?<T127>[\\x7f])(?<T128>[\\x80])(?<T129>[\\x81])(?<T130>[\\x82])(?<T131>[\\x83])(?<T132>[\\x84])(?<T133>[\\x85])(?<T134>[\\x86])(?<T135>[\\x87])(?<T136>[\\x88])(?<T137>[\\x89])(?<T138>[\\x8a])(?<T139>[\\x8b])(?<T140>[\\x8c])(?<T141>[\\x8d])(?<T142>[\\x8e])(?<T143>[\\x8f])(?<T144>[\\x90])(?<T145>[\\x91])(?<T146>[\\x92])(?<T147>[\\x93])(?<T148>[\\x94])(?<T149>[\\x95])(?<T150>[\\x96])(?<T151>[\\x97])(?<T152>[\\x98])(?<T153>[\\x99])(?<T154>[\\x9a])(?<T155>[\\x9b])(?<T156>[\\x9c])(?<T157>[\\x9d])(?<T158>[\\x9e])(?<T159>[\\x9f])(?<T160>[\\xa0])(?<T161>[\\xa1])(?<T162>[\\xa2])(?<T163>[\\xa3])(?<T164>[\\xa4])(?<T165>[\\xa5])(?<T166>[\\xa6])(?<T167>[\\xa7])(?<T168>[\\xa8])(?<T169>[\\xa9])(?<T170>[\\xaa])(?<T171>[\\xab])(?<T172>[\\xac])(?<T173>[\\xad])(?<T174>[\\xae])(?<T175>[\\xaf])(?<T176>[\\xb0])(?<T177>[\\xb1])(?<T178>[\\xb2])(?<T179>[\\xb3])(?<T180>[\\xb4])(?<T181>[\\xb5])(?<T182>[\\xb6])(?<T183>[\\xb7])(?<T184>[\\xb8])(?<T185>[\\xb9])(?<T186>[\\xba])(?<T187>[\\xbb])(?<T188>[\\xbc])(?<T189>[\\xbd])(?<T190>[\\xbe])(?<T191>[\\xbf])(?<T192>[\\xc0])(?<T193>[\\xc1])(?<T194>[\\xc2])(?<T195>[\\xc3])(?<T196>[\\xc4])(?<T197>[\\xc5])(?<T198>[\\xc6])(?<T199>[\\xc7])(?<T200>[\\xc8])(?<T201>[\\xc9])(?<T202>[\\xca])(?<T203>[\\xcb])(?<T204>[\\xcc])(?<T205>[\\xcd])(?<T206>[\\xce])(?<T207>[\\xcf])(?<T208>[\\xd0])(?<T209>[\\xd1])(?<T210>[\\xd2])(?<T211>[\\xd3])(?<T212>[\\xd4])(?<T213>[\\xd5])(?<T214>[\\xd6])(?<T215>[\\xd7])(?<T216>[\\xd8])(?<T217>[\\xd9])(?<T218>[\\xda])(?<T219>[\\xdb])(?<T220>[\\xdc])(?<T221>[\\xdd])(?<T222>[\\xde])(?<T223>[\\xdf])(?<T224>[\\xe0])(?<T225>[\\xe1])(?<T226>[\\xe2])(?<T227>[\\xe3])(?<T228>[\\xe4])(?<T229>[\\xe5])(?<T230>[\\xe6])(?<T231>[\\xe7])(?<T232>[\\xe8])(?<T233>[\\xe9])(?<T234>[\\xea])(?<T235>[\\xeb])(?<T236>[\\xec])(?<T237>[\\xed])(?<T238>[\\xee])(?<T239>[\\xef])(?<T240>[\\xf0])(?<T241>[\\xf1])(?<T242>[\\xf2])(?<T243>[\\xf3])(?<T244>[\\xf4])(?<T245>[\\xf5])(?<T246>[\\xf6])(?<T247>[\\xf7])(?<T248>[\\xf8])(?<T249>[\\xf9])(?<T250>[\\xfa])(?<T251>[\\xfb])(?<T252>[\\xfc])(?<T253>[\\xfd])(?<T254>[\\xfe])(?<T255>[\\xff]))a",
+      "subject": "a",
+      "expected": true,
+      "pattern_bytes": 3742,
+      "subject_bytes": 1,
+      "source": "tests/test_equivalence.cpp full 256-bit terminal identity; engine/ast_equivalence.hpp immutable CharSet labels; engine/regular_matcher.cpp DEFINE epsilon",
+      "coverage": [
+        "parse",
+        "prepare",
+        "equivalence",
+        "full-byte-labels",
+        "inactive-definitions"
+      ],
+      "construction": "256 unused captures each contain a different singleton from byte 0x00 through 0xff; executed root is a.",
+      "expected_language": "Exactly the single byte a.",
+      "maximum_group_nesting": 2,
+      "anticipated_source_nodes_upper_bound": 520,
+      "measurement_note": "All 256 unique terminal labels are active representatives even though DEFINE bodies are not executed. This differs from an alias-heavy single-active-label stress."
+    },
+    {
+      "id": "inactive_duplicate_fullbyte_classes_256",
+      "group": "memory_terminals",
+      "pattern": "(?(DEFINE)(?<T0>[\\x00-\\xff])(?<T1>[\\x00-\\xff])(?<T2>[\\x00-\\xff])(?<T3>[\\x00-\\xff])(?<T4>[\\x00-\\xff])(?<T5>[\\x00-\\xff])(?<T6>[\\x00-\\xff])(?<T7>[\\x00-\\xff])(?<T8>[\\x00-\\xff])(?<T9>[\\x00-\\xff])(?<T10>[\\x00-\\xff])(?<T11>[\\x00-\\xff])(?<T12>[\\x00-\\xff])(?<T13>[\\x00-\\xff])(?<T14>[\\x00-\\xff])(?<T15>[\\x00-\\xff])(?<T16>[\\x00-\\xff])(?<T17>[\\x00-\\xff])(?<T18>[\\x00-\\xff])(?<T19>[\\x00-\\xff])(?<T20>[\\x00-\\xff])(?<T21>[\\x00-\\xff])(?<T22>[\\x00-\\xff])(?<T23>[\\x00-\\xff])(?<T24>[\\x00-\\xff])(?<T25>[\\x00-\\xff])(?<T26>[\\x00-\\xff])(?<T27>[\\x00-\\xff])(?<T28>[\\x00-\\xff])(?<T29>[\\x00-\\xff])(?<T30>[\\x00-\\xff])(?<T31>[\\x00-\\xff])(?<T32>[\\x00-\\xff])(?<T33>[\\x00-\\xff])(?<T34>[\\x00-\\xff])(?<T35>[\\x00-\\xff])(?<T36>[\\x00-\\xff])(?<T37>[\\x00-\\xff])(?<T38>[\\x00-\\xff])(?<T39>[\\x00-\\xff])(?<T40>[\\x00-\\xff])(?<T41>[\\x00-\\xff])(?<T42>[\\x00-\\xff])(?<T43>[\\x00-\\xff])(?<T44>[\\x00-\\xff])(?<T45>[\\x00-\\xff])(?<T46>[\\x00-\\xff])(?<T47>[\\x00-\\xff])(?<T48>[\\x00-\\xff])(?<T49>[\\x00-\\xff])(?<T50>[\\x00-\\xff])(?<T51>[\\x00-\\xff])(?<T52>[\\x00-\\xff])(?<T53>[\\x00-\\xff])(?<T54>[\\x00-\\xff])(?<T55>[\\x00-\\xff])(?<T56>[\\x00-\\xff])(?<T57>[\\x00-\\xff])(?<T58>[\\x00-\\xff])(?<T59>[\\x00-\\xff])(?<T60>[\\x00-\\xff])(?<T61>[\\x00-\\xff])(?<T62>[\\x00-\\xff])(?<T63>[\\x00-\\xff])(?<T64>[\\x00-\\xff])(?<T65>[\\x00-\\xff])(?<T66>[\\x00-\\xff])(?<T67>[\\x00-\\xff])(?<T68>[\\x00-\\xff])(?<T69>[\\x00-\\xff])(?<T70>[\\x00-\\xff])(?<T71>[\\x00-\\xff])(?<T72>[\\x00-\\xff])(?<T73>[\\x00-\\xff])(?<T74>[\\x00-\\xff])(?<T75>[\\x00-\\xff])(?<T76>[\\x00-\\xff])(?<T77>[\\x00-\\xff])(?<T78>[\\x00-\\xff])(?<T79>[\\x00-\\xff])(?<T80>[\\x00-\\xff])(?<T81>[\\x00-\\xff])(?<T82>[\\x00-\\xff])(?<T83>[\\x00-\\xff])(?<T84>[\\x00-\\xff])(?<T85>[\\x00-\\xff])(?<T86>[\\x00-\\xff])(?<T87>[\\x00-\\xff])(?<T88>[\\x00-\\xff])(?<T89>[\\x00-\\xff])(?<T90>[\\x00-\\xff])(?<T91>[\\x00-\\xff])(?<T92>[\\x00-\\xff])(?<T93>[\\x00-\\xff])(?<T94>[\\x00-\\xff])(?<T95>[\\x00-\\xff])(?<T96>[\\x00-\\xff])(?<T97>[\\x00-\\xff])(?<T98>[\\x00-\\xff])(?<T99>[\\x00-\\xff])(?<T100>[\\x00-\\xff])(?<T101>[\\x00-\\xff])(?<T102>[\\x00-\\xff])(?<T103>[\\x00-\\xff])(?<T104>[\\x00-\\xff])(?<T105>[\\x00-\\xff])(?<T106>[\\x00-\\xff])(?<T107>[\\x00-\\xff])(?<T108>[\\x00-\\xff])(?<T109>[\\x00-\\xff])(?<T110>[\\x00-\\xff])(?<T111>[\\x00-\\xff])(?<T112>[\\x00-\\xff])(?<T113>[\\x00-\\xff])(?<T114>[\\x00-\\xff])(?<T115>[\\x00-\\xff])(?<T116>[\\x00-\\xff])(?<T117>[\\x00-\\xff])(?<T118>[\\x00-\\xff])(?<T119>[\\x00-\\xff])(?<T120>[\\x00-\\xff])(?<T121>[\\x00-\\xff])(?<T122>[\\x00-\\xff])(?<T123>[\\x00-\\xff])(?<T124>[\\x00-\\xff])(?<T125>[\\x00-\\xff])(?<T126>[\\x00-\\xff])(?<T127>[\\x00-\\xff])(?<T128>[\\x00-\\xff])(?<T129>[\\x00-\\xff])(?<T130>[\\x00-\\xff])(?<T131>[\\x00-\\xff])(?<T132>[\\x00-\\xff])(?<T133>[\\x00-\\xff])(?<T134>[\\x00-\\xff])(?<T135>[\\x00-\\xff])(?<T136>[\\x00-\\xff])(?<T137>[\\x00-\\xff])(?<T138>[\\x00-\\xff])(?<T139>[\\x00-\\xff])(?<T140>[\\x00-\\xff])(?<T141>[\\x00-\\xff])(?<T142>[\\x00-\\xff])(?<T143>[\\x00-\\xff])(?<T144>[\\x00-\\xff])(?<T145>[\\x00-\\xff])(?<T146>[\\x00-\\xff])(?<T147>[\\x00-\\xff])(?<T148>[\\x00-\\xff])(?<T149>[\\x00-\\xff])(?<T150>[\\x00-\\xff])(?<T151>[\\x00-\\xff])(?<T152>[\\x00-\\xff])(?<T153>[\\x00-\\xff])(?<T154>[\\x00-\\xff])(?<T155>[\\x00-\\xff])(?<T156>[\\x00-\\xff])(?<T157>[\\x00-\\xff])(?<T158>[\\x00-\\xff])(?<T159>[\\x00-\\xff])(?<T160>[\\x00-\\xff])(?<T161>[\\x00-\\xff])(?<T162>[\\x00-\\xff])(?<T163>[\\x00-\\xff])(?<T164>[\\x00-\\xff])(?<T165>[\\x00-\\xff])(?<T166>[\\x00-\\xff])(?<T167>[\\x00-\\xff])(?<T168>[\\x00-\\xff])(?<T169>[\\x00-\\xff])(?<T170>[\\x00-\\xff])(?<T171>[\\x00-\\xff])(?<T172>[\\x00-\\xff])(?<T173>[\\x00-\\xff])(?<T174>[\\x00-\\xff])(?<T175>[\\x00-\\xff])(?<T176>[\\x00-\\xff])(?<T177>[\\x00-\\xff])(?<T178>[\\x00-\\xff])(?<T179>[\\x00-\\xff])(?<T180>[\\x00-\\xff])(?<T181>[\\x00-\\xff])(?<T182>[\\x00-\\xff])(?<T183>[\\x00-\\xff])(?<T184>[\\x00-\\xff])(?<T185>[\\x00-\\xff])(?<T186>[\\x00-\\xff])(?<T187>[\\x00-\\xff])(?<T188>[\\x00-\\xff])(?<T189>[\\x00-\\xff])(?<T190>[\\x00-\\xff])(?<T191>[\\x00-\\xff])(?<T192>[\\x00-\\xff])(?<T193>[\\x00-\\xff])(?<T194>[\\x00-\\xff])(?<T195>[\\x00-\\xff])(?<T196>[\\x00-\\xff])(?<T197>[\\x00-\\xff])(?<T198>[\\x00-\\xff])(?<T199>[\\x00-\\xff])(?<T200>[\\x00-\\xff])(?<T201>[\\x00-\\xff])(?<T202>[\\x00-\\xff])(?<T203>[\\x00-\\xff])(?<T204>[\\x00-\\xff])(?<T205>[\\x00-\\xff])(?<T206>[\\x00-\\xff])(?<T207>[\\x00-\\xff])(?<T208>[\\x00-\\xff])(?<T209>[\\x00-\\xff])(?<T210>[\\x00-\\xff])(?<T211>[\\x00-\\xff])(?<T212>[\\x00-\\xff])(?<T213>[\\x00-\\xff])(?<T214>[\\x00-\\xff])(?<T215>[\\x00-\\xff])(?<T216>[\\x00-\\xff])(?<T217>[\\x00-\\xff])(?<T218>[\\x00-\\xff])(?<T219>[\\x00-\\xff])(?<T220>[\\x00-\\xff])(?<T221>[\\x00-\\xff])(?<T222>[\\x00-\\xff])(?<T223>[\\x00-\\xff])(?<T224>[\\x00-\\xff])(?<T225>[\\x00-\\xff])(?<T226>[\\x00-\\xff])(?<T227>[\\x00-\\xff])(?<T228>[\\x00-\\xff])(?<T229>[\\x00-\\xff])(?<T230>[\\x00-\\xff])(?<T231>[\\x00-\\xff])(?<T232>[\\x00-\\xff])(?<T233>[\\x00-\\xff])(?<T234>[\\x00-\\xff])(?<T235>[\\x00-\\xff])(?<T236>[\\x00-\\xff])(?<T237>[\\x00-\\xff])(?<T238>[\\x00-\\xff])(?<T239>[\\x00-\\xff])(?<T240>[\\x00-\\xff])(?<T241>[\\x00-\\xff])(?<T242>[\\x00-\\xff])(?<T243>[\\x00-\\xff])(?<T244>[\\x00-\\xff])(?<T245>[\\x00-\\xff])(?<T246>[\\x00-\\xff])(?<T247>[\\x00-\\xff])(?<T248>[\\x00-\\xff])(?<T249>[\\x00-\\xff])(?<T250>[\\x00-\\xff])(?<T251>[\\x00-\\xff])(?<T252>[\\x00-\\xff])(?<T253>[\\x00-\\xff])(?<T254>[\\x00-\\xff])(?<T255>[\\x00-\\xff]))a",
+      "subject": "a",
+      "expected": true,
+      "pattern_bytes": 5022,
+      "subject_bytes": 1,
+      "source": "tests/test_equivalence.cpp full 256-bit terminal identity; engine/ast_equivalence.hpp partition refinement; engine/regular_matcher.cpp DEFINE epsilon",
+      "coverage": [
+        "parse",
+        "prepare",
+        "equivalence",
+        "full-byte-labels",
+        "duplicate-terminals"
+      ],
+      "construction": "256 unused captures each contain the universal 256-byte class; executed root is a.",
+      "expected_language": "Exactly the single byte a.",
+      "maximum_group_nesting": 2,
+      "anticipated_source_nodes_upper_bound": 520,
+      "measurement_note": "This creates many identical six-word immutable terminal labels and short stable refinement. It isolates label storage from many refinement rounds."
+    },
+    {
+      "id": "dfa_distinct_byte_chain_128",
+      "group": "dfa_construction",
+      "pattern": "[\\x00][\\x01][\\x02][\\x03][\\x04][\\x05][\\x06][\\x07][\\x08][\\x09][\\x0a][\\x0b][\\x0c][\\x0d][\\x0e][\\x0f][\\x10][\\x11][\\x12][\\x13][\\x14][\\x15][\\x16][\\x17][\\x18][\\x19][\\x1a][\\x1b][\\x1c][\\x1d][\\x1e][\\x1f][\\x20][\\x21][\\x22][\\x23][\\x24][\\x25][\\x26][\\x27][\\x28][\\x29][\\x2a][\\x2b][\\x2c][\\x2d][\\x2e][\\x2f][\\x30][\\x31][\\x32][\\x33][\\x34][\\x35][\\x36][\\x37][\\x38][\\x39][\\x3a][\\x3b][\\x3c][\\x3d][\\x3e][\\x3f][\\x40][\\x41][\\x42][\\x43][\\x44][\\x45][\\x46][\\x47][\\x48][\\x49][\\x4a][\\x4b][\\x4c][\\x4d][\\x4e][\\x4f][\\x50][\\x51][\\x52][\\x53][\\x54][\\x55][\\x56][\\x57][\\x58][\\x59][\\x5a][\\x5b][\\x5c][\\x5d][\\x5e][\\x5f][\\x60][\\x61][\\x62][\\x63][\\x64][\\x65][\\x66][\\x67][\\x68][\\x69][\\x6a][\\x6b][\\x6c][\\x6d][\\x6e][\\x6f][\\x70][\\x71][\\x72][\\x73][\\x74][\\x75][\\x76][\\x77][\\x78][\\x79][\\x7a][\\x7b][\\x7c][\\x7d][\\x7e][\\x7f]",
+      "subject": "\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000b\f\r\u000e\u000f\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001a\u001b\u001c\u001d\u001e\u001f !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
+      "expected": true,
+      "pattern_bytes": 768,
+      "subject_bytes": 128,
+      "source": "tests/smoke_regular.cpp binary alphabet/paired DFA oracle; engine/regular_matcher.cpp charset NFA edges, subset determinization and byte classes",
+      "coverage": [
+        "parse",
+        "prepare",
+        "dfa",
+        "alphabet-classes",
+        "target-scratch",
+        "source-subset-ownership"
+      ],
+      "construction": "Concatenation of 128 distinct singleton byte classes in numeric order; subject is the exact byte sequence 0x00..0x7f.",
+      "expected_language": "Exactly the supplied binary byte sequence.",
+      "maximum_group_nesting": 0,
+      "anticipated_source_nodes": 129,
+      "anticipated_nfa_states": 258,
+      "anticipated_dfa_states_upper_bound": 130,
+      "measurement_note": "Expected NFA/DFA dimensions are inferred from the current Thompson construction, not measured. Defaults max_nfa_states=4096 and max_dfa_states=512 cover these dimensions. Use direct RegularProgram preparation for H3; retain distinct source-subset copies."
+    },
+    {
+      "id": "dfa_distinct_byte_chain_256",
+      "group": "dfa_construction",
+      "pattern": "[\\x00][\\x01][\\x02][\\x03][\\x04][\\x05][\\x06][\\x07][\\x08][\\x09][\\x0a][\\x0b][\\x0c][\\x0d][\\x0e][\\x0f][\\x10][\\x11][\\x12][\\x13][\\x14][\\x15][\\x16][\\x17][\\x18][\\x19][\\x1a][\\x1b][\\x1c][\\x1d][\\x1e][\\x1f][\\x20][\\x21][\\x22][\\x23][\\x24][\\x25][\\x26][\\x27][\\x28][\\x29][\\x2a][\\x2b][\\x2c][\\x2d][\\x2e][\\x2f][\\x30][\\x31][\\x32][\\x33][\\x34][\\x35][\\x36][\\x37][\\x38][\\x39][\\x3a][\\x3b][\\x3c][\\x3d][\\x3e][\\x3f][\\x40][\\x41][\\x42][\\x43][\\x44][\\x45][\\x46][\\x47][\\x48][\\x49][\\x4a][\\x4b][\\x4c][\\x4d][\\x4e][\\x4f][\\x50][\\x51][\\x52][\\x53][\\x54][\\x55][\\x56][\\x57][\\x58][\\x59][\\x5a][\\x5b][\\x5c][\\x5d][\\x5e][\\x5f][\\x60][\\x61][\\x62][\\x63][\\x64][\\x65][\\x66][\\x67][\\x68][\\x69][\\x6a][\\x6b][\\x6c][\\x6d][\\x6e][\\x6f][\\x70][\\x71][\\x72][\\x73][\\x74][\\x75][\\x76][\\x77][\\x78][\\x79][\\x7a][\\x7b][\\x7c][\\x7d][\\x7e][\\x7f][\\x80][\\x81][\\x82][\\x83][\\x84][\\x85][\\x86][\\x87][\\x88][\\x89][\\x8a][\\x8b][\\x8c][\\x8d][\\x8e][\\x8f][\\x90][\\x91][\\x92][\\x93][\\x94][\\x95][\\x96][\\x97][\\x98][\\x99][\\x9a][\\x9b][\\x9c][\\x9d][\\x9e][\\x9f][\\xa0][\\xa1][\\xa2][\\xa3][\\xa4][\\xa5][\\xa6][\\xa7][\\xa8][\\xa9][\\xaa][\\xab][\\xac][\\xad][\\xae][\\xaf][\\xb0][\\xb1][\\xb2][\\xb3][\\xb4][\\xb5][\\xb6][\\xb7][\\xb8][\\xb9][\\xba][\\xbb][\\xbc][\\xbd][\\xbe][\\xbf][\\xc0][\\xc1][\\xc2][\\xc3][\\xc4][\\xc5][\\xc6][\\xc7][\\xc8][\\xc9][\\xca][\\xcb][\\xcc][\\xcd][\\xce][\\xcf][\\xd0][\\xd1][\\xd2][\\xd3][\\xd4][\\xd5][\\xd6][\\xd7][\\xd8][\\xd9][\\xda][\\xdb][\\xdc][\\xdd][\\xde][\\xdf][\\xe0][\\xe1][\\xe2][\\xe3][\\xe4][\\xe5][\\xe6][\\xe7][\\xe8][\\xe9][\\xea][\\xeb][\\xec][\\xed][\\xee][\\xef][\\xf0][\\xf1][\\xf2][\\xf3][\\xf4][\\xf5][\\xf6][\\xf7][\\xf8][\\xf9][\\xfa][\\xfb][\\xfc][\\xfd][\\xfe][\\xff]",
+      "subject": "\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000b\f\r\u000e\u000f\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001a\u001b\u001c\u001d\u001e\u001f !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\u0080\u0081\u0082\u0083\u0084\u0085\u0086\u0087\u0088\u0089\u008a\u008b\u008c\u008d\u008e\u008f\u0090\u0091\u0092\u0093\u0094\u0095\u0096\u0097\u0098\u0099\u009a\u009b\u009c\u009d\u009e\u009f\u00a0\u00a1\u00a2\u00a3\u00a4\u00a5\u00a6\u00a7\u00a8\u00a9\u00aa\u00ab\u00ac\u00ad\u00ae\u00af\u00b0\u00b1\u00b2\u00b3\u00b4\u00b5\u00b6\u00b7\u00b8\u00b9\u00ba\u00bb\u00bc\u00bd\u00be\u00bf\u00c0\u00c1\u00c2\u00c3\u00c4\u00c5\u00c6\u00c7\u00c8\u00c9\u00ca\u00cb\u00cc\u00cd\u00ce\u00cf\u00d0\u00d1\u00d2\u00d3\u00d4\u00d5\u00d6\u00d7\u00d8\u00d9\u00da\u00db\u00dc\u00dd\u00de\u00df\u00e0\u00e1\u00e2\u00e3\u00e4\u00e5\u00e6\u00e7\u00e8\u00e9\u00ea\u00eb\u00ec\u00ed\u00ee\u00ef\u00f0\u00f1\u00f2\u00f3\u00f4\u00f5\u00f6\u00f7\u00f8\u00f9\u00fa\u00fb\u00fc\u00fd\u00fe\u00ff",
+      "expected": true,
+      "pattern_bytes": 1536,
+      "subject_bytes": 256,
+      "source": "tests/smoke_regular.cpp binary alphabet/paired DFA oracle; engine/regular_matcher.cpp charset NFA edges, subset determinization and byte classes",
+      "coverage": [
+        "parse",
+        "prepare",
+        "dfa",
+        "alphabet-classes",
+        "target-scratch",
+        "source-subset-ownership"
+      ],
+      "construction": "Concatenation of 256 distinct singleton byte classes in numeric order; subject is the exact byte sequence 0x00..0xff.",
+      "expected_language": "Exactly the supplied binary byte sequence.",
+      "maximum_group_nesting": 0,
+      "anticipated_source_nodes": 257,
+      "anticipated_nfa_states": 514,
+      "anticipated_dfa_states_upper_bound": 258,
+      "measurement_note": "Expected NFA/DFA dimensions are inferred from the current Thompson construction, not measured. Defaults max_nfa_states=4096 and max_dfa_states=512 cover these dimensions. Use direct RegularProgram preparation for H3; retain distinct source-subset copies."
+    }
+  ]
+}

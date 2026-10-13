@@ -1,0 +1,233 @@
+{
+  "schema": "independent-allocation-evidence-v1",
+  "baseline_commit": "ee55b19be42cbc91f3537666008b3808d18db17c",
+  "baseline_tree": "ce6ddf679f8ce61190911d9411592d771362954a",
+  "evidence_commit": "43c132be65e255d91901cdc6938057b9c5d8e462",
+  "measurement_date": "2026-10-13",
+  "selected_combination_measured": false,
+  "excluded_inline_commit": "2be727fdafce1af032aab866d7900f5cfd397859",
+  "excluded_variants": {
+    "h2": "fixed labels sized to all source nodes",
+    "h23": "fixed-label prototype plus scratch reuse",
+    "final": "inline result/subscriber storage plus active labels plus scratch reuse"
+  },
+  "baseline_engine_sha256": {
+    "engine/affine_matcher.cpp": "7b90a1b351e0d147d10b69af894464949357a994e16eaec8eb5ffbf8b4fd5d62",
+    "engine/affine_matcher.hpp": "201ab17cec52259c7254c26162bf128c3dd19049883c1466b460a3bb34edd878",
+    "engine/assisted_main.cpp": "7f6fd0886d7fecdfdb27f6a129561c686d71c37d18716be1441d37529a9f7374",
+    "engine/assisted_matcher.cpp": "c108145eaf607cfefaacb9d799f26fbc59bb9596a83cbed4290f82b23187db68",
+    "engine/assisted_matcher.hpp": "8e2b5439802deea81fb9d15270c9263005332a4f1e0fc4825da14608fe1a4c9b",
+    "engine/ast_control.hpp": "bfeaef8371f7b1b6c5a78365a2ebe7a91a5f5475d6a6230a71ea01952d860f40",
+    "engine/ast_equivalence.hpp": "e07dae383567e66e3bf5a041ef41df772c9be552e87019550fc46327fe4b3792",
+    "engine/ast_index.hpp": "9ff527f47e966a5093cf1cf744c395240159df923aac8f587770cb72c0b6b800",
+    "engine/ast_machine.hpp": "92d2891e59ce9f5c600193bb3027f64cb35ad784aa7c6bf4e80e407677780630",
+    "engine/ast_machine_hybrid.cpp": "eb31f47785a639e02610ed90a7058facef09d6ce347fbe58491f8a3fef5293ad",
+    "engine/atomic_exclusions.hpp": "dd47a6d6b34fb9a5bf10d133f13d19b16540b90a910f8745db8f337bbcf21003",
+    "engine/boolean_source_view.hpp": "94976272fd9253e1c423e447b2448adea65e32406dcbd793f93a8b877026cc3f",
+    "engine/bounded_boundaries.hpp": "622f50eb9bf38ec702a5c2f21708715f4638c92f09463a256ae20f50f196894d",
+    "engine/bounded_word_regions.hpp": "3a8ad2d0ad7138aefc83f2293585315771477b6045302d6acf0bc9d8c428c0f0",
+    "engine/compiled_exact_programs.hpp": "38fd4f698e60c23ca4ca10b3150eac5d30e1dcda511a03a73b4a9ee4a0aee9f6",
+    "engine/count_matcher.cpp": "9fa0f7247ede1accb4bb3234b0189d5b8b34102d82dc662b8cfa26866b038963",
+    "engine/count_matcher.hpp": "e7227431ee502e194d5b566f6fee555a0f5d7ff99a291efde3ce278705d8d119",
+    "engine/crank.cpp": "e1dae4d272e600df47d3d1d5dc45db060c6847d675fe86464267d4e825070f02",
+    "engine/crank.hpp": "2a6fb46a19b7e869b87b95339ddd6dbead1111340c10305654b44b3a53134a90",
+    "engine/deterministic_program.hpp": "821c95a3b5cc23308346c17bd606e201b98bef27ed7f748c965d2efd30475616",
+    "engine/equality_matcher.cpp": "c6c55144e3e09319199a4fee05218eb845bea4d10191dcb190d3cb6218096d95",
+    "engine/equality_matcher.hpp": "dd313d835f26665a246c2f43143bd28a691a3f77c7fdbe181bd42f1385e11b74",
+    "engine/exact_end_spines.hpp": "9c3c9ac35dfda086054b66599b0984121e78c878c9428be189e59eee00aa67a4",
+    "engine/exact_lowering_cache.hpp": "1b3b7a9dcc235c5110662b05eccaef4aece9f73eb1e9f7cef0f076f5ea7b87ca",
+    "engine/exact_program_statistics.hpp": "a803b87d8dbde3253e5053059253e13cec4e67aebdd95b7543cc0a228fa28143",
+    "engine/external_regular.cpp": "5125ad88596759bca033fd9d4a2fa8a6d19f6e31d163ca53d429c2fd582492f9",
+    "engine/external_regular.hpp": "beb02839c17a4960bb6443f3de4c33b70255166406071d5e16753561bc35de4d",
+    "engine/fragment_matcher.cpp": "70c5dd3c8f52f4f393212d1fb8aa0058b8743d1f39b23529c0d27c10857dc527",
+    "engine/fragment_matcher.hpp": "c089b20e3db6c7416a43c55e8e07757a850c28993873759d889994be754fb24e",
+    "engine/input_constraints.cpp": "b5aaeb0daaa2be43b5a94a6d9f9a772395ba733f36c6d75c36a8903a46acb999",
+    "engine/input_constraints.hpp": "24bb4ac51acab08fc22f8c4b39048a4636816dc95ce24529538e310378455e26",
+    "engine/integer_row.hpp": "854cc047217eca7d47bc92e1084040180c71b3a2c411c06ce01f8ef00a2d8835",
+    "engine/lowered_deterministic_program.hpp": "24b555bd007960f94b537f5351a539f5145540d4c1ae07b91007a1e3f7dc4143",
+    "engine/lowered_predictive_program.hpp": "b051a2b3be23c1f90c071ad46ac14213b6e98e1de90bb9c300808419790a27f1",
+    "engine/lowered_spine_program.hpp": "540d752a3df7df1be8145d395c90903884a2a39b2fb2518c9e6e81e8f3e640fb",
+    "engine/main.cpp": "4cc99cb9f4f5f65a0cac1490531c07c1d8e68be1770c693fc80c33485e687aac",
+    "engine/native_slr_program.hpp": "aff98163359996a6a939f1a3dfa761dce464f6b9729b2325de48c85654e0439d",
+    "engine/occurrence_analysis.cpp": "ee542c59f227ce8c97b18dac3d4187d10b1b00f1d7e3b1dd713ca14ee4ad8822",
+    "engine/occurrence_analysis.hpp": "7995ce289d10e22635cf004ccd2c2ac2ce8ef0fc1e5766e309303f1af4ccc4ee",
+    "engine/occurrence_matcher.cpp": "e50b842940d220cb2cad4d089dfff3bfab2eebaad3ed81b6a63cd5b304b3f215",
+    "engine/occurrence_matcher.hpp": "0f44ec19ce3771e1b2a28d7ef78db8ce203e5ec81ff2c86df0e762a4d188f92b",
+    "engine/occurrence_path.hpp": "7254c400cc2d892db3b6edfbcd8565f862aa5f7b09f39be24cbdd77d0427ff1f",
+    "engine/optimizations.cpp": "e84e908c78342e56850fa9d428d5635957e2739804cee509fa2b9fd208a3d28c",
+    "engine/optimizations.hpp": "a317aae397f8dbca2214dbe526024a0a638867368b228e228210a50bffbbcf72",
+    "engine/predictive_regions.hpp": "23661fb331ee4cbe3ebedfbfa9f1bf6fe061a5330fbeb1ffb5ec426e5898185f",
+    "engine/private_culler.cpp": "389b7289ff6512bbb7ef22007740f52dd9d1eb95c00d1fe8bc82e16195f43859",
+    "engine/private_culler.hpp": "79bc8e0dd77ec0a8ea63f59a4cee27c8d9ff7d4f8f08857a7e25d7f40e2b05df",
+    "engine/pure_alias_source_view.hpp": "3e50aa20f725ebcf867e20a3e4b1001250e063e5216c7084575223a5a1cdf6cb",
+    "engine/regex_ast.cpp": "bcf8ddcb96e5feb89b87649f5437b39c3f619a49e225ec6cc102a3cab31a3686",
+    "engine/regex_ast.hpp": "7b97e9e17f2d3f3f3a90acbdeea4260f658971e968c1f662e7ef1465a0189a2d",
+    "engine/regional_predictive.hpp": "946f8efc3cec0fca2181c97751166ca71b8f08a2ddd63ef6dd4a272da1b76440",
+    "engine/regional_statistics.hpp": "623311086a499dfc97363a9043fd275c7ddb295fbc649043ad816dbf9c5c2cc3",
+    "engine/regular_matcher.cpp": "d96de6e825d824029da374f5d4a9ad3c5d38b48016dd7b129fab7a2fab432c68",
+    "engine/regular_matcher.hpp": "30b66843211a36d4c551586552176276636355357e4a1d4dc484306ea7e7ff66",
+    "engine/regular_regions.hpp": "4cf0cce351969d311b8d5b067b7292b47632657401d5977cc5f3632a07b44038",
+    "engine/source_portfolio_statistics.hpp": "11d511757a7e40c47cd5738e68f2c309f10b58b2831f5cb174e7f7c114f31200",
+    "engine/source_view_portfolio.hpp": "744cda748cb84e1a6f9827637c582fb531392292da8992c4bec14f04b5c7fadd",
+    "engine/state_matcher.cpp": "c5834b17312c458a3d65a6da79a478b05541ad822d200ef797dadc2df66ee3f7",
+    "engine/state_matcher.hpp": "db03e209556366bea6e8451ab0471437d10c02d7b163f6dc822337e1855d9c56"
+  },
+  "variants": {
+    "h2c": {
+      "commit": "2bc1a338b33528c7fe4b93112c36b67b168a7766",
+      "changed_source": "engine/ast_equivalence.hpp",
+      "changed_source_sha256": "9e05db006bb744103790e2bd479877174709a08387a042c5b5953e7101bf37ed",
+      "archive_sha256": "9675b53ca1145c32143fec162b182ecb8a45a191cf225bfaf82b3f280d58f657",
+      "binaries": {
+        "timing": "74b221b05d3bf8af976264e280be5f42d1d58b569fc586fd7feff5870243e408",
+        "probe": "29848e49230c81f23179a639e906f75b2137aee5da217c057474793b89592d67"
+      },
+      "runner_sha256": "d2ac8dd0962a4f6213258ee763d6676c1c60188e9a9a3e50fd07f73ced0905a9",
+      "campaign": "compact-confirmation.jsonl",
+      "integrated_commit": "b0dc28507f65125d56e9d1e5637348e07117a6bf"
+    },
+    "h3": {
+      "commit": "1cfc70c7850fe7bd040e058161ee3c2b5ddf1042",
+      "changed_source": "engine/regular_matcher.cpp",
+      "changed_source_sha256": "a1a024c509c6fbbc8b664d9bd690ec0383897a7734a2b821d65367e7785f4a75",
+      "archive_sha256": "c5a2dff920f1119c22a600be9ab0591acb2c96cc45583aa918fd905ab8e9153a",
+      "binaries": {
+        "timing": "de80e6da5741c5b58dfef8f30e1b35b698ae1d3f20ce63132e103d1b8f6a05b5",
+        "probe": "04c9888b7921d58e4836cf7ca5c1fa595a26178068b8ccd2f15ffd3bea88fcd2"
+      },
+      "runner_sha256": "d2ac8dd0962a4f6213258ee763d6676c1c60188e9a9a3e50fd07f73ced0905a9",
+      "campaign": "confirmation.jsonl; clean first-four rerun replaces matching keys",
+      "integrated_commit": "bdc66cc9e6d04ba1a64e05d15b0de1b4d9d5824f"
+    },
+    "baseline": {
+      "archive_sha256": "66b55b005c6ed168e6e7e5b3674950ad7a24da2e4a419cb6fffe330efde80c65",
+      "binaries": {
+        "timing": "c48bad0fdbebec89543cebac71b4a62b38b5e99ab6dd523acb034bf8e5f1f607",
+        "probe": "d34bb86a1c180a71e933ff008fece56d71289639197face1eec64c97be337b7c"
+      },
+      "runner_sha256": "d2ac8dd0962a4f6213258ee763d6676c1c60188e9a9a3e50fd07f73ced0905a9"
+    }
+  },
+  "compiler_version": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "flags": [
+    "-std=c++20",
+    "-pthread",
+    "-O2",
+    "-Iengine",
+    "-I."
+  ],
+  "protocol": {
+    "timing": "uninstrumented steady_clock wall time only; seven randomized-order paired trials, target30ms batches, capped131072 repetitions",
+    "allocation": "separate one-operation successful C++ new/new[]/aligned-new probes; no allocator-interposed latency comparison",
+    "aggregation": "per-case ratio of medians, equally weighted by unique source pattern within each separate phase",
+    "phase_overlap": "do not pool phase aggregates",
+    "first_query": "one fresh prepared object per process; first_* repetition count1",
+    "warm_service": "fresh owned input each operation; assisted foreground wall time excludes separately measured wait_idle drain",
+    "limits": "8second child lifetime; no affinity/frequency pinning claimed",
+    "expected_verdicts": "saved reports list no Boolean mismatch; unsupported/limited component preparations are declines",
+    "binding_check": "read-only audit confirmed independent variant snapshots differ from baseline only in named source file; named filebytes match each selected commit"
+  },
+  "source_records": {
+    "confirmation-paired.csv": {
+      "sha256": "afb4c77fa4b0fc32a2d733aab38856008d74a245fd2644f28ff951765ba95d9b",
+      "bytes": 469519
+    },
+    "confirmation-summary.json": {
+      "sha256": "dd591babbfd48c5ac6034830e5dde7aa76c1f9e542fc6130ea226b02aa4e589e",
+      "bytes": 34802
+    },
+    "h3-analysis.json": {
+      "sha256": "da8fcb1bc49b1e9bcb6d9162343e6ed97c5a31f9881a2ef62ca297262859965c",
+      "bytes": 563119
+    },
+    "final-build-manifest.json": {
+      "sha256": "c6397e0ec332bb7dfd0035605ef504af0b029f42d687f8b208cbce7d207dee7e",
+      "bytes": 13261
+    },
+    "runner-manifest.json": {
+      "sha256": "93bf77479d32c70a1aa3e3aae0f60e8e50b9b65d342aea3741a8639099f06ed6",
+      "bytes": 2312
+    },
+    "ablation-build-manifest.json": {
+      "sha256": "ff3b1ae53613d84c195fc0d48ea710c05c80272f936279ada23c7fc636424482",
+      "bytes": 26844
+    },
+    "h2c-fault.log": {
+      "sha256": "aac1b28e71f96ac17d7663c10e9b7cda5eb4eb0640f75364a7c3fef90463070e",
+      "bytes": 1781
+    },
+    "h3-fault.log": {
+      "sha256": "744f508ea1f38d8841ad33bb9a575ed1fa977091c59a5fc225b74edd4126cf95",
+      "bytes": 1782
+    },
+    "confirmation-errors.json": {
+      "sha256": "6f6c57d28d6d55f317b1a2b8a4ee2597cc35b98cb35899119429aab93a2ccd10",
+      "bytes": 20439
+    },
+    "benchmarks/allocations/runner.cpp": {
+      "sha256": "d2ac8dd0962a4f6213258ee763d6676c1c60188e9a9a3e50fd07f73ced0905a9",
+      "bytes": 9535
+    },
+    "benchmarks/allocations/fault_controls.cpp": {
+      "sha256": "6f82d7384e9c515ba05658113c3b22b2e9c78c41e70d55569c9bac7c42dd19cf",
+      "bytes": 16846
+    },
+    "benchmarks/allocations/corpus.json": {
+      "sha256": "19253d03a5980c430b1e07d056e273ea87bb6a80f236f5db0edfdc07490c0d01",
+      "bytes": 64312
+    },
+    "benchmarks/allocations/supplemental.json": {
+      "sha256": "74ce4aa0ddf6f6c1ee3f4b8e4c78078c773b61a6c5a6432e10a4643ceb81cb7f",
+      "bytes": 32136
+    }
+  },
+  "public_files": {
+    "component-declines.json": {
+      "sha256": "11d2f8653a3b78b60fc9974a1c19a22313b850f68268d813a6b1af0638902a97",
+      "bytes": 18951
+    },
+    "corpus.json": {
+      "sha256": "19253d03a5980c430b1e07d056e273ea87bb6a80f236f5db0edfdc07490c0d01",
+      "bytes": 64312
+    },
+    "dfa-confirmation.json": {
+      "sha256": "9143269032ec3982ed4025652e7dc4714150c4b58ea71c21f5b525717185ef61",
+      "bytes": 10006
+    },
+    "fault-controls.json": {
+      "sha256": "fe2dfe2abffe14e0bf35971bb2e813b18bf2ba4ca6b08c537969aefa91c99dcc",
+      "bytes": 5125
+    },
+    "fault_controls.cpp": {
+      "sha256": "6f82d7384e9c515ba05658113c3b22b2e9c78c41e70d55569c9bac7c42dd19cf",
+      "bytes": 16846
+    },
+    "independent-paired.csv": {
+      "sha256": "6e71fbef3efaaf6b568d7a47ea6a7c2201fadf13551fa573eee5feef2969a574",
+      "bytes": 115300
+    },
+    "independent-summary.json": {
+      "sha256": "190dde9abcff4fa9da22640cfe32647f2368d6d796221e904800fb224c9d7757",
+      "bytes": 7705
+    },
+    "README.md": {
+      "sha256": "bfb1a301d916b288976e00de433505303083b6bba1df39775b3d30ee15e4a095",
+      "bytes": 9953
+    },
+    "reproduce.py": {
+      "sha256": "50dff177e5235b8a5e8055592043c5e36273bf11caafc1b5f1d878b22b4d3d60",
+      "bytes": 11728
+    },
+    "runner.cpp": {
+      "sha256": "d2ac8dd0962a4f6213258ee763d6676c1c60188e9a9a3e50fd07f73ced0905a9",
+      "bytes": 9535
+    },
+    "supplemental.json": {
+      "sha256": "74ce4aa0ddf6f6c1ee3f4b8e4c78078c773b61a6c5a6432e10a4643ceb81cb7f",
+      "bytes": 32136
+    }
+  },
+  "integrated_validation": "Pending; historical standalone/full-inline-candidate checks do not certify selected combination",
+  "public_hash_coverage": "All delivered files except PROVENANCE.json itself; no circular self-hash is claimed",
+  "reproduction_validation": "Static edits only; no build, execution, test, or syntax check performed during evidence preparation"
+}

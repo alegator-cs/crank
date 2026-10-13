@@ -1,0 +1,439 @@
+{
+  "schema_version": 1,
+  "encoding": "latin-1",
+  "observer": "Boolean whole-input byte membership",
+  "expectation_status": "source-derived; recognizer not run during corpus authoring",
+  "guidance": [
+    "Use actual strings as bytes without newline normalization.",
+    "Run Auto and forced Occurrences separately: Auto can resolve regular/literal cases before native requests.",
+    "Measure helper admission and work; do not assume that a fixture or an eligible grammar implies actual admission.",
+    "Exclude fixture materialization from phase measurements; warm service must use fresh input objects.",
+    "Use bounded per-case process timeouts; equivalent_arms_4096 is the original 8197-byte assisted control.",
+    "Report bad_alloc, cancellation and resource-limit outcomes distinctly from Boolean rejection."
+  ],
+  "cases": [
+    {
+      "id": "empty_accept",
+      "group": "tiny",
+      "pattern": "",
+      "subject": "",
+      "expected": true,
+      "pattern_bytes": 0,
+      "subject_bytes": 0,
+      "source": "benchmarks/expression_prep/stage_runner.cpp:empty",
+      "coverage": [
+        "parse",
+        "prepare",
+        "empty"
+      ]
+    },
+    {
+      "id": "literal_accept",
+      "group": "tiny",
+      "pattern": "hello",
+      "subject": "hello",
+      "expected": true,
+      "pattern_bytes": 5,
+      "subject_bytes": 5,
+      "source": "benchmarks/expression_prep/stage_runner.cpp:literal",
+      "coverage": [
+        "parse",
+        "prepare",
+        "singleton"
+      ]
+    },
+    {
+      "id": "literal_reject",
+      "group": "tiny",
+      "pattern": "hello",
+      "subject": "hellx",
+      "expected": false,
+      "pattern_bytes": 5,
+      "subject_bytes": 5,
+      "source": "derived stage_runner literal",
+      "coverage": [
+        "parse",
+        "prepare",
+        "no-result"
+      ]
+    },
+    {
+      "id": "literal_1024_accept",
+      "group": "large_source",
+      "pattern": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "subject": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expected": true,
+      "pattern_bytes": 1024,
+      "subject_bytes": 1024,
+      "source": "benchmarks/expression_prep/stage_runner.cpp:literal_1024",
+      "coverage": [
+        "parse",
+        "prepare",
+        "literal-allocation-control"
+      ]
+    },
+    {
+      "id": "identifier_512_accept",
+      "group": "regular",
+      "pattern": "[A-Za-z_][A-Za-z_0-9]*",
+      "subject": "item_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expected": true,
+      "pattern_bytes": 22,
+      "subject_bytes": 512,
+      "source": "benchmarks/expression_prep/stage_runner.cpp:identifier",
+      "coverage": [
+        "dfa",
+        "warm"
+      ]
+    },
+    {
+      "id": "identifier_512_late_reject",
+      "group": "regular",
+      "pattern": "[A-Za-z_][A-Za-z_0-9]*",
+      "subject": "item_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+      "expected": false,
+      "pattern_bytes": 22,
+      "subject_bytes": 512,
+      "source": "derived stage_runner identifier",
+      "coverage": [
+        "dfa",
+        "late-reject"
+      ]
+    },
+    {
+      "id": "regular_ab_4096_accept",
+      "group": "regular",
+      "pattern": "(?:ab)+",
+      "subject": "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab",
+      "expected": true,
+      "pattern_bytes": 7,
+      "subject_bytes": 4096,
+      "source": "benchmarks/fixtures.py",
+      "coverage": [
+        "dfa",
+        "warm"
+      ]
+    },
+    {
+      "id": "regular_ab_4097_reject",
+      "group": "regular",
+      "pattern": "(?:ab)+",
+      "subject": "ababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababa",
+      "expected": false,
+      "pattern_bytes": 7,
+      "subject_bytes": 4097,
+      "source": "benchmarks/fixtures.py",
+      "coverage": [
+        "dfa",
+        "late-reject"
+      ]
+    },
+    {
+      "id": "regular_classes_1024_accept",
+      "group": "regular",
+      "pattern": "(?:a[bc]|b[cd]|c[de]|d[ef]|e[fg]|f[gh]|g[hi]|h[ij]|i[jk]|j[kl]|k[lm]|l[mn]|m[no]|n[op]|o[pq]|p[qr])+",
+      "subject": "abbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccdde",
+      "expected": true,
+      "pattern_bytes": 100,
+      "subject_bytes": 1024,
+      "source": "new regular determinization alphabet-class control",
+      "coverage": [
+        "dfa",
+        "target-scratch",
+        "class-loop"
+      ]
+    },
+    {
+      "id": "regular_classes_1024_reject",
+      "group": "regular",
+      "pattern": "(?:a[bc]|b[cd]|c[de]|d[ef]|e[fg]|f[gh]|g[hi]|h[ij]|i[jk]|j[kl]|k[lm]|l[mn]|m[no]|n[op]|o[pq]|p[qr])+",
+      "subject": "abbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccddeabbccdd!",
+      "expected": false,
+      "pattern_bytes": 100,
+      "subject_bytes": 1024,
+      "source": "new regular determinization alphabet-class control",
+      "coverage": [
+        "dfa",
+        "target-scratch",
+        "late-reject"
+      ]
+    },
+    {
+      "id": "balanced_8_accept",
+      "group": "recursive",
+      "pattern": "(?<S>a(?&S)b|)",
+      "subject": "aaaaaaaabbbbbbbb",
+      "expected": true,
+      "pattern_bytes": 14,
+      "subject_bytes": 16,
+      "source": "benchmarks/fixtures.py",
+      "coverage": [
+        "native",
+        "singleton-result",
+        "tiny"
+      ]
+    },
+    {
+      "id": "balanced_8_reject",
+      "group": "recursive",
+      "pattern": "(?<S>a(?&S)b|)",
+      "subject": "aaaaaaaabbbbbbb",
+      "expected": false,
+      "pattern_bytes": 14,
+      "subject_bytes": 15,
+      "source": "benchmarks/fixtures.py",
+      "coverage": [
+        "native",
+        "late-reject",
+        "tiny"
+      ]
+    },
+    {
+      "id": "balanced_256_accept",
+      "group": "recursive",
+      "pattern": "(?<S>a(?&S)b|)",
+      "subject": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "expected": true,
+      "pattern_bytes": 14,
+      "subject_bytes": 512,
+      "source": "benchmarks/fixtures.py",
+      "coverage": [
+        "native",
+        "singleton-result",
+        "large"
+      ]
+    },
+    {
+      "id": "balanced_256_reject",
+      "group": "recursive",
+      "pattern": "(?<S>a(?&S)b|)",
+      "subject": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "expected": false,
+      "pattern_bytes": 14,
+      "subject_bytes": 511,
+      "source": "benchmarks/fixtures.py",
+      "coverage": [
+        "native",
+        "late-reject",
+        "large"
+      ]
+    },
+    {
+      "id": "equivalent_arms_256_accept",
+      "group": "assistance",
+      "pattern": "(?<R0>a(?&R0)b|)ccAdd|(?&R0)ccBdd|(?<R1>a(?&R1)b|)ccCdd|(?&R1)ccDdd|(?<R2>a(?&R2)b|)ccEdd|(?&R2)ccFdd|(?<R3>a(?&R3)b|)ccGdd|(?&R3)ccHdd",
+      "subject": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccAdd",
+      "expected": true,
+      "pattern_bytes": 135,
+      "subject_bytes": 517,
+      "source": "benchmarks/data/assistance-fixtures.json:mixed_prefix_late_marker_reject_4096",
+      "coverage": [
+        "equivalence",
+        "native",
+        "helper-admission"
+      ]
+    },
+    {
+      "id": "equivalent_arms_256_reject",
+      "group": "assistance",
+      "pattern": "(?<R0>a(?&R0)b|)ccAdd|(?&R0)ccBdd|(?<R1>a(?&R1)b|)ccCdd|(?&R1)ccDdd|(?<R2>a(?&R2)b|)ccEdd|(?&R2)ccFdd|(?<R3>a(?&R3)b|)ccGdd|(?&R3)ccHdd",
+      "subject": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccZdd",
+      "expected": false,
+      "pattern_bytes": 135,
+      "subject_bytes": 517,
+      "source": "benchmarks/data/assistance-fixtures.json:mixed_prefix_late_marker_reject_4096",
+      "coverage": [
+        "equivalence",
+        "native",
+        "helper-admission",
+        "late-marker-reject"
+      ]
+    },
+    {
+      "id": "equivalent_arms_4096_accept",
+      "group": "assistance",
+      "pattern": "(?<R0>a(?&R0)b|)ccAdd|(?&R0)ccBdd|(?<R1>a(?&R1)b|)ccCdd|(?&R1)ccDdd|(?<R2>a(?&R2)b|)ccEdd|(?&R2)ccFdd|(?<R3>a(?&R3)b|)ccGdd|(?&R3)ccHdd",
+      "subject": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccAdd",
+      "expected": true,
+      "pattern_bytes": 135,
+      "subject_bytes": 8197,
+      "source": "benchmarks/data/assistance-fixtures.json:mixed_prefix_late_marker_reject_4096",
+      "coverage": [
+        "equivalence",
+        "native",
+        "helper-admission"
+      ]
+    },
+    {
+      "id": "equivalent_arms_4096_reject",
+      "group": "assistance",
+      "pattern": "(?<R0>a(?&R0)b|)ccAdd|(?&R0)ccBdd|(?<R1>a(?&R1)b|)ccCdd|(?&R1)ccDdd|(?<R2>a(?&R2)b|)ccEdd|(?&R2)ccFdd|(?<R3>a(?&R3)b|)ccGdd|(?&R3)ccHdd",
+      "subject": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccZdd",
+      "expected": false,
+      "pattern_bytes": 135,
+      "subject_bytes": 8197,
+      "source": "benchmarks/data/assistance-fixtures.json:mixed_prefix_late_marker_reject_4096",
+      "coverage": [
+        "equivalence",
+        "native",
+        "helper-admission",
+        "late-marker-reject"
+      ]
+    },
+    {
+      "id": "ambiguous_24_accept",
+      "group": "recursive",
+      "pattern": "(?<S>(?&S)(?&S)|a)",
+      "subject": "aaaaaaaaaaaaaaaaaaaaaaaa",
+      "expected": true,
+      "pattern_bytes": 18,
+      "subject_bytes": 24,
+      "source": "tests/test_closed_results.cpp",
+      "coverage": [
+        "native",
+        "multi-endpoint",
+        "duplicate-completion"
+      ]
+    },
+    {
+      "id": "nullable_64_accept",
+      "group": "recursive",
+      "pattern": "(?<S>(?&S)|a*b*|(?:ab)*)",
+      "subject": "abababababababababababababababababababababababababababababababab",
+      "expected": true,
+      "pattern_bytes": 24,
+      "subject_bytes": 64,
+      "source": "tests/test_regular_regions.cpp",
+      "coverage": [
+        "native",
+        "nullable-cycle",
+        "local-regular"
+      ]
+    },
+    {
+      "id": "backreference_256_accept",
+      "group": "stateful",
+      "pattern": "([ab]+):\\1",
+      "subject": "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab:abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab",
+      "expected": true,
+      "pattern_bytes": 10,
+      "subject_bytes": 513,
+      "source": "benchmarks/expression_prep/stage_runner.cpp:backreference",
+      "coverage": [
+        "stateful",
+        "warm",
+        "lifetime"
+      ]
+    },
+    {
+      "id": "shared_count_256_reject",
+      "group": "stateful",
+      "pattern": "a{#n}b{=n}c{=n}",
+      "subject": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "expected": false,
+      "pattern_bytes": 15,
+      "subject_bytes": 767,
+      "source": "benchmarks/expression_prep/stage_runner.cpp:shared_count",
+      "coverage": [
+        "stateful",
+        "logical-budget-control"
+      ]
+    },
+    {
+      "id": "arithmetic_64_accept",
+      "group": "practical",
+      "pattern": "(?(DEFINE)(?<W>[ \\t\\r\\n]*)(?<E>(?&E)(?&W)[+-](?&W)(?&T)|(?&T))(?<T>(?&T)(?&W)[*/](?&W)(?&F)|(?&F))(?<F>[+-](?&W)(?&F)|(?&P))(?<P>\\((?&W)(?&E)(?&W)\\)|[0-9]+(?:\\.[0-9]+)?|[A-Za-z_][A-Za-z0-9_]*))(?&W)(?&E)(?&W)",
+      "subject": "(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)",
+      "expected": true,
+      "pattern_bytes": 208,
+      "subject_bytes": 511,
+      "source": "benchmarks/marpa_scanless/grammars/arithmetic_expression.crank",
+      "coverage": [
+        "native",
+        "recursive",
+        "left-recursive",
+        "practical"
+      ]
+    },
+    {
+      "id": "arithmetic_64_late_reject",
+      "group": "practical",
+      "pattern": "(?(DEFINE)(?<W>[ \\t\\r\\n]*)(?<E>(?&E)(?&W)[+-](?&W)(?&T)|(?&T))(?<T>(?&T)(?&W)[*/](?&W)(?&F)|(?&F))(?<F>[+-](?&W)(?&F)|(?&P))(?<P>\\((?&W)(?&E)(?&W)\\)|[0-9]+(?:\\.[0-9]+)?|[A-Za-z_][A-Za-z0-9_]*))(?&W)(?&E)(?&W)",
+      "subject": "(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+(x+2*3)+",
+      "expected": false,
+      "pattern_bytes": 208,
+      "subject_bytes": 512,
+      "source": "benchmarks/marpa_scanless/grammars/arithmetic_expression.crank",
+      "coverage": [
+        "native",
+        "recursive",
+        "late-reject",
+        "practical"
+      ]
+    },
+    {
+      "id": "json_rows_64_accept",
+      "group": "practical",
+      "pattern": "(?(DEFINE)(?<J>(?&W)(?&V)(?&W))(?<V>(?&O)|(?&A)|(?&S)|(?&N)|true|false|null)(?<O>\\{(?&W)(?:(?&M)(?:,(?&W)(?&M))*)?\\})(?<M>(?&S)(?&W):(?&W)(?&V)(?&W))(?<A>\\[(?&W)(?:(?&V)(?&W)(?:,(?&W)(?&V)(?&W))*)?\\])(?<S>\"(?:[\\x20-\\x21\\x23-\\x5b\\x5d-\\x7e]|\\\\[\"\\\\/bfnrt]|\\\\u[0-9A-Fa-f]{4})*\")(?<N>-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?)(?<W>[ \\t\\r\\n]*))(?&J)",
+      "subject": "{\"rows\":[{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]}]}",
+      "expected": true,
+      "pattern_bytes": 354,
+      "subject_bytes": 3530,
+      "source": "benchmarks/marpa_scanless/grammars/json_ascii.crank; rows from benchmarks/src/generate_practical.py",
+      "coverage": [
+        "native",
+        "recursive",
+        "practical"
+      ]
+    },
+    {
+      "id": "json_rows_64_late_reject",
+      "group": "practical",
+      "pattern": "(?(DEFINE)(?<J>(?&W)(?&V)(?&W))(?<V>(?&O)|(?&A)|(?&S)|(?&N)|true|false|null)(?<O>\\{(?&W)(?:(?&M)(?:,(?&W)(?&M))*)?\\})(?<M>(?&S)(?&W):(?&W)(?&V)(?&W))(?<A>\\[(?&W)(?:(?&V)(?&W)(?:,(?&W)(?&V)(?&W))*)?\\])(?<S>\"(?:[\\x20-\\x21\\x23-\\x5b\\x5d-\\x7e]|\\\\[\"\\\\/bfnrt]|\\\\u[0-9A-Fa-f]{4})*\")(?<N>-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?)(?<W>[ \\t\\r\\n]*))(?&J)",
+      "subject": "{\"rows\":[{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]},{\"id\":17,\"ok\":true,\"x\":[-12.5e+2,null,\"line\\n\\u0041\"]}]]",
+      "expected": false,
+      "pattern_bytes": 354,
+      "subject_bytes": 3530,
+      "source": "benchmarks/marpa_scanless/grammars/json_ascii.crank",
+      "coverage": [
+        "native",
+        "recursive",
+        "late-reject",
+        "practical"
+      ]
+    },
+    {
+      "id": "event_rows_64_accept",
+      "group": "practical",
+      "pattern": "(?(DEFINE)(?<E>E\\[(?&F)(?:;(?&F))*\\])(?<F>[a-z][a-z0-9_]*=(?&V))(?<V>(?&E)|(?&L)|[0-9]+|\"[A-Za-z0-9 _;=/-]*\")(?<L>\\[(?:(?&V)(?:,(?&V))*)?\\]))(?&E)(?:\\n(?&E))*\\n",
+      "subject": "E[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\n",
+      "expected": true,
+      "pattern_bytes": 160,
+      "subject_bytes": 3840,
+      "source": "benchmarks/marpa_scanless/grammars/event_stream.crank; rows from benchmarks/src/generate_practical.py",
+      "coverage": [
+        "native",
+        "recursive",
+        "helper-admission",
+        "practical"
+      ]
+    },
+    {
+      "id": "event_rows_64_late_reject",
+      "group": "practical",
+      "pattern": "(?(DEFINE)(?<E>E\\[(?&F)(?:;(?&F))*\\])(?<F>[a-z][a-z0-9_]*=(?&V))(?<V>(?&E)|(?&L)|[0-9]+|\"[A-Za-z0-9 _;=/-]*\")(?<L>\\[(?:(?&V)(?:,(?&V))*)?\\]))(?&E)(?:\\n(?&E))*\\n",
+      "subject": "E[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples=[1,2,3]]\nE[id=17;msg=\"route\";child=E[id=2;msg=\"ok\"];samples[=1,2,3]]\n",
+      "expected": false,
+      "pattern_bytes": 160,
+      "subject_bytes": 3840,
+      "source": "benchmarks/marpa_scanless/grammars/event_stream.crank",
+      "coverage": [
+        "native",
+        "recursive",
+        "helper-admission",
+        "late-reject",
+        "practical"
+      ]
+    }
+  ]
+}
