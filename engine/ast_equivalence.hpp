@@ -3,6 +3,7 @@
 #include "regex_ast.hpp"
 
 #include <algorithm>
+#include <array>
 #include <cstdint>
 #include <vector>
 
@@ -52,6 +53,14 @@ struct Budget {
     EquivalenceStatistics* statistics = nullptr) {
     using namespace ast_equivalence_detail;
     using Word = std::uint64_t;
+    struct Label {
+        // CharSet is the longest label: kind, four masks, child count.
+        // Repeat uses five words, pure alias cycles three, other kinds two.
+        std::array<Word, 6> words{};
+        std::size_t length = 0;
+        void push_back(Word value) { words[length++] = value; }
+        [[nodiscard]] std::size_t size() const { return length; }
+    };
     static_assert(sizeof(NodeId) <= sizeof(Word));
     if (statistics) *statistics = {};
     const auto count = ast.nodes.size();
@@ -86,12 +95,15 @@ struct Budget {
 
         // Local labels are immutable across refinement. In particular, terminal
         // masks are extracted once, not on every recursive refinement round.
-        std::vector<std::vector<Word>> labels(count);
+        // Only representatives need labels. The active order remains fixed;
+        // refinement sorts its separate order vector, never this positional map.
+        std::vector<Label> labels(active.size());
         std::vector<std::vector<NodeId>> children(count);
-        for (const auto id : active) {
+        for (std::size_t index = 0; index < active.size(); ++index) {
+            const auto id = active[index];
             budget.spend();
             const auto& node = ast.nodes[id];
-            auto& label = labels[id];
+            auto& label = labels[index];
             label.push_back(static_cast<Word>(node.kind));
             switch (node.kind) {
             case Kind::CharSet:
@@ -141,10 +153,12 @@ struct Budget {
         std::vector<std::vector<Word>> signatures(count);
         std::vector<NodeId> order = active;
         for (;;) {
-            for (const auto id : active) {
-                budget.spend(labels[id].size() + children[id].size() + 1);
+            for (std::size_t index = 0; index < active.size(); ++index) {
+                const auto id = active[index];
+                const auto& label = labels[index];
+                budget.spend(label.size() + children[id].size() + 1);
                 auto& signature = signatures[id];
-                signature = labels[id];
+                signature.assign(label.words.begin(), label.words.begin() + label.size());
                 for (const auto child : children[id]) signature.push_back(classes[child]);
             }
             const auto compare = [&](NodeId left, NodeId right) {
